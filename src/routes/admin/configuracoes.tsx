@@ -152,7 +152,20 @@ function AdminConfiguracoes() {
             </div>
           </div>
         </ConfigCard>
+
+        <ConfigCard title="Promoção Especial" icon={Timer} keys={['promocao_ativa', 'promocao_data_expiracao', 'promocao_preco', 'promocao_cupom']}>
+          <Toggle label="Promoção Exibir" id="promocao_ativa" />
+          <Input 
+            label="Data de Expiração" 
+            id="promocao_data_expiracao" 
+            type="datetime-local" 
+            note="Data e hora em que o contador chegará a zero."
+          />
+          <Input label="Preço Promocional" id="promocao_preco" note="Ex: 99,90" />
+          <Input label="Cupom de Desconto" id="promocao_cupom" />
+        </ConfigCard>
       </div>
+
     </div>
   );
 }
