@@ -71,9 +71,9 @@ export function PromocaoNamorados() {
                   </div>
                 </div>
                 
-                <h2 className="font-poppins font-black text-[38px] md:text-[68px] text-white leading-[0.9] md:leading-[0.95] tracking-tighter uppercase mb-6 flex flex-col">
+                <h2 className="font-poppins font-black text-[32px] md:text-[68px] text-white leading-[0.9] md:leading-[0.95] tracking-tighter uppercase mb-6 flex flex-col">
                   <span className="block">PROMOÇÃO</span>
-                  <span className="text-[20px] md:text-[36px] text-[#666] tracking-widest mt-1 mb-1 block">JUNHO DOS</span>
+                  <span className="text-[16px] md:text-[36px] text-[#666] tracking-[0.2em] md:tracking-widest mt-1 mb-1 block">JUNHO DOS</span>
                   <span className="text-[#AAFF00] block">NAMORADOS</span>
                 </h2>
                 <p className="font-inter text-[15px] md:text-[17px] text-[#666] leading-relaxed max-w-[500px] mx-auto lg:mx-0">
