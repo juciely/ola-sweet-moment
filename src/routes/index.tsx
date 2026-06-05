@@ -16,6 +16,10 @@ export const Route = createFileRoute('/')({
 function Index() {
   const { config, loading } = useSiteConfig();
   const revealRef = useReveal();
+  
+  useEffect(() => {
+    console.log('Index mounted, revealRef:', revealRef.current);
+  }, []);
 
   if (loading) {
     return (
@@ -32,7 +36,7 @@ function Index() {
   };
 
   return (
-    <main ref={revealRef as any} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808]">
+    <main ref={revealRef as any} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808] relative">
       {/* SCROLLING BAR */}
       <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-[36px] flex items-center">
         <div className="animate-marquee whitespace-nowrap font-inter text-[13px] font-semibold text-[#0A0A0A] flex gap-8 px-4">

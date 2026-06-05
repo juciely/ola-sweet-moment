@@ -70,6 +70,13 @@ body {
 
 /* Intersection Observer helper */
 .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Manter as regras originais comentadas para depuração */
+/*
+.reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -79,6 +86,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+*/
 
 button, a {
   transition: all 0.3s ease;
