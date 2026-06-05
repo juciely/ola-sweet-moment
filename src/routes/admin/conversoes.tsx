@@ -97,7 +97,7 @@ function AdminConversoes() {
               onClick={() => setPeriod(p.id)}
               className={cn(
                 "px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-wider transition-all",
-                period === p.id ? "bg-[#AAFF00] text-[#0A0A0A]" : "text-[#555] hover:text-white"
+                period === p.id ? "bg-[#d7f803] text-[#0A0A0A]" : "text-[#555] hover:text-white"
               )}
             >
               {p.label}
@@ -111,10 +111,10 @@ function AdminConversoes() {
         <div className="lg:col-span-2 bg-[#111] border border-white/5 rounded-[24px] p-8 space-y-8">
           <h3 className="font-bebas text-2xl text-white">FUNIL DE VENDAS</h3>
           <div className="space-y-6">
-            <FunnelBar label="Leads Gerados" value={stats.leads} total={stats.leads} color="#AAFF00" />
+            <FunnelBar label="Leads Gerados" value={stats.leads} total={stats.leads} color="#d7f803" />
             <FunnelBar label="Interessados (WA/Agenda)" value={stats.agendamentos} total={stats.leads} color="#FFB800" />
             <FunnelBar label="Visitas Realizadas" value={stats.visitas} total={stats.leads} color="#25D366" />
-            <FunnelBar label="Matrículas" value={stats.matriculas} total={stats.leads} color="#AAFF00" />
+            <FunnelBar label="Matrículas" value={stats.matriculas} total={stats.leads} color="#d7f803" />
           </div>
         </div>
 
@@ -127,7 +127,7 @@ function AdminConversoes() {
                 {stats.leads > 0 ? ((stats.matriculas / stats.leads) * 100).toFixed(1) : 0}%
               </h4>
             </div>
-            <div className="bg-[#AAFF00]/10 p-3 rounded-xl text-[#AAFF00]">
+            <div className="bg-[#d7f803]/10 p-3 rounded-xl text-[#d7f803]">
               <TrendingUp className="w-5 h-5" />
             </div>
           </div>
@@ -162,7 +162,7 @@ function AdminConversoes() {
             </thead>
             <tbody className="divide-y divide-white/5">
               {loading ? (
-                <tr><td colSpan={4} className="p-20 text-center"><div className="w-8 h-8 border-2 border-[#AAFF00] border-t-transparent rounded-full animate-spin mx-auto"></div></td></tr>
+                <tr><td colSpan={4} className="p-20 text-center"><div className="w-8 h-8 border-2 border-[#d7f803] border-t-transparent rounded-full animate-spin mx-auto"></div></td></tr>
               ) : conversoes.length === 0 ? (
                 <tr><td colSpan={4} className="p-20 text-center text-[#444] font-inter text-sm">Nenhum evento registrado no período.</td></tr>
               ) : (
@@ -173,7 +173,7 @@ function AdminConversoes() {
                         "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider",
                         conv.tipo === 'lead_formulario' ? "bg-blue-500/10 text-blue-500" :
                         conv.tipo === 'clique_whatsapp' ? "bg-[#25D366]/10 text-[#25D366]" :
-                        conv.tipo === 'matricula_confirmada' ? "bg-[#AAFF00]/10 text-[#AAFF00]" : "bg-orange-500/10 text-orange-500"
+                        conv.tipo === 'matricula_confirmada' ? "bg-[#d7f803]/10 text-[#d7f803]" : "bg-orange-500/10 text-orange-500"
                       )}>
                         {conv.tipo.replace('_', ' ')}
                       </span>

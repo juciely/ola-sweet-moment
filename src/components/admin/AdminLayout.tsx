@@ -55,12 +55,12 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               className={cn(
                 "flex items-center gap-4 px-4 py-4 rounded-xl transition-all group",
                 isActive 
-                  ? "bg-[#161616] text-[#AAFF00] border-l-4 border-[#AAFF00]" 
+                  ? "bg-[#161616] text-[#d7f803] border-l-4 border-[#d7f803]" 
                   : "text-[#666] hover:text-white hover:bg-white/5"
               )}
               onClick={() => setIsSidebarOpen(false)}
             >
-              <item.icon className={cn("w-5 h-5", isActive ? "text-[#AAFF00]" : "text-inherit")} />
+              <item.icon className={cn("w-5 h-5", isActive ? "text-[#d7f803]" : "text-inherit")} />
               <span className="font-inter font-bold text-sm">{item.label}</span>
             </Link>
           );

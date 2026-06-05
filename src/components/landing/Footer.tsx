@@ -28,7 +28,7 @@ export function Footer() {
 
         {/* Col 2 */}
         <div className="space-y-6">
-          <h3 className="font-inter text-[12px] text-[#AAFF00] uppercase tracking-[2px] font-bold">HORÁRIOS</h3>
+          <h3 className="font-inter text-[12px] text-[#d7f803] uppercase tracking-[2px] font-bold">HORÁRIOS</h3>
           <div className="space-y-3 font-inter text-sm text-[#666]">
             <p className="flex justify-between">{config.horario_semana || 'Segunda a Sexta — 05h às 22h'}</p>
             <p className="flex justify-between">{config.horario_sabado || 'Sábado — 08h às 14h'}</p>
@@ -38,11 +38,11 @@ export function Footer() {
 
         {/* Col 3 */}
         <div className="space-y-6">
-          <h3 className="font-inter text-[12px] text-[#AAFF00] uppercase tracking-[2px] font-bold">CONTATO</h3>
+          <h3 className="font-inter text-[12px] text-[#d7f803] uppercase tracking-[2px] font-bold">CONTATO</h3>
           <div className="space-y-4">
             <button 
               onClick={handleWhatsApp}
-              className="text-white text-lg font-bebas tracking-wider hover:text-[#AAFF00] transition-colors"
+              className="text-white text-lg font-bebas tracking-wider hover:text-[#d7f803] transition-colors"
             >
               {config.whatsapp_exibicao || '(66) 9 9997-0103'}
             </button>

@@ -66,7 +66,7 @@ function AdminAgendamentos() {
               onClick={() => setStatusFilter(s)}
               className={cn(
                 "px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-wider transition-all",
-                statusFilter === s ? "bg-[#AAFF00] text-[#0A0A0A]" : "text-[#555] hover:text-white"
+                statusFilter === s ? "bg-[#d7f803] text-[#0A0A0A]" : "text-[#555] hover:text-white"
               )}
             >
               {s}
@@ -89,7 +89,7 @@ function AdminAgendamentos() {
             </thead>
             <tbody className="divide-y divide-white/5">
               {loading ? (
-                <tr><td colSpan={5} className="p-20 text-center"><div className="w-8 h-8 border-2 border-[#AAFF00] border-t-transparent rounded-full animate-spin mx-auto"></div></td></tr>
+                <tr><td colSpan={5} className="p-20 text-center"><div className="w-8 h-8 border-2 border-[#d7f803] border-t-transparent rounded-full animate-spin mx-auto"></div></td></tr>
               ) : agendamentos.length === 0 ? (
                 <tr><td colSpan={5} className="p-20 text-center text-[#444] font-inter text-sm">Nenhum agendamento encontrado.</td></tr>
               ) : (
@@ -97,11 +97,11 @@ function AdminAgendamentos() {
                   <tr key={app.id} className="group hover:bg-white/[0.01] transition-colors">
                     <td className="p-6">
                       <p className="font-inter text-sm text-white font-bold mb-1">{app.nome}</p>
-                      <a href={`https://wa.me/${app.whatsapp}`} className="font-inter text-xs text-[#555] hover:text-[#AAFF00]">{app.whatsapp}</a>
+                      <a href={`https://wa.me/${app.whatsapp}`} className="font-inter text-xs text-[#555] hover:text-[#d7f803]">{app.whatsapp}</a>
                     </td>
                     <td className="p-6">
                       <div className="flex items-center gap-2 text-white font-inter text-sm mb-1">
-                        <CalendarIcon className="w-3.5 h-3.5 text-[#AAFF00]" />
+                        <CalendarIcon className="w-3.5 h-3.5 text-[#d7f803]" />
                         {new Date(app.data_preferida).toLocaleDateString('pt-BR')}
                       </div>
                       <div className="flex items-center gap-2 text-[#555] font-inter text-xs">
@@ -117,7 +117,7 @@ function AdminAgendamentos() {
                       <span className={cn(
                         "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider",
                         app.status === 'pendente' ? "bg-[#FFB800]/10 text-[#FFB800]" : 
-                        app.status === 'confirmado' ? "bg-[#AAFF00]/10 text-[#AAFF00]" : 
+                        app.status === 'confirmado' ? "bg-[#d7f803]/10 text-[#d7f803]" : 
                         app.status === 'compareceu' ? "bg-blue-500/10 text-blue-500" : "bg-red-500/10 text-red-500"
                       )}>
                         {app.status}
@@ -125,7 +125,7 @@ function AdminAgendamentos() {
                     </td>
                     <td className="p-6">
                       <div className="flex items-center justify-end gap-2">
-                        <button onClick={() => updateStatus(app.id, 'confirmado')} className="p-2 bg-white/5 border border-white/5 rounded-lg text-[#AAFF00] hover:bg-[#AAFF00] hover:text-[#0A0A0A] transition-all" title="Confirmar">
+                        <button onClick={() => updateStatus(app.id, 'confirmado')} className="p-2 bg-white/5 border border-white/5 rounded-lg text-[#d7f803] hover:bg-[#d7f803] hover:text-[#0A0A0A] transition-all" title="Confirmar">
                           <Check className="w-4 h-4" />
                         </button>
                         <button onClick={() => updateStatus(app.id, 'compareceu')} className="p-2 bg-white/5 border border-white/5 rounded-lg text-blue-500 hover:bg-blue-500 hover:text-white transition-all" title="Compareceu">
@@ -147,8 +147,8 @@ function AdminAgendamentos() {
       {/* Confirmation Modal */}
       {confirmModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-6">
-          <div className="bg-[#111] border border-[#AAFF00]/20 rounded-[32px] p-10 max-w-[440px] w-full text-center shadow-[0_0_100px_rgba(170,255,0,0.1)]">
-            <div className="w-20 h-20 bg-[#AAFF00] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(170,255,0,0.3)]">
+          <div className="bg-[#111] border border-[#d7f803]/20 rounded-[32px] p-10 max-w-[440px] w-full text-center shadow-[0_0_100px_rgba(170,255,0,0.1)]">
+            <div className="w-20 h-20 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(170,255,0,0.3)]">
               <MessageCircle className="w-10 h-10 text-[#0A0A0A] fill-current" />
             </div>
             <h3 className="font-bebas text-3xl text-white mb-4 uppercase">VISITA CONFIRMADA!</h3>

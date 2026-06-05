@@ -26,24 +26,24 @@ export function PromocaoNamorados() {
     <section className="relative py-32 px-6 overflow-hidden bg-[#080808]">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[600px] bg-[#AAFF00]/5 rounded-full blur-[140px] opacity-50"></div>
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AAFF00]/20 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AAFF00]/20 to-transparent"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[600px] bg-[#d7f803]/5 rounded-full blur-[140px] opacity-50"></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#d7f803]/20 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#d7f803]/20 to-transparent"></div>
       </div>
 
       <div className="relative z-10 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row bg-[#111] border border-white/5 rounded-[32px] overflow-hidden shadow-2xl transition-all hover:border-[#AAFF00]/20 group">
+          <div className="flex flex-col lg:flex-row bg-[#111] border border-white/5 rounded-[32px] overflow-hidden shadow-2xl transition-all hover:border-[#d7f803]/20 group">
             
             {/* Left Column: Visual & Pricing */}
             <div className="lg:w-[40%] bg-[#161616] p-12 flex flex-col items-center justify-center text-center relative border-b lg:border-b-0 lg:border-r border-white/5">
               <div className="space-y-4 mb-8 flex flex-col items-center">
-                <Ticket className="w-6 h-6 text-[#AAFF00] mb-2" />
-                <span className="font-poppins text-[10px] font-black text-[#AAFF00] tracking-[4px] uppercase block">OFERTA ESPECIAL</span>
+                <Ticket className="w-6 h-6 text-[#d7f803] mb-2" />
+                <span className="font-poppins text-[10px] font-black text-[#d7f803] tracking-[4px] uppercase block">OFERTA ESPECIAL</span>
                 <div className="flex items-baseline justify-center gap-2">
                   <span className="font-poppins font-black text-2xl text-white">R$</span>
                   <span className="font-poppins font-black text-[84px] md:text-[100px] leading-none text-white tracking-tighter">
-                    {preco.split(',')[0]}<span className="text-[32px] md:text-[40px] text-[#AAFF00]">,{preco.split(',')[1]}</span>
+                    {preco.split(',')[0]}<span className="text-[32px] md:text-[40px] text-[#d7f803]">,{preco.split(',')[1]}</span>
                   </span>
                 </div>
                 <p className="font-poppins text-[14px] text-[#555] font-bold uppercase tracking-widest">P/ PESSOA • 1º MÊS</p>
@@ -65,8 +65,8 @@ export function PromocaoNamorados() {
             <div className="flex-1 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-[#111] to-[#0D0D0D]">
               <div className="mb-8 text-center lg:text-left">
                 <div className="inline-flex flex-col items-center lg:items-start gap-2 mb-6">
-                  <Heart className="w-5 h-5 text-[#AAFF00] mb-1" />
-                  <div className="bg-[#AAFF00]/10 text-[#AAFF00] px-4 py-1.5 rounded-full border border-[#AAFF00]/10">
+                  <Heart className="w-5 h-5 text-[#d7f803] mb-1" />
+                  <div className="bg-[#d7f803]/10 text-[#d7f803] px-4 py-1.5 rounded-full border border-[#d7f803]/10">
                     <span className="font-poppins font-bold text-[9px] uppercase tracking-wider">{subtitulo}</span>
                   </div>
                 </div>
@@ -74,7 +74,7 @@ export function PromocaoNamorados() {
                 <h2 className="font-poppins font-extrabold text-[32px] md:text-[68px] text-white leading-[0.9] md:leading-[0.95] tracking-tighter uppercase mb-6 flex flex-col">
                   <span className="block">PROMOÇÃO</span>
                   <span className="text-[16px] md:text-[36px] text-[#666] font-medium tracking-[0.2em] md:tracking-widest mt-1 mb-1 block">JUNHO DOS</span>
-                  <span className="text-[#AAFF00] block">NAMORADOS</span>
+                  <span className="text-[#d7f803] block">NAMORADOS</span>
                 </h2>
                 <p className="font-inter text-[15px] md:text-[17px] text-[#666] leading-relaxed max-w-[500px] mx-auto lg:mx-0">
                   {condicoes}
@@ -85,21 +85,21 @@ export function PromocaoNamorados() {
                 {!revealed ? (
                   <button
                     onClick={() => setRevealed(true)}
-                    className="w-full bg-white text-black font-poppins font-black uppercase tracking-[1px] px-8 py-5 rounded-full transition-all hover:bg-[#AAFF00] hover:scale-105 active:scale-95 text-center shadow-[0_10px_40px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
+                    className="w-full bg-white text-black font-poppins font-black uppercase tracking-[1px] px-8 py-5 rounded-full transition-all hover:bg-[#d7f803] hover:scale-105 active:scale-95 text-center shadow-[0_10px_40px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
                   >
                     <Ticket className="w-5 h-5" />
                     REVELAR CUPOM
                   </button>
                 ) : (
                   <div className="flex flex-col xl:flex-row gap-4 items-stretch animate-fade-up">
-                    <div className="flex-[1.5] bg-white/5 border border-dashed border-[#AAFF00]/30 rounded-2xl px-5 py-4 flex items-center justify-between group/cupom">
+                    <div className="flex-[1.5] bg-white/5 border border-dashed border-[#d7f803]/30 rounded-2xl px-5 py-4 flex items-center justify-between group/cupom">
                       <div className="min-w-0">
                         <p className="text-[9px] text-[#444] font-black uppercase tracking-widest mb-0.5">CÓDIGO</p>
-                        <span className="font-poppins font-black text-[#AAFF00] text-lg md:text-xl tracking-tight truncate block">{cupom}</span>
+                        <span className="font-poppins font-black text-[#d7f803] text-lg md:text-xl tracking-tight truncate block">{cupom}</span>
                       </div>
                       <button 
                         onClick={copyToClipboard}
-                        className="p-3 bg-white/5 hover:bg-[#AAFF00] hover:text-black rounded-xl transition-all text-[#AAFF00]"
+                        className="p-3 bg-white/5 hover:bg-[#d7f803] hover:text-black rounded-xl transition-all text-[#d7f803]"
                         title="Copiar cupom"
                       >
                         {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}

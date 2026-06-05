@@ -90,11 +90,11 @@ function AdminLeads() {
         
         <div className="flex flex-wrap items-center gap-4">
           <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#444] group-focus-within:text-[#AAFF00] transition-colors" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#444] group-focus-within:text-[#d7f803] transition-colors" />
             <input 
               type="text" 
               placeholder="Buscar nome ou zap..."
-              className="bg-[#111] border border-white/5 rounded-full pl-12 pr-6 py-3 text-sm text-white focus:border-[#AAFF00] outline-none w-[260px] transition-all"
+              className="bg-[#111] border border-white/5 rounded-full pl-12 pr-6 py-3 text-sm text-white focus:border-[#d7f803] outline-none w-[260px] transition-all"
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
@@ -123,7 +123,7 @@ function AdminLeads() {
             </thead>
             <tbody className="divide-y divide-white/5">
               {loading ? (
-                <tr><td colSpan={5} className="p-20 text-center"><div className="w-8 h-8 border-2 border-[#AAFF00] border-t-transparent rounded-full animate-spin mx-auto"></div></td></tr>
+                <tr><td colSpan={5} className="p-20 text-center"><div className="w-8 h-8 border-2 border-[#d7f803] border-t-transparent rounded-full animate-spin mx-auto"></div></td></tr>
               ) : leads.length === 0 ? (
                 <tr><td colSpan={5} className="p-20 text-center text-[#444] font-inter text-sm">Nenhum lead encontrado.</td></tr>
               ) : (
@@ -134,7 +134,7 @@ function AdminLeads() {
                       <p className="font-inter text-[10px] text-[#444] uppercase tracking-widest">{lead.utm_source || 'Direto'}</p>
                     </td>
                     <td className="p-6">
-                      <a href={`https://wa.me/${lead.whatsapp}`} target="_blank" className="font-inter text-sm text-[#888] hover:text-[#AAFF00] transition-colors">{lead.whatsapp}</a>
+                      <a href={`https://wa.me/${lead.whatsapp}`} target="_blank" className="font-inter text-sm text-[#888] hover:text-[#d7f803] transition-colors">{lead.whatsapp}</a>
                     </td>
                     <td className="p-6 font-inter text-xs text-[#666] uppercase">{lead.plano_interesse}</td>
                     <td className="p-6">
@@ -145,7 +145,7 @@ function AdminLeads() {
                         <button 
                           onClick={() => toggleMatricula(lead.id, lead.converteu_matricula)}
                           title="Matrícula Confirmada"
-                          className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all ${lead.converteu_matricula ? 'bg-[#AAFF00] border-[#AAFF00] text-[#0A0A0A]' : 'border-white/10 text-[#444] hover:border-white/30'}`}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all ${lead.converteu_matricula ? 'bg-[#d7f803] border-[#d7f803] text-[#0A0A0A]' : 'border-white/10 text-[#444] hover:border-white/30'}`}
                         >
                           <Check className="w-4 h-4" />
                         </button>

@@ -54,7 +54,7 @@ function AdminDebug() {
 
   const DebugCard = ({ title, icon: Icon, children }: any) => (
     <div className="bg-[#111] border border-white/5 rounded-2xl p-6 space-y-4">
-      <div className="flex items-center gap-3 text-[#AAFF00]">
+      <div className="flex items-center gap-3 text-[#d7f803]">
         <Icon className="w-5 h-5" />
         <h3 className="font-bebas text-xl tracking-wider uppercase">{title}</h3>
       </div>
@@ -79,7 +79,7 @@ function AdminDebug() {
         <button 
           onClick={fetchData} 
           disabled={loading}
-          className="p-3 bg-white/5 border border-white/5 rounded-full text-[#555] hover:text-[#AAFF00] hover:bg-white/10 transition-all active:scale-95"
+          className="p-3 bg-white/5 border border-white/5 rounded-full text-[#555] hover:text-[#d7f803] hover:bg-white/10 transition-all active:scale-95"
         >
           <RefreshCcw className={cn("w-5 h-5", loading && "animate-spin")} />
         </button>
@@ -98,7 +98,7 @@ function AdminDebug() {
           <div className="space-y-3 p-4 bg-black/50 rounded-xl">
             <p className="flex justify-between">
               <span className="text-[#555]">Pixel Ativo:</span>
-              <span className={cn(config.pixel_ativo === 'true' ? "text-[#AAFF00]" : "text-red-500")}>
+              <span className={cn(config.pixel_ativo === 'true' ? "text-[#d7f803]" : "text-red-500")}>
                 {config.pixel_ativo || 'false'}
               </span>
             </p>
@@ -122,7 +122,7 @@ function AdminDebug() {
           <div className="space-y-2">
             {conversoes.map((c, i) => (
               <div key={i} className="p-3 bg-black/50 rounded-lg border border-white/5">
-                <p className="text-[#AAFF00] font-bold mb-1">{c.tipo}</p>
+                <p className="text-[#d7f803] font-bold mb-1">{c.tipo}</p>
                 <p className="text-[10px] text-[#555]">Source: {c.utm_source || '-'}</p>
                 <p className="text-[10px] text-[#555]">{new Date(c.created_at).toLocaleString('pt-BR')}</p>
               </div>
