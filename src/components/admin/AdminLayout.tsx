@@ -10,7 +10,8 @@ import {
   Type, 
   LogOut,
   Menu,
-  X
+  X,
+  Bug
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
