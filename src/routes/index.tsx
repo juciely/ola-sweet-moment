@@ -33,16 +33,11 @@ function Index() {
 
   return (
     <main ref={revealRef as any} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808] relative overflow-x-hidden">
-      {/* SCROLLING BAR */}
-      <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-[36px] flex items-center shadow-lg">
-        <div className="animate-marquee whitespace-nowrap font-inter text-[11px] md:text-[13px] font-bold text-[#0A0A0A] flex gap-8 px-4 uppercase tracking-wider">
-          <span>⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
-          <span aria-hidden="true">⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
-        </div>
-      </div>
+      {/* SCROLLING BAR - REMOVIDO DO TOPO PARA FICAR ABAIXO DA HERO */}
+
 
       {/* HERO */}
-      <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center pt-32 pb-16 px-8 overflow-hidden">
+      <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center pt-16 pb-16 px-8 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1540497077202-7c8a39988333?q=80&w=2070&auto=format&fit=crop" 
@@ -102,6 +97,15 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* SCROLLING BAR - POSICIONADA ABAIXO DA HERO */}
+      <div className="relative w-full bg-[#AAFF00] z-[10] overflow-hidden h-[42px] flex items-center shadow-2xl border-y border-black/10">
+        <div className="animate-marquee whitespace-nowrap font-inter text-[12px] md:text-[14px] font-black text-[#0A0A0A] flex gap-8 px-4 uppercase tracking-[2px]">
+          <span>⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
+          <span aria-hidden="true">⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
+          <span aria-hidden="true">⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
+        </div>
+      </div>
 
       {/* STORYTELLING */}
       <section className="bg-[#0A0A0A] py-32 px-8 relative overflow-hidden">
