@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { useTracking } from '@/hooks/useTracking';
 import { Copy, Check, MessageCircle, Heart } from 'lucide-react';
 
 export function PromocaoNamorados() {
   const { config } = useSiteConfig();
   const [copied, setCopied] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const { trackWhatsappClick } = useTracking();
 
   const titulo = config.promocao_titulo || 'PROMOÇÃO JUNHO DOS NAMORADOS';
   const subtitulo = config.promocao_subtitulo || 'O AMOR TREINA JUNTO';
@@ -79,6 +81,7 @@ export function PromocaoNamorados() {
                     </div>
                     <a
                       href={whatsappLink}
+                      onClick={() => trackWhatsappClick('Promo Namorados')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-[#25D366] text-white font-black uppercase tracking-[1px] px-8 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"

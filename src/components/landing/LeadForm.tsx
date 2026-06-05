@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { usePlanos } from '@/hooks/usePlanos';
+import { useTracking } from '@/hooks/useTracking';
 
 export function LeadForm() {
   const { planos } = usePlanos();
@@ -8,22 +9,32 @@ export function LeadForm() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const { trackLeadForm, getUtms } = useTracking();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     const formData = new FormData(e.currentTarget);
+    const utms = getUtms();
+    const plano = formData.get('plano') as string;
     const data = {
       nome: formData.get('nome') as string,
       whatsapp: formData.get('whatsapp') as string,
-      plano_interesse: formData.get('plano') as string,
-      origem: 'landing_page'
+      plano_interesse: plano,
+      origem: 'landing_page',
+      pagina_origem: window.location.href,
+      ...utms
     };
 
     try {
-      const { error: insertError } = await supabase.from('leads').insert([data]);
+      const { data: leadData, error: insertError } = await supabase.from('leads').insert([data]).select();
       if (insertError) throw insertError;
+      
+      if (leadData && leadData[0]) {
+        trackLeadForm(leadData[0].id, plano);
+      }
       setSuccess(true);
     } catch (err) {
       setError('Ocorreu um erro. Tente novamente.');

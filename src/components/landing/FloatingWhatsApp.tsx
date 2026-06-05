@@ -1,10 +1,13 @@
 import { MessageCircle } from 'lucide-react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { useTracking } from '@/hooks/useTracking';
 
 export function FloatingWhatsApp() {
   const { config } = useSiteConfig();
 
+  const { trackWhatsappClick } = useTracking();
   const handleWhatsApp = () => {
+    trackWhatsappClick('Floating Button');
     const number = config.whatsapp_numero || '5566999970103';
     const message = encodeURIComponent(config.whatsapp_mensagem || '');
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');

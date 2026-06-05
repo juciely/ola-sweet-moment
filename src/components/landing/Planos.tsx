@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePlanos } from '@/hooks/usePlanos';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { useTracking } from '@/hooks/useTracking';
 import { ChevronDown, Check } from 'lucide-react';
 
 export function Planos() {
@@ -8,8 +9,10 @@ export function Planos() {
   const { config } = useSiteConfig();
   const [billing, setBilling] = useState<'MENSAL' | 'ANUAL'>('MENSAL');
   const [showTable, setShowTable] = useState(false);
+  const { trackWhatsappClick } = useTracking();
 
   const handleWhatsApp = (planoNome: string) => {
+    trackWhatsappClick(planoNome);
     const number = config.whatsapp_numero || '5566999970103';
     const message = encodeURIComponent(`Olá! Tenho interesse no ${planoNome} da Elite+ Performance.`);
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');

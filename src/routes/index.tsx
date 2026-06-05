@@ -8,6 +8,7 @@ import { LeadForm } from '@/components/landing/LeadForm';
 import { Footer } from '@/components/landing/Footer';
 import { FloatingWhatsApp } from '@/components/landing/FloatingWhatsApp';
 import { useReveal } from '@/hooks/useReveal';
+import { useTracking } from '@/hooks/useTracking';
 import { useEffect } from 'react';
 
 export const Route = createFileRoute('/')({
@@ -17,6 +18,7 @@ export const Route = createFileRoute('/')({
 function Index() {
   const { config, loading } = useSiteConfig();
   const revealRef = useReveal();
+  const { trackWhatsappClick } = useTracking();
 
   if (loading) {
     return (
@@ -26,7 +28,8 @@ function Index() {
     );
   }
 
-  const handleWhatsApp = () => {
+  const handleWhatsApp = (plano?: string) => {
+    trackWhatsappClick(plano);
     const number = config.whatsapp_numero || '5566999970103';
     const message = encodeURIComponent(config.whatsapp_mensagem || '');
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');
@@ -68,7 +71,7 @@ function Index() {
 
           <div className="flex flex-col sm:flex-row gap-5 mb-16 w-full sm:w-auto">
             <button 
-              onClick={handleWhatsApp}
+              onClick={() => handleWhatsApp('Hero CTA')}
               className="group bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[1px] px-10 py-4 rounded-full transition-all hover:scale-[1.05] hover:shadow-[0_0_50px_rgba(170,255,0,0.4)] text-[16px] active:scale-95 shadow-xl"
             >
               GARANTIR MINHA VAGA
