@@ -169,7 +169,10 @@ export function PromocaoNamorados() {
                     </a>
                   </div>
                 )}
+                
+                {dataExpiracao && <CountdownTimer targetDate={dataExpiracao} />}
               </div>
+
             </div>
 
           </div>
