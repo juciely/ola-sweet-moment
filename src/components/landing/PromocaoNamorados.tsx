@@ -92,10 +92,10 @@ export function PromocaoNamorados() {
                   </button>
                 ) : (
                   <div className="flex flex-col xl:flex-row gap-4 items-stretch animate-fade-up">
-                    <div className="flex-1 bg-white/5 border border-dashed border-[#AAFF00]/30 rounded-2xl px-6 py-5 flex items-center justify-between group/cupom">
-                      <div>
-                        <p className="text-[10px] text-[#444] font-black uppercase tracking-widest mb-1">CÓDIGO</p>
-                        <span className="font-poppins font-black text-[#AAFF00] text-xl md:text-2xl tracking-tight">{cupom}</span>
+                    <div className="flex-[1.5] bg-white/5 border border-dashed border-[#AAFF00]/30 rounded-2xl px-5 py-4 flex items-center justify-between group/cupom">
+                      <div className="min-w-0">
+                        <p className="text-[9px] text-[#444] font-black uppercase tracking-widest mb-0.5">CÓDIGO</p>
+                        <span className="font-poppins font-black text-[#AAFF00] text-lg md:text-xl tracking-tight truncate block">{cupom}</span>
                       </div>
                       <button 
                         onClick={copyToClipboard}
