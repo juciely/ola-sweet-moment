@@ -17,6 +17,13 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const { config, loading } = useSiteConfig();
+  const { agendamento_ativo } = config;
+  
+  useEffect(() => {
+    if (agendamento_ativo === 'false' && typeof window !== 'undefined' && window.location.pathname === '/agendar') {
+      window.location.href = '/';
+    }
+  }, [agendamento_ativo]);
   const revealRef = useReveal();
   const { trackWhatsappClick } = useTracking();
 
