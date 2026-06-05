@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Countdown } from '@/components/landing/Countdown';
+import { PromocaoNamorados } from '@/components/landing/PromocaoNamorados';
 import { Diferenciais } from '@/components/landing/Diferenciais';
 import { Planos } from '@/components/landing/Planos';
 import { LeadForm } from '@/components/landing/LeadForm';
