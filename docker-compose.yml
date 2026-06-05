@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    container_name: tanstack-app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # Adicione outras variáveis de ambiente necessárias aqui
+      - VITE_SUPABASE_URL=https://naepymixqonguigtgywy.supabase.co
+      - VITE_SUPABASE_ANON_KEY=sb_publishable_GQ_-1kwmbqosZdp6yi60MA_ixUbIADq
