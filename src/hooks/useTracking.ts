@@ -89,16 +89,25 @@ export function useTracking() {
     return { utm_source: null, utm_medium: null, utm_campaign: null, utm_content: null, utm_term: null };
   }, []);
 
-  const trackWhatsappClick = useCallback(async (plano?: string) => {
+  const trackWhatsappClick = useCallback(async (plano?: string, leadId?: string) => {
     const utms = getUtms();
     
     // Save conversion to DB
     try {
       await supabase.from('conversoes').insert([{
         tipo: 'clique_whatsapp',
+        lead_id: leadId || null,
         valor_plano: plano || null,
         ...utms
       }]);
+
+      // If we have a leadId, update the lead record
+      if (leadId) {
+        await supabase
+          .from('leads')
+          .update({ converteu_whatsapp: true })
+          .eq('id', leadId);
+      }
     } catch (e) {
       console.error('Error tracking whatsapp click:', e);
     }
@@ -106,6 +115,29 @@ export function useTracking() {
     // External pixels
     if (window.fbq) window.fbq('track', 'Contact', { content_name: plano });
     if (window.gtag) window.gtag('event', 'generate_lead', { method: 'WhatsApp', content: plano });
+  }, [getUtms]);
+
+  const trackMatriculaConfirmada = useCallback(async (leadId: string, plano: string) => {
+    const utms = getUtms();
+
+    try {
+      await supabase.from('conversoes').insert([{
+        tipo: 'matricula_confirmada',
+        lead_id: leadId,
+        valor_plano: plano,
+        ...utms
+      }]);
+
+      await supabase
+        .from('leads')
+        .update({ converteu_matricula: true })
+        .eq('id', leadId);
+
+      if (window.fbq) window.fbq('track', 'Purchase', { value: plano, currency: 'BRL' });
+      if (window.gtag) window.gtag('event', 'purchase', { transaction_id: leadId, value: plano, currency: 'BRL' });
+    } catch (e) {
+      console.error('Error tracking purchase:', e);
+    }
   }, [getUtms]);
 
   const trackLeadForm = useCallback(async (leadId: string, plano: string) => {
