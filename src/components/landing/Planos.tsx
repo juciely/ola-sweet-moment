@@ -81,7 +81,7 @@ export function Planos() {
                 </div>
               )}
 
-              <h3 className="font-bebas text-[28px] text-white mb-1 uppercase tracking-normal">{plano.nome}</h3>
+              <h3 className="font-poppins font-bold text-[22px] md:text-[24px] text-white mb-1 uppercase tracking-tight">{plano.nome}</h3>
               <p className="text-[#555] font-inter text-[13px] tracking-wider mb-8 uppercase letter-spacing-[1px]">{plano.duracao}</p>
 
               <div className="flex items-baseline gap-1 mb-6">
