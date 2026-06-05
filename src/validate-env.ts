@@ -2,6 +2,11 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 function validateEnv() {
+  // Ignora validação em ambiente de desenvolvimento local (Vite) ou sandbox
+  if (process.env.NODE_ENV === 'development' || process.env.VITE === 'true' || !process.env.NITRO_PORT) {
+    return;
+  }
+
   try {
     const examplePath = join(process.cwd(), '.env.example');
     const content = readFileSync(examplePath, 'utf8');
