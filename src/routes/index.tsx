@@ -16,6 +16,10 @@ export const Route = createFileRoute('/')({
 function Index() {
   const { config, loading } = useSiteConfig();
   const revealRef = useReveal();
+  
+  useEffect(() => {
+    console.log('Index mounted, revealRef:', revealRef.current);
+  }, []);
 
   if (loading) {
     return (

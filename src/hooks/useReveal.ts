@@ -10,6 +10,7 @@ export function useReveal() {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            console.log('Intersection observed:', entry.target, entry.isIntersecting);
             if (entry.isIntersecting && entry.target) {
               entry.target.classList.add('visible');
             }
