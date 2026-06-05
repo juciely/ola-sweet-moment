@@ -29,8 +29,12 @@ export function LeadForm() {
     };
 
     try {
-      const { error: insertError } = await supabase.from('leads').insert([data]);
+      const { data: leadData, error: insertError } = await supabase.from('leads').insert([data]).select();
       if (insertError) throw insertError;
+      
+      if (leadData && leadData[0]) {
+        trackLeadForm(leadData[0].id, plano);
+      }
       setSuccess(true);
     } catch (err) {
       setError('Ocorreu um erro. Tente novamente.');
