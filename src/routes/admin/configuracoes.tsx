@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
-import { Check, Save, Smartphone, Globe, Megaphone, Loader2 } from 'lucide-react';
+import { Check, Save, Smartphone, Globe, Megaphone, Loader2, Timer } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const Route = createFileRoute('/admin/configuracoes')({
