@@ -1,7 +1,56 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { useTracking } from '@/hooks/useTracking';
-import { Copy, Check, MessageCircle, Heart, Zap, Ticket } from 'lucide-react';
+import { Copy, Check, MessageCircle, Heart, Ticket, Timer } from 'lucide-react';
+
+function CountdownTimer({ targetDate }: { targetDate: string }) {
+  const [timeLeft, setTimeLeft] = useState<{ days: number, hours: number, minutes: number, seconds: number } | null>(null);
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const difference = +new Date(targetDate) - +new Date();
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      } else {
+        setTimeLeft(null);
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  if (!timeLeft) return null;
+
+  const TimeUnit = ({ value, label }: { value: number, label: string }) => (
+    <div className="flex flex-col items-center px-3 md:px-5">
+      <span className="font-bebas text-3xl md:text-5xl text-[#d7f803] leading-none">{value.toString().padStart(2, '0')}</span>
+      <span className="font-poppins text-[8px] md:text-[10px] text-[#555] font-black uppercase tracking-widest mt-1">{label}</span>
+    </div>
+  );
+
+  return (
+    <div className="flex items-center justify-center lg:justify-start gap-1 md:gap-2 mt-8 py-6 border-t border-white/5">
+      <div className="flex items-center gap-3 mr-4 hidden md:flex">
+        <Timer className="w-5 h-5 text-[#d7f803] animate-pulse" />
+        <span className="font-poppins text-[10px] text-white font-black uppercase tracking-[2px]">EXPIRA EM:</span>
+      </div>
+      <TimeUnit value={timeLeft.days} label="Dias" />
+      <div className="h-8 w-px bg-white/10 self-center"></div>
+      <TimeUnit value={timeLeft.hours} label="Horas" />
+      <div className="h-8 w-px bg-white/10 self-center"></div>
+      <TimeUnit value={timeLeft.minutes} label="Min" />
+      <div className="h-8 w-px bg-white/10 self-center"></div>
+      <TimeUnit value={timeLeft.seconds} label="Seg" />
+    </div>
+  );
+}
 
 export function PromocaoNamorados() {
   const { config } = useSiteConfig();
@@ -14,7 +63,10 @@ export function PromocaoNamorados() {
   const preco = config.promocao_preco || '99,90';
   const condicoes = config.promocao_condicoes || 'Válido para o primeiro mês por pessoa. Promoção exclusiva para casais que fecharem o plano juntos.';
   const cupom = config.promocao_cupom || 'ELITENAMORADOS99';
+  const dataExpiracao = config.promocao_data_expiracao || '';
+  const promocaoAtiva = config.promocao_ativa !== 'false';
   const whatsappLink = `https://wa.me/${config.whatsapp_numero || '5566999970103'}?text=${encodeURIComponent(`Olá! Gostaria de aproveitar a promoção de namorados. Cupom: ${cupom}`)}`;
+
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(cupom);
@@ -22,8 +74,11 @@ export function PromocaoNamorados() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  if (!promocaoAtiva) return null;
+
   return (
     <section className="relative py-32 px-6 overflow-hidden bg-[#080808]">
+
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[600px] bg-[#d7f803]/5 rounded-full blur-[140px] opacity-50"></div>
@@ -117,7 +172,10 @@ export function PromocaoNamorados() {
                     </a>
                   </div>
                 )}
+                
+                {dataExpiracao && <CountdownTimer targetDate={dataExpiracao} />}
               </div>
+
             </div>
 
           </div>

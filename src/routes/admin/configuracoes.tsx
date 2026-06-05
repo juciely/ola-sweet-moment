@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
-import { Check, Save, Smartphone, Globe, Megaphone, Loader2 } from 'lucide-react';
+import { Check, Save, Smartphone, Globe, Megaphone, Loader2, Timer } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const Route = createFileRoute('/admin/configuracoes')({
@@ -152,7 +152,20 @@ function AdminConfiguracoes() {
             </div>
           </div>
         </ConfigCard>
+
+        <ConfigCard title="Promoção Especial" icon={Timer} keys={['promocao_ativa', 'promocao_data_expiracao', 'promocao_preco', 'promocao_cupom']}>
+          <Toggle label="Promoção Exibir" id="promocao_ativa" />
+          <Input 
+            label="Data de Expiração" 
+            id="promocao_data_expiracao" 
+            type="datetime-local" 
+            note="Data e hora em que o contador chegará a zero."
+          />
+          <Input label="Preço Promocional" id="promocao_preco" note="Ex: 99,90" />
+          <Input label="Cupom de Desconto" id="promocao_cupom" />
+        </ConfigCard>
       </div>
+
     </div>
   );
 }
