@@ -1,4 +1,5 @@
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { useTracking } from '@/hooks/useTracking';
 
 export function Footer() {
   const { config } = useSiteConfig();
