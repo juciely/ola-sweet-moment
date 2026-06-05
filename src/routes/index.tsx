@@ -167,6 +167,9 @@ function Index() {
         </div>
       </section>
 
+      {/* BLOCO DE PROMOÇÃO DE NAMORADOS */}
+      <PromocaoNamorados />
+
       {/* REINVENTED DIFFERENTIATORS */}
       <Diferenciais />
 
