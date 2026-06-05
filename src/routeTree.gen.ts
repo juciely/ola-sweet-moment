@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminConversoesRouteImport } from './routes/admin/conversoes'
 import { Route as AdminConteudoRouteImport } from './routes/admin/conteudo'
 import { Route as AdminConfiguracoesRouteImport } from './routes/admin/configuracoes'
 import { Route as AdminAgendamentosRouteImport } from './routes/admin/agendamentos'
@@ -43,6 +44,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminConversoesRoute = AdminConversoesRouteImport.update({
+  id: '/conversoes',
+  path: '/conversoes',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminConteudoRoute = AdminConteudoRouteImport.update({
   id: '/conteudo',
   path: '/conteudo',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/admin/agendamentos': typeof AdminAgendamentosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/conteudo': typeof AdminConteudoRoute
+  '/admin/conversoes': typeof AdminConversoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/admin/agendamentos': typeof AdminAgendamentosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/conteudo': typeof AdminConteudoRoute
+  '/admin/conversoes': typeof AdminConversoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/admin/agendamentos': typeof AdminAgendamentosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/conteudo': typeof AdminConteudoRoute
+  '/admin/conversoes': typeof AdminConversoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/admin/agendamentos'
     | '/admin/configuracoes'
     | '/admin/conteudo'
+    | '/admin/conversoes'
     | '/admin/dashboard'
     | '/admin/leads'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/admin/agendamentos'
     | '/admin/configuracoes'
     | '/admin/conteudo'
+    | '/admin/conversoes'
     | '/admin/dashboard'
     | '/admin/leads'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/admin/agendamentos'
     | '/admin/configuracoes'
     | '/admin/conteudo'
+    | '/admin/conversoes'
     | '/admin/dashboard'
     | '/admin/leads'
   fileRoutesById: FileRoutesById
@@ -166,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/conversoes': {
+      id: '/admin/conversoes'
+      path: '/conversoes'
+      fullPath: '/admin/conversoes'
+      preLoaderRoute: typeof AdminConversoesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/conteudo': {
       id: '/admin/conteudo'
       path: '/conteudo'
@@ -194,6 +213,7 @@ interface AdminRouteChildren {
   AdminAgendamentosRoute: typeof AdminAgendamentosRoute
   AdminConfiguracoesRoute: typeof AdminConfiguracoesRoute
   AdminConteudoRoute: typeof AdminConteudoRoute
+  AdminConversoesRoute: typeof AdminConversoesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLeadsRoute: typeof AdminLeadsRoute
 }
@@ -202,6 +222,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminAgendamentosRoute: AdminAgendamentosRoute,
   AdminConfiguracoesRoute: AdminConfiguracoesRoute,
   AdminConteudoRoute: AdminConteudoRoute,
+  AdminConversoesRoute: AdminConversoesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLeadsRoute: AdminLeadsRoute,
 }
@@ -216,3 +237,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
