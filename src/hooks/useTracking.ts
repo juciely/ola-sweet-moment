@@ -34,7 +34,6 @@ export function useTracking() {
       utm_term: urlParams.get('utm_term'),
     };
 
-    // Only save if at least one UTM is present
     if (Object.values(utms).some(v => v !== null)) {
       sessionStorage.setItem('elite_utms', JSON.stringify(utms));
     }
@@ -51,14 +50,14 @@ export function useTracking() {
     // Load Meta Pixel
     if (pixelAtivo && metaPixelId && !window.fbq) {
       /* eslint-disable */
-      (function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js'));
+      (function(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
+        if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)
+      })(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
       window.fbq('init', metaPixelId);
       window.fbq('track', 'PageView');
     }
@@ -71,7 +70,7 @@ export function useTracking() {
       document.head.appendChild(script);
 
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function(){window.dataLayer.push(arguments);}
+      window.gtag = function(...args: any[]){window.dataLayer.push(args);}
       window.gtag('js', new Date());
       window.gtag('config', googleTagId);
     }
@@ -81,7 +80,11 @@ export function useTracking() {
     if (typeof window === 'undefined') return { utm_source: null, utm_medium: null, utm_campaign: null, utm_content: null, utm_term: null };
     const saved = sessionStorage.getItem('elite_utms');
     if (saved) {
-      return JSON.parse(saved);
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return { utm_source: null, utm_medium: null, utm_campaign: null, utm_content: null, utm_term: null };
+      }
     }
     return { utm_source: null, utm_medium: null, utm_campaign: null, utm_content: null, utm_term: null };
   }, []);
@@ -90,11 +93,15 @@ export function useTracking() {
     const utms = getUtms();
     
     // Save conversion to DB
-    await supabase.from('conversoes').insert([{
-      tipo: 'clique_whatsapp',
-      valor_plano: plano || null,
-      ...utms
-    }]);
+    try {
+      await supabase.from('conversoes').insert([{
+        tipo: 'clique_whatsapp',
+        valor_plano: plano || null,
+        ...utms
+      }]);
+    } catch (e) {
+      console.error('Error tracking whatsapp click:', e);
+    }
 
     // External pixels
     if (window.fbq) window.fbq('track', 'Contact', { content_name: plano });
@@ -105,12 +112,16 @@ export function useTracking() {
     const utms = getUtms();
 
     // Save conversion to DB
-    await supabase.from('conversoes').insert([{
-      tipo: 'lead_formulario',
-      lead_id: leadId,
-      valor_plano: plano,
-      ...utms
-    }]);
+    try {
+      await supabase.from('conversoes').insert([{
+        tipo: 'lead_formulario',
+        lead_id: leadId,
+        valor_plano: plano,
+        ...utms
+      }]);
+    } catch (e) {
+      console.error('Error tracking lead form:', e);
+    }
 
     // External pixels
     if (window.fbq) window.fbq('track', 'Lead', { content_name: plano });
