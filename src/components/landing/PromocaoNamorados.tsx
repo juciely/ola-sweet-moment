@@ -7,6 +7,7 @@ export function PromocaoNamorados() {
   const { config } = useSiteConfig();
   const [copied, setCopied] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const { trackWhatsappClick } = useTracking();
 
   const titulo = config.promocao_titulo || 'PROMOÇÃO JUNHO DOS NAMORADOS';
   const subtitulo = config.promocao_subtitulo || 'O AMOR TREINA JUNTO';
