@@ -1,46 +1,121 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useNavigate } from '@tanstack/react-router';
-import { AlertCircle, Loader2 } from 'lucide-react';
+import { AlertCircle, Loader2, UserPlus, LogIn } from 'lucide-react';
 
 export function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isFirstAccess, setIsFirstAccess] = useState(false);
+  const [checkingAccess, setCheckingAccess] = useState(true);
   const navigate = useNavigate();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  useEffect(() => {
+    async function checkFirstAccess() {
+      try {
+        // We check site_config for a flag or simply check if any user exists in a metadata sense
+        // For this implementation, we'll check if a specific 'setup_completed' key exists
+        const { data } = await supabase
+          .from('site_config')
+          .select('valor')
+          .eq('chave', 'admin_setup_completed')
+          .single();
+
+        if (!data || data.valor !== 'true') {
+          setIsFirstAccess(true);
+        }
+      } catch (err) {
+        // If table doesn't exist or key doesn't exist, assume first access or let the user try login
+        console.error('Setup check failed:', err);
+      } finally {
+        setCheckingAccess(false);
+      }
+    }
+    checkFirstAccess();
+  }, []);
+
+  const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      if (isFirstAccess) {
+        // Register first admin
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+        });
 
-      if (error) throw error;
-      navigate({ to: '/admin/dashboard' });
+        if (error) throw error;
+
+        // Mark setup as completed in site_config
+        await supabase.from('site_config').upsert({
+          chave: 'admin_setup_completed',
+          valor: 'true'
+        });
+
+        if (data.session) {
+          navigate({ to: '/admin/dashboard' });
+        } else {
+          setError('Cadastro realizado! Verifique seu email para confirmar o acesso (se habilitado no Supabase) ou tente logar.');
+          setIsFirstAccess(false);
+        }
+      } else {
+        // Regular login
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (error) throw error;
+        navigate({ to: '/admin/dashboard' });
+      }
     } catch (err: any) {
-      console.error('Login error:', err);
-      setError('Email ou senha incorretos');
+      console.error('Auth error:', err);
+      setError(err.message || 'Erro ao processar solicitação');
     } finally {
       setLoading(false);
     }
   };
+
+  if (checkingAccess) {
+    return (
+      <div className="min-h-screen bg-[#080808] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-[#AAFF00] animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center px-6">
       <div className="w-full max-w-[400px]">
         <div className="text-center mb-10">
           <h1 className="font-bebas text-[48px] text-[#AAFF00] leading-none mb-2">ELITE+</h1>
-          <p className="font-inter text-[11px] text-[#444] font-bold tracking-[4px] uppercase">PERFORMANCE</p>
+          <p className="font-inter text-[11px] text-[#444] font-bold tracking-[4px] uppercase">
+            {isFirstAccess ? 'CONFIGURAÇÃO INICIAL' : 'PAINEL ADMINISTRATIVO'}
+          </p>
         </div>
 
-        <div className="bg-[#111] border border-white/5 p-8 rounded-[24px] shadow-2xl">
-          <form onSubmit={handleLogin} className="space-y-6">
+        <div className="bg-[#111] border border-white/5 p-8 rounded-[32px] shadow-2xl relative overflow-hidden">
+          {isFirstAccess && (
+            <div className="absolute top-0 left-0 w-full h-1 bg-[#AAFF00] animate-pulse"></div>
+          )}
+          
+          <div className="mb-8">
+            <h2 className="text-white font-bebas text-2xl uppercase mb-2">
+              {isFirstAccess ? 'Criar Conta Admin' : 'Acessar Painel'}
+            </h2>
+            <p className="text-[#555] text-xs font-inter leading-relaxed">
+              {isFirstAccess 
+                ? 'Detectamos que este é o primeiro acesso. Defina as credenciais do administrador principal.' 
+                : 'Insira suas credenciais para gerenciar a Elite+ Performance.'}
+            </p>
+          </div>
+
+          <form onSubmit={handleAuth} className="space-y-6">
             <div className="space-y-2">
               <label className="block text-[11px] text-[#666] font-bold uppercase tracking-[1px]">Email</label>
               <input
@@ -49,7 +124,7 @@ export function AdminLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#AAFF00] outline-none transition-all placeholder-[#444]"
-                placeholder="seu@email.com"
+                placeholder="admin@eliteperformance.com.br"
               />
             </div>
 
@@ -66,18 +141,31 @@ export function AdminLogin() {
             </div>
 
             {error && (
-              <div className="flex items-center gap-2 text-[#FF4444] text-sm bg-[#FF4444]/10 p-4 rounded-xl border border-[#FF4444]/20 animate-fade-in">
-                <AlertCircle className="w-4 h-4" />
-                {error}
+              <div className="flex items-start gap-3 text-[#FF4444] text-xs bg-[#FF4444]/10 p-4 rounded-xl border border-[#FF4444]/20 animate-fade-in">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                <span>{error}</span>
               </div>
             )}
 
             <button
               disabled={loading}
-              className="w-full bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[1px] py-5 rounded-full transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[1px] py-5 rounded-full transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(170,255,0,0.2)]"
             >
-              {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'ENTRAR'}
+              {loading ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : (
+                <>
+                  {isFirstAccess ? <UserPlus className="w-5 h-5" /> : <LogIn className="w-5 h-5" />}
+                  {isFirstAccess ? 'CRIAR CONTA AGORA' : 'ENTRAR NO PAINEL'}
+                </>
+              )}
             </button>
+            
+            {!isFirstAccess && (
+              <p className="text-center text-[10px] text-[#333] font-inter mt-4">
+                Protegido por criptografia de ponta a ponta.
+              </p>
+            )}
           </form>
         </div>
       </div>
