@@ -36,7 +36,8 @@ function Index() {
       {/* SCROLLING BAR */}
       <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-9 flex items-center">
         <div className="animate-marquee whitespace-nowrap font-inter text-[13px] font-semibold text-[#0A0A0A] flex gap-8 px-4">
-          {Array(10).fill("⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡").map((t, i) => <span key={i}>{t}</span>)}
+          <span>⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡</span>
+          <span>⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡</span>
         </div>
       </div>
 
