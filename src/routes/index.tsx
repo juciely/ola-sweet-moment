@@ -6,6 +6,7 @@ import { Planos } from '@/components/landing/Planos';
 import { LeadForm } from '@/components/landing/LeadForm';
 import { Footer } from '@/components/landing/Footer';
 import { FloatingWhatsApp } from '@/components/landing/FloatingWhatsApp';
+import { useReveal } from '@/hooks/useReveal';
 import { useEffect } from 'react';
 
 export const Route = createFileRoute('/')({
@@ -14,6 +15,7 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const { config, loading } = useSiteConfig();
+  const revealRef = useReveal();
 
   if (loading) {
     return (
@@ -30,7 +32,7 @@ function Index() {
   };
 
   return (
-    <main className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808]">
+    <main ref={revealRef} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808]">
       {/* SCROLLING BAR */}
       <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-9 flex items-center">
         <div className="animate-marquee whitespace-nowrap font-inter text-[13px] font-semibold text-[#0A0A0A] flex gap-8 px-4">

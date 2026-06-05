@@ -89,7 +89,7 @@ export function Planos() {
                 <span className={`font-bebas text-[64px] leading-none ${plano.highlight ? 'text-[#AAFF00]' : 'text-white'}`}>
                   {plano.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
-                <span className="text-[#666] font-inter text-base ml-1">{plano.suffix || '/mês'}</span>
+                <span className="text-[#666] font-inter text-base ml-1">{(plano as any).suffix || '/mês'}</span>
               </div>
 
               <div className="h-px bg-[#1E1E1E] w-full mb-8"></div>
