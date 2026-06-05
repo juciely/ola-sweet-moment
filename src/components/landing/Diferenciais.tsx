@@ -39,8 +39,8 @@ export function Diferenciais() {
       <div className="container-custom">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 reveal">
           <div className="max-w-2xl">
-            <span className="text-[#AAFF00] font-inter text-[12px] font-black uppercase tracking-[4px] mb-4 block">EXCLUSIVIDADE</span>
-            <h2 className="font-bebas text-[50px] md:text-[70px] text-white leading-tight">
+            <span className="text-[#AAFF00] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">EXCLUSIVIDADE</span>
+            <h2 className="font-poppins font-black text-[36px] md:text-[60px] text-white leading-[1.1] md:leading-tight">
               O QUE MUDA QUANDO VOCÊ <br className="hidden md:block" />
               <span className="text-[#AAFF00]">TREINA NA ELITE+</span>
             </h2>
@@ -57,7 +57,7 @@ export function Diferenciais() {
               <div className="bg-[#AAFF00]/10 p-4 rounded-2xl group-hover:bg-[#AAFF00] group-hover:text-[#0A0A0A] transition-colors duration-500 text-[#AAFF00]">
                 <item.icon className="w-8 h-8" />
               </div>
-              <h3 className="font-bebas text-[28px] text-white mt-8 mb-4 tracking-wide group-hover:text-[#AAFF00] transition-colors">
+              <h3 className="font-poppins font-bold text-[22px] md:text-[24px] text-white mt-8 mb-4 tracking-tight group-hover:text-[#AAFF00] transition-colors">
                 {item.title}
               </h3>
               <p className="font-inter text-[15px] md:text-[16px] text-[#666] leading-relaxed font-light group-hover:text-[#888] transition-colors">

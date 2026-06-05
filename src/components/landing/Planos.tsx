@@ -40,7 +40,7 @@ export function Planos() {
   return (
     <section className="bg-[#111111] py-24 px-6">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="font-bebas text-[52px] text-white text-center mb-2 reveal">
+        <h2 className="font-poppins font-black text-[36px] md:text-[52px] text-white text-center mb-2 leading-[1.1] reveal">
           PLANOS QUE CABEM NA SUA VIDA
         </h2>
         <p className="font-inter text-base text-[#666666] text-center mb-12 reveal">
@@ -81,7 +81,7 @@ export function Planos() {
                 </div>
               )}
 
-              <h3 className="font-bebas text-[28px] text-white mb-1 uppercase tracking-normal">{plano.nome}</h3>
+              <h3 className="font-poppins font-bold text-[22px] md:text-[24px] text-white mb-1 uppercase tracking-tight">{plano.nome}</h3>
               <p className="text-[#555] font-inter text-[13px] tracking-wider mb-8 uppercase letter-spacing-[1px]">{plano.duracao}</p>
 
               <div className="flex items-baseline gap-1 mb-6">

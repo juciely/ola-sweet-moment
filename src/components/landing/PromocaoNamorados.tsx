@@ -34,11 +34,11 @@ export function PromocaoNamorados() {
             {/* Visual Section */}
             <div className="md:w-1/3 bg-gradient-to-br from-red-600/20 to-transparent p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-white/5">
               <Heart className="w-16 h-16 text-red-500 mb-6 animate-pulse" />
-              <div className="font-bebas text-[48px] leading-none mb-2">R$ <span className="text-[#AAFF00]">{preco}</span></div>
+              <div className="font-poppins font-black text-[48px] leading-none mb-2">R$ <span className="text-[#AAFF00]">{preco}</span></div>
               <p className="font-inter text-[14px] text-white/60 uppercase tracking-widest font-bold">Por pessoa / 1º Mês</p>
               
               <div className="mt-8 pt-8 border-t border-white/10 w-full">
-                <p className="font-bebas text-[20px] text-white/80 mb-4 tracking-widest uppercase">Formas de Pagamento</p>
+                <p className="font-poppins text-[20px] font-bold text-white/80 mb-4 tracking-widest uppercase">Formas de Pagamento</p>
                 <div className="flex flex-wrap justify-center gap-3 grayscale opacity-70">
                    <img src="https://logodownload.org/wp-content/uploads/2016/10/visa-logo-1.png" className="h-4 object-contain" alt="Visa" />
                    <img src="https://logodownload.org/wp-content/uploads/2014/07/mastercard-logo-7.png" className="h-4 object-contain" alt="Mastercard" />
@@ -49,8 +49,8 @@ export function PromocaoNamorados() {
 
             {/* Content Section */}
             <div className="flex-1 p-8 md:p-12">
-              <span className="text-red-500 font-inter text-[12px] font-black uppercase tracking-[4px] mb-4 block">{subtitulo}</span>
-              <h2 className="font-bebas text-[40px] md:text-[60px] leading-tight mb-6">
+              <span className="text-red-500 font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">{subtitulo}</span>
+              <h2 className="font-poppins font-black text-[32px] md:text-[60px] leading-[1.1] mb-6">
                 {titulo}
               </h2>
               <p className="font-inter text-[#AAAAAA] mb-8 leading-relaxed">
