@@ -40,7 +40,7 @@ export function Diferenciais() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 reveal">
           <div className="max-w-2xl">
             <span className="text-[#AAFF00] font-inter text-[12px] font-black uppercase tracking-[4px] mb-4 block">EXCLUSIVIDADE</span>
-            <h2 className="font-bebas text-[50px] md:text-[70px] text-white leading-tight">
+            <h2 className="font-poppins font-black text-[36px] md:text-[60px] text-white leading-[1.1] md:leading-tight">
               O QUE MUDA QUANDO VOCÊ <br className="hidden md:block" />
               <span className="text-[#AAFF00]">TREINA NA ELITE+</span>
             </h2>
