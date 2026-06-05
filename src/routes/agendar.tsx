@@ -92,7 +92,7 @@ function AgendarVisita() {
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             <div className="flex items-center gap-2 text-[#AAFF00] font-bold text-[12px] md:text-[14px] uppercase tracking-wider">
-              <CheckCircle2 className="w-5 h-5" /> Sem taxa
+              <CheckCircle2 className="w-5 h-5" /> AVALIAÇÃO GRATUITA
             </div>
             <div className="flex items-center gap-2 text-[#AAFF00] font-bold text-[12px] md:text-[14px] uppercase tracking-wider">
               <CheckCircle2 className="w-5 h-5" /> Treino montado na visita
