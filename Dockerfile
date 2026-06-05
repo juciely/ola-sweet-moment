@@ -22,6 +22,7 @@ WORKDIR /app
 # Copy built assets from build stage
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/.env.example ./.env.example
 
 # Expose the port the app runs on
 EXPOSE 3000
