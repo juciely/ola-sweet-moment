@@ -7,8 +7,13 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
   const [timeLeft, setTimeLeft] = useState<{ days: number, hours: number, minutes: number, seconds: number } | null>(null);
 
   useEffect(() => {
+    if (!targetDate) return;
+    
     const calculateTimeLeft = () => {
-      const difference = +new Date(targetDate) - +new Date();
+      const now = new Date().getTime();
+      const target = new Date(targetDate).getTime();
+      const difference = target - now;
+      
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -36,10 +41,10 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
   );
 
   return (
-    <div className="flex items-center justify-center lg:justify-start gap-1 md:gap-2 mt-8 py-6 border-t border-white/5">
+    <div className="flex items-center justify-center lg:justify-start gap-1 md:gap-2 mt-8 py-6 border-t border-white/5 bg-white/[0.02] rounded-b-[24px]">
       <div className="flex items-center gap-3 mr-4 hidden md:flex">
         <Timer className="w-5 h-5 text-[#d7f803] animate-pulse" />
-        <span className="font-poppins text-[10px] text-white font-black uppercase tracking-[2px]">EXPIRA EM:</span>
+        <span className="font-poppins text-[10px] text-white font-black uppercase tracking-[2px]">OFERTA EXPIRA EM:</span>
       </div>
       <TimeUnit value={timeLeft.days} label="Dias" />
       <div className="h-8 w-px bg-white/10 self-center"></div>
@@ -51,6 +56,7 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
     </div>
   );
 }
+
 
 export function PromocaoNamorados() {
   const { config } = useSiteConfig();
