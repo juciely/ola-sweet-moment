@@ -34,7 +34,7 @@ export function PromocaoNamorados() {
             {/* Visual Section */}
             <div className="md:w-1/3 bg-gradient-to-br from-red-600/20 to-transparent p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-white/5">
               <Heart className="w-16 h-16 text-red-500 mb-6 animate-pulse" />
-              <div className="font-bebas text-[48px] leading-none mb-2">R$ <span className="text-[#AAFF00]">{preco}</span></div>
+              <div className="font-poppins font-black text-[48px] leading-none mb-2">R$ <span className="text-[#AAFF00]">{preco}</span></div>
               <p className="font-inter text-[14px] text-white/60 uppercase tracking-widest font-bold">Por pessoa / 1º Mês</p>
               
               <div className="mt-8 pt-8 border-t border-white/10 w-full">
