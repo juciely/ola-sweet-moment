@@ -31,8 +31,8 @@ export function PromocaoNamorados() {
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AAFF00]/20 to-transparent"></div>
       </div>
 
-      <div className="container-custom relative z-10">
-        <div className="max-w-6xl mx-auto">
+      <div className="relative z-10 px-6">
+        <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row bg-[#111] border border-white/5 rounded-[32px] overflow-hidden shadow-2xl transition-all hover:border-[#AAFF00]/20 group">
             
             {/* Left Column: Visual & Pricing */}
