@@ -245,7 +245,7 @@ function AgendarVisita() {
                 disabled={loading}
                 className="w-full bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[2px] py-6 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(170,255,0,0.4)] disabled:opacity-50 text-[17px] mt-6 shadow-xl active:scale-95"
               >
-                {loading ? 'PROCESSANDO...' : 'QUERO AGENDAR MINHA VISITA'}
+                {loading ? 'PROCESSANDO...' : 'AGENDAR VISITA AGORA'}
               </button>
             </form>
           )}
