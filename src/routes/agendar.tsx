@@ -109,7 +109,7 @@ function AgendarVisita() {
         <div className="max-w-[560px] mx-auto bg-[#111111] border border-[#1E1E1E] rounded-[32px] p-8 md:p-12 relative overflow-hidden shadow-2xl">
           {success ? (
             <div className="text-center py-8 animate-fade-in">
-              <div className="w-24 h-24 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce shadow-[0_0_50px_rgba(170,255,0,0.4)]">
+              <div className="w-24 h-24 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce shadow-[0_0_50px_rgba(215,248,3,0.4)]">
                 <CheckCircle2 className="w-12 h-12 text-[#0A0A0A]" />
               </div>
               <h2 className="font-bebas text-[48px] text-[#d7f803] mb-4">VISITA CONFIRMADA!</h2>
@@ -243,7 +243,7 @@ function AgendarVisita() {
               <button 
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[2px] py-6 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(170,255,0,0.4)] disabled:opacity-50 text-[17px] mt-6 shadow-xl active:scale-95"
+                className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[2px] py-6 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(215,248,3,0.4)] disabled:opacity-50 text-[17px] mt-6 shadow-xl active:scale-95"
               >
                 {loading ? 'PROCESSANDO...' : 'AGENDAR VISITA AGORA'}
               </button>

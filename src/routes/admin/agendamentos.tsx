@@ -147,8 +147,8 @@ function AdminAgendamentos() {
       {/* Confirmation Modal */}
       {confirmModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-6">
-          <div className="bg-[#111] border border-[#d7f803]/20 rounded-[32px] p-10 max-w-[440px] w-full text-center shadow-[0_0_100px_rgba(170,255,0,0.1)]">
-            <div className="w-20 h-20 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(170,255,0,0.3)]">
+          <div className="bg-[#111] border border-[#d7f803]/20 rounded-[32px] p-10 max-w-[440px] w-full text-center shadow-[0_0_100px_rgba(215,248,3,0.1)]">
+            <div className="w-20 h-20 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(215,248,3,0.3)]">
               <MessageCircle className="w-10 h-10 text-[#0A0A0A] fill-current" />
             </div>
             <h3 className="font-bebas text-3xl text-white mb-4 uppercase">VISITA CONFIRMADA!</h3>

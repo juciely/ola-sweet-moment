@@ -60,7 +60,7 @@ export function LeadForm() {
 
           {success ? (
             <div className="bg-[#111] border border-[#d7f803]/30 p-12 rounded-[32px] animate-fade-in shadow-2xl backdrop-blur-md">
-              <div className="w-20 h-20 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(170,255,0,0.3)]">
+              <div className="w-20 h-20 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(215,248,3,0.3)]">
                 <svg className="w-10 h-10 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
@@ -109,7 +109,7 @@ export function LeadForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[2px] py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(170,255,0,0.3)] disabled:opacity-50 text-[17px] mt-4 shadow-xl active:scale-95"
+                className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[2px] py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(215,248,3,0.3)] disabled:opacity-50 text-[17px] mt-4 shadow-xl active:scale-95"
               >
                 {loading ? 'ENVIANDO...' : 'SOLICITAR CONTATO'}
               </button>

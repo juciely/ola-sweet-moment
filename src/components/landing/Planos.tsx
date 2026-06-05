@@ -75,7 +75,7 @@ export function Planos() {
           {currentPlans.map((plano, i) => (
             <div 
               key={i}
-              className={`relative bg-[#161616] p-8 rounded-[20px] flex flex-col border transition-all duration-300 reveal ${plano.highlight ? 'border-[#d7f803] shadow-[0_0_48px_rgba(170,255,0,0.12)]' : 'border-[#222]'}`}
+              className={`relative bg-[#161616] p-8 rounded-[20px] flex flex-col border transition-all duration-300 reveal ${plano.highlight ? 'border-[#d7f803] shadow-[0_0_48px_rgba(215,248,3,0.12)]' : 'border-[#222]'}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {plano.badge && (
@@ -108,7 +108,7 @@ export function Planos() {
 
               <button 
                 onClick={() => handleWhatsApp(plano.nome)}
-                className={`w-full py-4 md:py-5 rounded-full font-black uppercase tracking-wider transition-all text-sm md:text-base ${plano.highlight ? 'bg-[#d7f803] text-[#0A0A0A] hover:shadow-[0_0_35px_rgba(170,255,0,0.4)]' : 'border border-[#333] text-white hover:border-[#d7f803] hover:bg-white/5'}`}
+                className={`w-full py-4 md:py-5 rounded-full font-black uppercase tracking-wider transition-all text-sm md:text-base ${plano.highlight ? 'bg-[#d7f803] text-[#0A0A0A] hover:shadow-[0_0_35px_rgba(215,248,3,0.4)]' : 'border border-[#333] text-white hover:border-[#d7f803] hover:bg-white/5'}`}
               >
                 QUERO ESSE PLANO
               </button>
