@@ -69,7 +69,7 @@ function Index() {
             A Elite+ Performance é para quem busca resultados reais em Sinop. Estrutura premium, acompanhamento profissional e tecnologia a serviço da sua evolução.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-5 mb-16 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-5 mb-8 w-full sm:w-auto">
             <button 
               onClick={() => handleWhatsApp('Hero CTA')}
               className="group bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[1px] px-10 py-4 rounded-full transition-all hover:scale-[1.05] hover:shadow-[0_0_50px_rgba(170,255,0,0.4)] text-[16px] active:scale-95 shadow-xl"
@@ -88,6 +88,13 @@ function Index() {
               CONHECER PLANOS
             </button>
           </div>
+
+          <a 
+            href="/agendar"
+            className="text-[#888] font-inter font-medium border border-white/10 px-8 py-4 rounded-full hover:text-white hover:border-white/40 transition-all text-[14px] mb-16 flex items-center gap-2"
+          >
+            AGENDAR VISITA GRATUITA →
+          </a>
 
           <div className="grid grid-cols-3 gap-8 md:gap-16 font-bebas text-[18px] md:text-[24px] text-[#555] tracking-widest uppercase">
             <div className="flex flex-col items-center">
