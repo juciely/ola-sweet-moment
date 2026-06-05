@@ -1,13 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/')({
-  component: Index,
+export const Route = createFileRoute('/admin')({
+  component: AdminPage,
 })
 
-function Index() {
+function AdminPage() {
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <h1 className="text-4xl font-bold">/</h1>
+      <h1 className="text-4xl font-bold">/admin</h1>
     </div>
   )
 }
