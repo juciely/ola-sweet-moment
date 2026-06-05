@@ -49,8 +49,8 @@ export function PromocaoNamorados() {
 
             {/* Content Section */}
             <div className="flex-1 p-8 md:p-12">
-              <span className="text-red-500 font-inter text-[12px] font-black uppercase tracking-[4px] mb-4 block">{subtitulo}</span>
-              <h2 className="font-bebas text-[40px] md:text-[60px] leading-tight mb-6">
+              <span className="text-red-500 font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">{subtitulo}</span>
+              <h2 className="font-poppins font-black text-[32px] md:text-[60px] leading-[1.1] mb-6">
                 {titulo}
               </h2>
               <p className="font-inter text-[#AAAAAA] mb-8 leading-relaxed">
