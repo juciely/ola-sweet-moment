@@ -1,6 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Countdown } from '@/components/landing/Countdown';
+import { Diferenciais } from '@/components/landing/Diferenciais';
+import { Planos } from '@/components/landing/Planos';
+import { LeadForm } from '@/components/landing/LeadForm';
+import { Footer } from '@/components/landing/Footer';
+import { FloatingWhatsApp } from '@/components/landing/FloatingWhatsApp';
+import { useEffect } from 'react';
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -8,6 +14,16 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const { config, loading } = useSiteConfig();
+
+  useEffect(() => {
+    if (!loading) {
+      document.title = "Elite+ Performance — Academia em Sinop-MT";
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', 'Treino personalizado com app incluso, professores CREF, estacionamento e espaço kids. Planos a partir de R$119,90/mês.');
+      }
+    }
+  }, [loading]);
 
   if (loading) {
     return (
@@ -34,10 +50,9 @@ function Index() {
   };
 
   return (
-    <main className="bg-[#0A0A0A] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#0A0A0A]">
+    <main className="bg-[#0A0A0A] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#0A0A0A] scroll-smooth">
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pt-20 pb-12">
-        {/* Background Overlay & Texture */}
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat grayscale"
           style={{ 
@@ -54,7 +69,6 @@ function Index() {
           ></div>
         </div>
 
-        {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center max-w-4xl w-full">
           {config.oferta_badge && (
             <div className="bg-[#AAFF00] text-[#0A0A0A] text-[11px] font-bold uppercase tracking-[2px] px-4 py-1.5 rounded-[2px] mb-8 animate-fade-in">
@@ -62,11 +76,11 @@ function Index() {
             </div>
           )}
 
-          <h1 className="font-bebas text-[72px] md:text-[110px] leading-[0.9] mb-6 tracking-tight">
+          <h1 className="font-bebas text-[72px] md:text-[96px] leading-[0.9] mb-6 tracking-tight">
             {renderTitle(config.hero_titulo)}
           </h1>
 
-          <p className="font-inter text-lg text-[#AAAAAA] max-w-[480px] mb-10 leading-relaxed">
+          <p className="font-inter text-lg text-[#AAAAAA] max-width-[480px] mb-10 leading-relaxed">
             {config.hero_subtitulo}
           </p>
 
@@ -85,7 +99,6 @@ function Index() {
 
       {/* SECTION 2 — OFERTA DE REINAUGURAÇÃO */}
       <section className="bg-[#111111] py-24 px-6 relative overflow-hidden">
-        {/* Sutil gradient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#AAFF00]/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-[520px] mx-auto text-center relative z-10">
@@ -110,7 +123,7 @@ function Index() {
             </div>
           </div>
 
-          <p className="font-inter text-base text-[#888888] mb-12 leading-relaxed">
+          <p className="font-inter text-[15px] text-[#888888] mb-12 leading-relaxed">
             {config.oferta_descricao}
           </p>
 
@@ -129,6 +142,21 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* SECTION 3 — DIFERENCIAIS */}
+      <Diferenciais />
+
+      {/* SECTION 4 — PLANOS */}
+      <Planos />
+
+      {/* SECTION 5 — FORMULÁRIO DE LEAD */}
+      <LeadForm />
+
+      {/* SECTION 6 — FOOTER */}
+      <Footer />
+
+      {/* COMPONENTE FIXO — BOTÃO WHATSAPP */}
+      <FloatingWhatsApp />
     </main>
   );
 }

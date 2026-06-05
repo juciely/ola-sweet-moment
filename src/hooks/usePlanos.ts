@@ -20,7 +20,8 @@ export function usePlanos() {
       try {
         const { data, error } = await supabase
           .from('planos')
-          .filter('ativo', 'eq', true)
+          .select('*')
+          .eq('ativo', true)
           .order('ordem', { ascending: true });
 
         if (error) throw error;
