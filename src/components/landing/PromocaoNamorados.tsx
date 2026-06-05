@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { useTracking } from '@/hooks/useTracking';
 import { Copy, Check, MessageCircle, Heart } from 'lucide-react';
 
 export function PromocaoNamorados() {
