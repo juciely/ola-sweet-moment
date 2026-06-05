@@ -40,8 +40,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
   const SidebarContent = () => (
     <div className="flex flex-col h-full bg-[#0A0A0A] border-r border-white/5">
       <div className="p-8">
-        <h1 className="font-bebas text-[28px] text-[#AAFF00] leading-none mb-1">ELITE+</h1>
-        <p className="font-inter text-[11px] text-[#444] font-bold tracking-[4px] uppercase">PERFORMANCE</p>
+        <img src="/logo.png" alt="Elite+" className="w-32 mb-2" />
       </div>
 
       <nav className="flex-1 px-4 space-y-2">
@@ -87,9 +86,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Mobile Header */}
       <header className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-white/5 flex items-center justify-between px-6 z-50">
-        <div className="flex flex-col">
-          <span className="font-bebas text-xl text-[#AAFF00] leading-none">ELITE+</span>
-        </div>
+        <img src="/logo.png" alt="Elite+" className="h-8" />
         <button 
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="text-white p-2"
