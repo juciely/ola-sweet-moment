@@ -83,7 +83,8 @@ export function LeadForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#AAFF00] text-[#0A0A0A] font-extrabold uppercase tracking-[1px] py-5 rounded-full transition-all hover:scale-102 hover:shadow-[0_0_40px_rgba(170,255,0,0.35)] disabled:opacity-50"
+              className="w-full bg-[#AAFF00] text-[#0A0A0A] font-extrabold uppercase tracking-[1px] py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(170,255,0,0.35)] disabled:opacity-50 text-[17px]"
+              style={{ boxShadow: '0 0 40px rgba(170,255,0,0.35)' }}
             >
               {loading ? 'ENVIANDO...' : 'ENVIAR AGORA'}
             </button>

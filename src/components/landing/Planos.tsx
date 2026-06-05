@@ -76,13 +76,13 @@ export function Planos() {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {plano.badge && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#AAFF00] text-[#0A0A0A] text-[11px] font-bold px-4 py-1 rounded-full">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#AAFF00] text-[#0A0A0A] text-[11px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
                   {plano.badge}
                 </div>
               )}
 
-              <h3 className="font-bebas text-[28px] text-white mb-1 uppercase">{plano.nome}</h3>
-              <p className="text-[#555] font-inter text-[13px] tracking-wider mb-8">{plano.duracao}</p>
+              <h3 className="font-bebas text-[28px] text-white mb-1 uppercase tracking-normal">{plano.nome}</h3>
+              <p className="text-[#555] font-inter text-[13px] tracking-wider mb-8 uppercase letter-spacing-[1px]">{plano.duracao}</p>
 
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-white font-bebas text-2xl">R$</span>
@@ -92,7 +92,7 @@ export function Planos() {
                 <span className="text-[#666] font-inter text-base ml-1">{(plano as any).suffix || '/mês'}</span>
               </div>
 
-              <div className="h-px bg-[#1E1E1E] w-full mb-8"></div>
+              <div className="h-[1px] bg-[#1E1E1E] w-full mb-[24px]"></div>
 
               <div className="space-y-4 mb-10 flex-grow">
                 {plano.benefits.map((b, j) => (

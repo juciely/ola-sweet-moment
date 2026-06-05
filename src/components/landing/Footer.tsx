@@ -14,11 +14,11 @@ export function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 reveal">
         {/* Col 1 */}
         <div className="space-y-6">
-          <div className="flex items-baseline gap-2">
-            <span className="font-bebas text-4xl text-[#AAFF00]">ELITE+</span>
-            <span className="font-inter text-xs text-[#555] font-bold tracking-[2px]">PERFORMANCE</span>
+          <div className="flex flex-col gap-1">
+            <span className="font-bebas text-[36px] text-[#AAFF00] leading-none">ELITE+</span>
+            <span className="font-inter text-[14px] text-[#555] font-bold tracking-[2px]">PERFORMANCE</span>
           </div>
-          <p className="font-inter text-sm text-[#555] max-w-[240px] leading-relaxed">
+          <p className="font-inter text-sm text-[#555] max-w-[200px] leading-relaxed">
             Academia completa em Sinop-MT.<br />
             Seu próximo nível começa aqui.
           </p>
