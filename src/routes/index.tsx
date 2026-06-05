@@ -150,7 +150,7 @@ function Index() {
             </div>
           </div>
           <div className="flex-1 reveal order-1 lg:order-2">
-            <span className="text-[#AAFF00] font-inter text-[12px] font-black uppercase tracking-[4px] mb-6 block">Evolução Constante</span>
+            <span className="text-[#AAFF00] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-6 block">Evolução Constante</span>
             <h2 className="font-poppins font-black text-[40px] md:text-[70px] leading-[1.1] md:leading-tight mb-8">
               MUDAMOS O NOME.<br />
               <span className="text-[#AAFF00]">ELEVAMOS O PADRÃO.</span>
