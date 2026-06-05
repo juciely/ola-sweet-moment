@@ -116,12 +116,18 @@ export function Planos() {
           ))}
         </div>
 
-        <button 
-          onClick={() => setShowTable(!showTable)}
-          className="text-[#555] hover:text-[#AAFF00] transition-colors flex items-center gap-2 text-sm font-inter reveal"
-        >
-          Ver todos os planos disponíveis <ChevronDown className={`w-4 h-4 transition-transform ${showTable ? 'rotate-180' : ''}`} />
-        </button>
+        <div className="flex flex-col items-center gap-6 reveal">
+          <p className="text-[#555] font-inter text-sm">
+            Quer conhecer antes de decidir? <a href="/agendar" className="text-[#555] hover:text-[#AAFF00] font-bold underline underline-offset-4 transition-colors">Agende uma visita gratuita →</a>
+          </p>
+
+          <button 
+            onClick={() => setShowTable(!showTable)}
+            className="text-[#555] hover:text-[#AAFF00] transition-colors flex items-center gap-2 text-sm font-inter"
+          >
+            Ver todos os planos disponíveis <ChevronDown className={`w-4 h-4 transition-transform ${showTable ? 'rotate-180' : ''}`} />
+          </button>
+        </div>
 
         {showTable && (
           <div className="mt-12 w-full bg-[#161616] rounded-[20px] p-6 border border-[#222] overflow-hidden reveal">
