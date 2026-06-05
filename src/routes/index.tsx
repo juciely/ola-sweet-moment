@@ -28,7 +28,8 @@ function Index() {
     );
   }
 
-  const handleWhatsApp = () => {
+  const handleWhatsApp = (plano?: string) => {
+    trackWhatsappClick(plano);
     const number = config.whatsapp_numero || '5566999970103';
     const message = encodeURIComponent(config.whatsapp_mensagem || '');
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');
