@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { useTracking } from '@/hooks/useTracking';
-import { Copy, Check, MessageCircle, Heart } from 'lucide-react';
+import { Copy, Check, MessageCircle, Heart, Zap } from 'lucide-react';
 
 export function PromocaoNamorados() {
   const { config } = useSiteConfig();
@@ -23,60 +23,87 @@ export function PromocaoNamorados() {
   };
 
   return (
-    <section className="relative py-24 px-8 overflow-hidden bg-[#0A0A0A]">
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-red-600 rounded-full blur-[120px]"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#AAFF00] rounded-full blur-[120px]"></div>
+    <section className="relative py-32 px-6 overflow-hidden bg-[#080808]">
+      {/* Background Decor - Minimalist & Impactful */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[600px] bg-[#AAFF00]/5 rounded-full blur-[140px] opacity-50"></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AAFF00]/20 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#AAFF00]/20 to-transparent"></div>
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#111] to-[#080808] border border-white/5 rounded-[40px] overflow-hidden shadow-2xl">
-          <div className="flex flex-col md:flex-row">
-            {/* Visual Section */}
-            <div className="md:w-1/3 bg-gradient-to-br from-red-600/20 to-transparent p-12 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-white/5">
-              <Heart className="w-16 h-16 text-red-500 mb-6 animate-pulse" />
-              <div className="font-poppins font-black text-[48px] leading-none mb-2">R$ <span className="text-[#AAFF00]">{preco}</span></div>
-              <p className="font-inter text-[14px] text-white/60 uppercase tracking-widest font-bold">Por pessoa / 1º Mês</p>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row bg-[#111] border border-white/5 rounded-[32px] overflow-hidden shadow-2xl transition-all hover:border-[#AAFF00]/20 group">
+            
+            {/* Left Column: Visual & Pricing */}
+            <div className="lg:w-[40%] bg-[#161616] p-12 flex flex-col items-center justify-center text-center relative border-b lg:border-b-0 lg:border-r border-white/5">
+              <div className="absolute top-8 left-8">
+                <Heart className="w-8 h-8 text-[#AAFF00] opacity-20 group-hover:opacity-100 transition-opacity" />
+              </div>
               
-              <div className="mt-8 pt-8 border-t border-white/10 w-full">
-                <p className="font-poppins text-[20px] font-bold text-white/80 mb-4 tracking-widest uppercase">Formas de Pagamento</p>
-                <div className="flex flex-wrap justify-center gap-3 grayscale opacity-70">
-                   <img src="https://logodownload.org/wp-content/uploads/2016/10/visa-logo-1.png" className="h-4 object-contain" alt="Visa" />
-                   <img src="https://logodownload.org/wp-content/uploads/2014/07/mastercard-logo-7.png" className="h-4 object-contain" alt="Mastercard" />
-                   <img src="https://logodownload.org/wp-content/uploads/2020/02/pix-logo-1.png" className="h-4 object-contain" alt="PIX" />
+              <div className="space-y-4 mb-8">
+                <span className="font-poppins text-[12px] font-black text-[#AAFF00] tracking-[4px] uppercase block">OFERTA ESPECIAL</span>
+                <div className="flex items-baseline justify-center gap-2">
+                  <span className="font-poppins font-black text-2xl text-white">R$</span>
+                  <span className="font-poppins font-black text-[84px] md:text-[100px] leading-none text-white tracking-tighter">
+                    {preco.split(',')[0]}<span className="text-[32px] md:text-[40px] text-[#AAFF00]">,{preco.split(',')[1]}</span>
+                  </span>
+                </div>
+                <p className="font-poppins text-[14px] text-[#555] font-bold uppercase tracking-widest">P/ PESSOA • 1º MÊS</p>
+              </div>
+
+              <div className="w-full h-px bg-white/5 mb-8"></div>
+
+              <div className="space-y-4 w-full">
+                <p className="font-poppins text-[11px] text-[#444] font-black uppercase tracking-[3px]">ACEITAMOS</p>
+                <div className="flex justify-center gap-6 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all">
+                  <img src="https://logodownload.org/wp-content/uploads/2016/10/visa-logo-1.png" className="h-4 object-contain" alt="Visa" />
+                  <img src="https://logodownload.org/wp-content/uploads/2014/07/mastercard-logo-7.png" className="h-4 object-contain" alt="Mastercard" />
+                  <img src="https://logodownload.org/wp-content/uploads/2020/02/pix-logo-1.png" className="h-4 object-contain" alt="PIX" />
                 </div>
               </div>
             </div>
 
-            {/* Content Section */}
-            <div className="flex-1 p-8 md:p-12">
-              <span className="text-red-500 font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">{subtitulo}</span>
-              <h2 className="font-poppins font-black text-[32px] md:text-[60px] leading-[1.1] mb-6">
-                {titulo}
-              </h2>
-              <p className="font-inter text-[#AAAAAA] mb-8 leading-relaxed">
-                {condicoes}
-              </p>
+            {/* Right Column: Text & Actions */}
+            <div className="flex-1 p-10 md:p-16 flex flex-col justify-center bg-gradient-to-br from-[#111] to-[#0D0D0D]">
+              <div className="mb-10">
+                <div className="inline-flex items-center gap-2 bg-[#AAFF00]/10 text-[#AAFF00] px-4 py-2 rounded-full mb-6 border border-[#AAFF00]/10">
+                  <Zap className="w-4 h-4 fill-current" />
+                  <span className="font-poppins font-bold text-[10px] uppercase tracking-wider">{subtitulo}</span>
+                </div>
+                <h2 className="font-poppins font-black text-[38px] md:text-[64px] text-white leading-[1.05] tracking-tight uppercase mb-6">
+                  {titulo.split(' ').map((word, i) => (
+                    <span key={i} className={word === 'NAMORADOS' ? 'text-[#AAFF00]' : ''}>
+                      {word}{' '}
+                    </span>
+                  ))}
+                </h2>
+                <p className="font-inter text-[16px] md:text-[18px] text-[#666] leading-relaxed max-w-[500px]">
+                  {condicoes}
+                </p>
+              </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+              <div className="mt-auto">
                 {!revealed ? (
                   <button
                     onClick={() => setRevealed(true)}
-                    className="flex-1 bg-white text-black font-black uppercase tracking-[1px] px-8 py-4 rounded-xl transition-all hover:bg-[#AAFF00] active:scale-95 text-center"
+                    className="w-full md:w-auto bg-white text-black font-poppins font-black uppercase tracking-[1px] px-12 py-5 rounded-full transition-all hover:bg-[#AAFF00] hover:scale-105 active:scale-95 text-center shadow-[0_10px_40px_rgba(255,255,255,0.1)]"
                   >
-                    REVELAR CUPOM
+                    REVELAR CUPOM EXCLUSIVO
                   </button>
                 ) : (
-                  <div className="flex-1 flex flex-col sm:flex-row gap-4">
-                    <div className="flex-1 bg-white/5 border border-dashed border-[#AAFF00]/40 rounded-xl px-6 py-4 flex items-center justify-between group">
-                      <span className="font-mono font-bold text-[#AAFF00] text-xl">{cupom}</span>
+                  <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+                    <div className="flex-1 bg-white/5 border border-dashed border-[#AAFF00]/30 rounded-2xl px-8 py-5 flex items-center justify-between group/cupom">
+                      <div>
+                        <p className="text-[10px] text-[#444] font-black uppercase tracking-widest mb-1">CÓDIGO</p>
+                        <span className="font-poppins font-black text-[#AAFF00] text-2xl tracking-tight">{cupom}</span>
+                      </div>
                       <button 
                         onClick={copyToClipboard}
-                        className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white/60 hover:text-white"
+                        className="p-3 bg-white/5 hover:bg-[#AAFF00] hover:text-black rounded-xl transition-all text-[#AAFF00]"
                         title="Copiar cupom"
                       >
-                        {copied ? <Check className="w-5 h-5 text-[#AAFF00]" /> : <Copy className="w-5 h-5" />}
+                        {copied ? <Check className="w-6 h-6" /> : <Copy className="w-6 h-6" />}
                       </button>
                     </div>
                     <a
@@ -84,15 +111,16 @@ export function PromocaoNamorados() {
                       onClick={() => trackWhatsappClick('Promo Namorados')}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#25D366] text-white font-black uppercase tracking-[1px] px-8 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
+                      className="bg-[#25D366] text-white font-poppins font-black uppercase tracking-[1px] px-10 py-5 rounded-2xl transition-all hover:scale-[1.05] hover:shadow-[0_15px_40px_rgba(37,211,102,0.3)] active:scale-95 flex items-center justify-center gap-3"
                     >
-                      <MessageCircle className="w-5 h-5" />
-                      ENVIAR WHATSAPP
+                      <MessageCircle className="w-6 h-6 fill-current" />
+                      EU QUERO
                     </a>
                   </div>
                 )}
               </div>
             </div>
+
           </div>
         </div>
       </div>
