@@ -49,7 +49,7 @@ function Index() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center max-w-5xl w-full reveal">
-          <div className="bg-[#AAFF00]/10 border border-[#AAFF00]/20 text-[#AAFF00] text-[10px] md:text-[12px] font-bold uppercase tracking-[3px] px-5 py-2 rounded-full mb-10 backdrop-blur-sm">
+          <div className="bg-[#AAFF00]/10 border border-[#AAFF00]/20 text-[#AAFF00] text-[9px] md:text-[11px] font-bold uppercase tracking-[2px] md:tracking-[3px] px-4 md:px-5 py-1.5 md:py-2 rounded-full mb-8 md:mb-10 backdrop-blur-sm whitespace-nowrap">
             SINOP-MT — O NOVO PADRÃO DE PERFORMANCE
           </div>
 
