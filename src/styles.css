@@ -13,7 +13,8 @@
   --color-background-surface: #111111;
   --color-background-surface-lighter: #161616;
 
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-left: marquee-left 30s linear infinite;
+  --animate-marquee-right: marquee-right 30s linear infinite;
   --animate-fade-up: fade-up 0.6s ease-out forwards;
 
   @keyframes marquee-left {

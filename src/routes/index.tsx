@@ -99,36 +99,36 @@ function Index() {
         </div>
       </section>
 
-      {/* DOUBLE MARQUEE ANIMADO */}
-      <div className="relative h-[120px] w-[100vw] ml-[calc(-50vw+50%)] overflow-hidden bg-transparent z-[20] my-4">
-        {/* FAIXA 1 */}
-        <div 
-          className="absolute top-[20px] left-0 w-full h-[44px] bg-[#AAFF00] flex items-center overflow-hidden whitespace-nowrap z-[2]"
-          style={{ transform: 'rotate(-3deg)' }}
-        >
+      {/* DOUBLE MARQUEE ANIMADO - CENTRALIZADO ESTILO IMAGEM ANEXA */}
+      <div className="relative h-[180px] w-full flex items-center justify-center overflow-hidden bg-[#080808] z-[20] -my-10">
+        <div className="relative w-full h-full flex items-center justify-center">
+          
+          {/* FAIXA 2 (FUNDO - ROSA/DARK) */}
           <div 
-            className="flex gap-8 px-4 font-bebas text-[22px] text-[#0A0A0A] tracking-[2px] uppercase whitespace-nowrap"
-            style={{ animation: 'marquee-left 25s linear infinite' }}
+            className="absolute w-[150vw] h-[54px] bg-[#1A1A1A] border-y border-[#AAFF00]/30 flex items-center overflow-hidden whitespace-nowrap z-[1]"
+            style={{ transform: 'rotate(5deg)' }}
           >
-            <span>{marquee1}</span>
-            <span>{marquee1}</span>
-            <span>{marquee1}</span>
+            <div className="flex gap-8 px-4 font-bebas text-[24px] md:text-[32px] text-[#AAFF00] tracking-[2px] uppercase animate-marquee-right">
+              <span className="flex items-center gap-8">{marquee2} <span className="text-white opacity-20">★</span></span>
+              <span className="flex items-center gap-8">{marquee2} <span className="text-white opacity-20">★</span></span>
+              <span className="flex items-center gap-8">{marquee2} <span className="text-white opacity-20">★</span></span>
+              <span className="flex items-center gap-8">{marquee2} <span className="text-white opacity-20">★</span></span>
+            </div>
           </div>
-        </div>
 
-        {/* FAIXA 2 */}
-        <div 
-          className="absolute top-[60px] left-0 w-full h-[44px] bg-[#1A1A1A] border-y border-[#AAFF00] flex items-center overflow-hidden whitespace-nowrap z-[1]"
-          style={{ transform: 'rotate(3deg)' }}
-        >
+          {/* FAIXA 1 (TOPO - VERDE) */}
           <div 
-            className="flex gap-8 px-4 font-bebas text-[22px] text-[#AAFF00] tracking-[2px] uppercase whitespace-nowrap"
-            style={{ animation: 'marquee-right 20s linear infinite' }}
+            className="absolute w-[150vw] h-[54px] bg-[#AAFF00] flex items-center overflow-hidden whitespace-nowrap z-[2] shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+            style={{ transform: 'rotate(-5deg)' }}
           >
-            <span>{marquee2}</span>
-            <span>{marquee2}</span>
-            <span>{marquee2}</span>
+            <div className="flex gap-8 px-4 font-bebas text-[24px] md:text-[32px] text-[#0A0A0A] tracking-[2px] uppercase animate-marquee-left">
+              <span className="flex items-center gap-8">{marquee1} <span>→</span></span>
+              <span className="flex items-center gap-8">{marquee1} <span>→</span></span>
+              <span className="flex items-center gap-8">{marquee1} <span>→</span></span>
+              <span className="flex items-center gap-8">{marquee1} <span>→</span></span>
+            </div>
           </div>
+
         </div>
       </div>
 
