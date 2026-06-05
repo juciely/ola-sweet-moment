@@ -81,7 +81,7 @@ function Index() {
           <div className="flex flex-col sm:flex-row gap-5 mb-8 w-full sm:w-auto">
             <button 
               onClick={() => handleWhatsApp('Hero CTA')}
-              className="group bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] px-10 py-4 rounded-full transition-all hover:scale-[1.05] hover:shadow-[0_0_50px_rgba(170,255,0,0.4)] text-[16px] active:scale-95 shadow-xl"
+              className="group bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] px-10 py-4 rounded-full transition-all hover:scale-[1.05] hover:shadow-[0_0_50px_rgba(215,248,3,0.4)] text-[16px] active:scale-95 shadow-xl"
             >
               GARANTIR MINHA VAGA
             </button>

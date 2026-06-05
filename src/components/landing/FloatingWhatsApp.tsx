@@ -16,7 +16,7 @@ export function FloatingWhatsApp() {
   return (
     <button
       onClick={handleWhatsApp}
-      className="fixed bottom-8 right-8 z-[999] bg-[#d7f803] text-[#0A0A0A] px-6 py-4 rounded-[50px] flex items-center gap-3 shadow-[0_0_32px_rgba(170,255,0,0.4)] animate-pulse transition-all hover:scale-105 active:scale-95 group"
+      className="fixed bottom-8 right-8 z-[999] bg-[#d7f803] text-[#0A0A0A] px-6 py-4 rounded-[50px] flex items-center gap-3 shadow-[0_0_32px_rgba(215,248,3,0.4)] animate-pulse transition-all hover:scale-105 active:scale-95 group"
       aria-label="Fale conosco no WhatsApp"
     >
       <MessageCircle className="w-7 h-7 fill-current" />
