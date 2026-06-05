@@ -62,8 +62,8 @@ export function PromocaoNamorados() {
             </div>
 
             {/* Right Column: Text & Actions */}
-            <div className="flex-1 p-10 md:p-16 flex flex-col justify-center bg-gradient-to-br from-[#111] to-[#0D0D0D]">
-              <div className="mb-10 text-center lg:text-left">
+            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-[#111] to-[#0D0D0D]">
+              <div className="mb-8 text-center lg:text-left">
                 <div className="inline-flex flex-col items-center lg:items-start gap-2 mb-6">
                   <Heart className="w-5 h-5 text-[#AAFF00] mb-1" />
                   <div className="bg-[#AAFF00]/10 text-[#AAFF00] px-4 py-1.5 rounded-full border border-[#AAFF00]/10">
@@ -87,24 +87,24 @@ export function PromocaoNamorados() {
                 {!revealed ? (
                   <button
                     onClick={() => setRevealed(true)}
-                    className="w-full bg-white text-black font-poppins font-black uppercase tracking-[1px] px-12 py-5 rounded-full transition-all hover:bg-[#AAFF00] hover:scale-105 active:scale-95 text-center shadow-[0_10px_40px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
+                    className="w-full bg-white text-black font-poppins font-black uppercase tracking-[1px] px-8 py-5 rounded-full transition-all hover:bg-[#AAFF00] hover:scale-105 active:scale-95 text-center shadow-[0_10px_40px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
                   >
                     <Ticket className="w-5 h-5" />
                     REVELAR CUPOM
                   </button>
                 ) : (
-                  <div className="flex flex-col sm:flex-row gap-4 items-stretch animate-fade-up">
-                    <div className="flex-1 bg-white/5 border border-dashed border-[#AAFF00]/30 rounded-2xl px-8 py-5 flex items-center justify-between group/cupom">
+                  <div className="flex flex-col xl:flex-row gap-4 items-stretch animate-fade-up">
+                    <div className="flex-1 bg-white/5 border border-dashed border-[#AAFF00]/30 rounded-2xl px-6 py-5 flex items-center justify-between group/cupom">
                       <div>
                         <p className="text-[10px] text-[#444] font-black uppercase tracking-widest mb-1">CÓDIGO</p>
-                        <span className="font-poppins font-black text-[#AAFF00] text-2xl tracking-tight">{cupom}</span>
+                        <span className="font-poppins font-black text-[#AAFF00] text-xl md:text-2xl tracking-tight">{cupom}</span>
                       </div>
                       <button 
                         onClick={copyToClipboard}
                         className="p-3 bg-white/5 hover:bg-[#AAFF00] hover:text-black rounded-xl transition-all text-[#AAFF00]"
                         title="Copiar cupom"
                       >
-                        {copied ? <Check className="w-6 h-6" /> : <Copy className="w-6 h-6" />}
+                        {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                       </button>
                     </div>
                     <a
@@ -112,7 +112,7 @@ export function PromocaoNamorados() {
                       onClick={() => trackWhatsappClick('Promo Namorados')}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#25D366] text-white font-poppins font-black uppercase tracking-[1px] px-10 py-5 rounded-2xl transition-all hover:scale-[1.05] hover:shadow-[0_15px_40px_rgba(37,211,102,0.3)] active:scale-95 flex items-center justify-center gap-3"
+                      className="bg-[#25D366] text-white font-poppins font-black uppercase tracking-[1px] px-8 py-5 rounded-2xl transition-all hover:scale-[1.05] hover:shadow-[0_15px_40px_rgba(37,211,102,0.3)] active:scale-95 flex items-center justify-center gap-3 whitespace-nowrap"
                     >
                       <MessageCircle className="w-6 h-6 fill-current" />
                       EU QUERO
