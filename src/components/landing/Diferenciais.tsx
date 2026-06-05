@@ -57,7 +57,7 @@ export function Diferenciais() {
               <div className="bg-[#AAFF00]/10 p-4 rounded-2xl group-hover:bg-[#AAFF00] group-hover:text-[#0A0A0A] transition-colors duration-500 text-[#AAFF00]">
                 <item.icon className="w-8 h-8" />
               </div>
-              <h3 className="font-bebas text-[28px] text-white mt-8 mb-4 tracking-wide group-hover:text-[#AAFF00] transition-colors">
+              <h3 className="font-poppins font-bold text-[22px] md:text-[24px] text-white mt-8 mb-4 tracking-tight group-hover:text-[#AAFF00] transition-colors">
                 {item.title}
               </h3>
               <p className="font-inter text-[15px] md:text-[16px] text-[#666] leading-relaxed font-light group-hover:text-[#888] transition-colors">
