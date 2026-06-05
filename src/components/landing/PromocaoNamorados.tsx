@@ -74,8 +74,11 @@ export function PromocaoNamorados() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  if (!promocaoAtiva) return null;
+
   return (
     <section className="relative py-32 px-6 overflow-hidden bg-[#080808]">
+
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[600px] bg-[#d7f803]/5 rounded-full blur-[140px] opacity-50"></div>
