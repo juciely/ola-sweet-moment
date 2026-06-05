@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export function Countdown() {
+  const [isMounted, setIsMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -9,6 +10,7 @@ export function Countdown() {
   });
 
   useEffect(() => {
+    setIsMounted(true);
     // 30 days from now
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 30);
@@ -35,9 +37,9 @@ export function Countdown() {
 
   const format = (num: number) => String(num).padStart(2, '0');
 
-  if (typeof window === 'undefined') {
+  if (!isMounted) {
     return (
-      <div className="flex gap-4 font-bebas text-4xl text-[#AAFF00]">
+      <div className="flex gap-4 font-bebas text-4xl text-[#AAFF00] opacity-0">
         <div className="flex flex-col items-center">
           <span>00</span>
           <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Dias</span>
