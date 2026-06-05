@@ -62,8 +62,8 @@ export function PromocaoNamorados() {
             </div>
 
             {/* Right Column: Text & Actions */}
-            <div className="flex-1 p-10 md:p-16 flex flex-col justify-center bg-gradient-to-br from-[#111] to-[#0D0D0D]">
-              <div className="mb-10 text-center lg:text-left">
+            <div className="flex-1 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-[#111] to-[#0D0D0D]">
+              <div className="mb-8 text-center lg:text-left">
                 <div className="inline-flex flex-col items-center lg:items-start gap-2 mb-6">
                   <Heart className="w-5 h-5 text-[#AAFF00] mb-1" />
                   <div className="bg-[#AAFF00]/10 text-[#AAFF00] px-4 py-1.5 rounded-full border border-[#AAFF00]/10">
