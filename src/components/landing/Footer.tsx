@@ -18,7 +18,7 @@ export function Footer() {
             <span className="font-bebas text-[36px] text-[#AAFF00] leading-none">ELITE+</span>
             <span className="font-inter text-[14px] text-[#555] font-bold tracking-[2px]">PERFORMANCE</span>
           </div>
-          <p className="font-inter text-sm text-[#555] max-w-[240px] leading-relaxed">
+          <p className="font-inter text-sm text-[#555] max-w-[200px] leading-relaxed">
             Academia completa em Sinop-MT.<br />
             Seu próximo nível começa aqui.
           </p>
