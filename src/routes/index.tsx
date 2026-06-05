@@ -99,6 +99,54 @@ function Index() {
         </div>
       </section>
 
+      {/* FAQ SECTION */}
+      <section className="bg-[#111111] py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-bebas text-[52px] text-white text-center mb-16 reveal">
+            PERGUNTAS FREQUENTES
+          </h2>
+          
+          <div className="space-y-3">
+            {[
+              { 
+                q: "Preciso ter experiência pra treinar aqui?", 
+                r: "Não. A Elite+ Performance atende desde quem nunca pisou numa academia até atletas experientes. Na sua primeira visita, o professor avalia seu histórico e monta um treino no seu ritmo e objetivo. Você nunca vai ficar perdido no salão." 
+              },
+              { 
+                q: "O app de treino tem custo extra?", 
+                r: "Não. O aplicativo está incluso em todos os planos. Assim que você fecha a matrícula, já sai daqui com o treino montado no celular — com vídeos dos exercícios, nome dos aparelhos e tudo explicado." 
+              },
+              { 
+                q: "Tenho filho pequeno. Posso levar?", 
+                r: "Pode. Temos espaço kids estruturado pra você treinar com tranquilidade enquanto seu filho fica bem cuidado. Sem precisar arranjar babá pra malhar." 
+              },
+              { 
+                q: "Qual a diferença do Plano Recorrente pro Mensal normal?", 
+                r: "O Recorrente é um contrato de 12 meses com cobrança mensal de R$119,90 — o menor valor por mês que temos. O Mensal é sem contrato, paga mês a mês por R$160,00. Se você sabe que vai continuar treinando, o Recorrente economiza R$481,20 por ano." 
+              },
+              { 
+                q: "Tem aula em grupo ou só musculação?", 
+                r: "Trabalhamos com treino personalizado individual — cada aluno tem seu treino montado pelo professor. Não é aula coletiva. É atenção no seu objetivo específico." 
+              },
+              { 
+                q: "Como funciona a promoção de reinauguração?", 
+                r: "Durante o período de reinauguração, a primeira mensalidade do Plano Recorrente sai com desconto especial. É por tempo limitado. Depois o valor volta ao normal de R$119,90. Chama a gente no WhatsApp pra garantir antes de acabar." 
+              }
+            ].map((faq, i) => (
+              <details key={i} className="group bg-[#161616] border border-[#1E1E1E] rounded-[12px] overflow-hidden reveal" style={{ transitionDelay: `${i * 50}ms` }}>
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <span className="font-inter font-semibold text-white">{faq.q}</span>
+                  <span className="text-[#AAFF00] text-2xl transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <div className="px-6 pb-6 text-[#777] font-inter text-[15px] leading-[1.7]">
+                  {faq.r}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Diferenciais />
       <Planos />
       <LeadForm />
