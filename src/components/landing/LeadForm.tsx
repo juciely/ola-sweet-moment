@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { usePlanos } from '@/hooks/usePlanos';
+import { useTracking } from '@/hooks/useTracking';
 
 export function LeadForm() {
   const { planos } = usePlanos();
