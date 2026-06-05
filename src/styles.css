@@ -16,9 +16,14 @@
   --animate-marquee: marquee 30s linear infinite;
   --animate-fade-up: fade-up 0.6s ease-out forwards;
 
-  @keyframes marquee {
+  @keyframes marquee-left {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
   }
 
   @keyframes fade-up {

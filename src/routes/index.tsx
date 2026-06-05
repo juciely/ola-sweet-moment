@@ -31,11 +31,12 @@ function Index() {
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');
   };
 
+  const marquee1 = config.marquee_linha1 || "⚡ REINAUGURAÇÃO OFICIAL  •  PLANO ANUAL POR R$119,90/MÊS  •  APP DE TREINO INCLUSO  •  PROFESSORES CREF  •  ESTACIONAMENTO GRÁTIS  ⚡";
+  const marquee2 = config.marquee_linha2 || "🔥 ESPAÇO KIDS  •  DUCHA COMPLETA  •  05H ÀS 22H  •  SEU PRÓXIMO NÍVEL COMEÇA AQUI  •  ELITE+ PERFORMANCE  •  SINOP-MT  🔥";
+
   return (
     <main ref={revealRef as any} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808] relative overflow-x-hidden">
-      {/* SCROLLING BAR - REMOVIDO DO TOPO PARA FICAR ABAIXO DA HERO */}
-
-
+      
       {/* HERO */}
       <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center pt-16 pb-16 px-8 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -98,12 +99,36 @@ function Index() {
         </div>
       </section>
 
-      {/* SCROLLING BAR - POSICIONADA ABAIXO DA HERO */}
-      <div className="relative w-full bg-[#AAFF00] z-[10] overflow-hidden h-[42px] flex items-center shadow-2xl border-y border-black/10">
-        <div className="animate-marquee whitespace-nowrap font-inter text-[12px] md:text-[14px] font-black text-[#0A0A0A] flex gap-8 px-4 uppercase tracking-[2px]">
-          <span>⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
-          <span aria-hidden="true">⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
-          <span aria-hidden="true">⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
+      {/* DOUBLE MARQUEE ANIMADO */}
+      <div className="relative h-[120px] w-[100vw] ml-[calc(-50vw+50%)] overflow-hidden bg-transparent z-[20] my-4">
+        {/* FAIXA 1 */}
+        <div 
+          className="absolute top-[20px] left-0 w-full h-[44px] bg-[#AAFF00] flex items-center overflow-hidden whitespace-nowrap z-[2]"
+          style={{ transform: 'rotate(-3deg)' }}
+        >
+          <div 
+            className="flex gap-8 px-4 font-bebas text-[22px] text-[#0A0A0A] tracking-[2px] uppercase whitespace-nowrap"
+            style={{ animation: 'marquee-left 25s linear infinite' }}
+          >
+            <span>{marquee1}</span>
+            <span>{marquee1}</span>
+            <span>{marquee1}</span>
+          </div>
+        </div>
+
+        {/* FAIXA 2 */}
+        <div 
+          className="absolute top-[60px] left-0 w-full h-[44px] bg-[#1A1A1A] border-y border-[#AAFF00] flex items-center overflow-hidden whitespace-nowrap z-[1]"
+          style={{ transform: 'rotate(3deg)' }}
+        >
+          <div 
+            className="flex gap-8 px-4 font-bebas text-[22px] text-[#AAFF00] tracking-[2px] uppercase whitespace-nowrap"
+            style={{ animation: 'marquee-right 20s linear infinite' }}
+          >
+            <span>{marquee2}</span>
+            <span>{marquee2}</span>
+            <span>{marquee2}</span>
+          </div>
         </div>
       </div>
 
