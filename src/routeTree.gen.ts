@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AgendarRouteImport } from './routes/agendar'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 
 const AgendarRoute = AgendarRouteImport.update({
@@ -29,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/leads': typeof AdminLeadsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/leads': typeof AdminLeadsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,20 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/leads': typeof AdminLeadsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/agendar' | '/admin/dashboard'
+  fullPaths: '/' | '/admin' | '/agendar' | '/admin/dashboard' | '/admin/leads'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/agendar' | '/admin/dashboard'
-  id: '__root__' | '/' | '/admin' | '/agendar' | '/admin/dashboard'
+  to: '/' | '/admin' | '/agendar' | '/admin/dashboard' | '/admin/leads'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/agendar'
+    | '/admin/dashboard'
+    | '/admin/leads'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -91,6 +106,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/dashboard'
@@ -103,10 +125,12 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminLeadsRoute: typeof AdminLeadsRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminLeadsRoute: AdminLeadsRoute,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
@@ -119,3 +143,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
