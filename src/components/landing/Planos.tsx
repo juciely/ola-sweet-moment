@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePlanos } from '@/hooks/usePlanos';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { useTracking } from '@/hooks/useTracking';
 import { ChevronDown, Check } from 'lucide-react';
 
 export function Planos() {
