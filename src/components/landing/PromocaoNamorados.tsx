@@ -81,6 +81,7 @@ export function PromocaoNamorados() {
                     </div>
                     <a
                       href={whatsappLink}
+                      onClick={() => trackWhatsappClick('Promo Namorados')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-[#25D366] text-white font-black uppercase tracking-[1px] px-8 py-4 rounded-xl transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
