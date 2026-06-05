@@ -99,16 +99,16 @@ function Index() {
         </div>
       </section>
 
-      {/* DOUBLE MARQUEE ANIMADO - CENTRALIZADO ESTILO IMAGEM ANEXA */}
-      <div className="relative h-[180px] w-full flex items-center justify-center overflow-hidden bg-[#080808] z-[20] -my-10">
+      {/* DOUBLE MARQUEE ANIMADO - FAIXAS MAIS FINAS E ANGULAÇÃO AUMENTADA */}
+      <div className="relative h-[220px] w-full flex items-center justify-center overflow-hidden bg-[#080808] z-[20] -my-14">
         <div className="relative w-full h-full flex items-center justify-center">
           
-          {/* FAIXA 2 (FUNDO - ROSA/DARK) */}
+          {/* FAIXA 2 (FUNDO - DARK/ANGULADA) */}
           <div 
-            className="absolute w-[150vw] h-[54px] bg-[#1A1A1A] border-y border-[#AAFF00]/30 flex items-center overflow-hidden whitespace-nowrap z-[1]"
-            style={{ transform: 'rotate(5deg)' }}
+            className="absolute w-[180vw] h-[38px] bg-[#1A1A1A] border-y border-[#AAFF00]/20 flex items-center overflow-hidden whitespace-nowrap z-[1]"
+            style={{ transform: 'rotate(12deg)' }}
           >
-            <div className="flex gap-8 px-4 font-bebas text-[24px] md:text-[32px] text-[#AAFF00] tracking-[2px] uppercase animate-marquee-right">
+            <div className="flex gap-8 px-4 font-bebas text-[18px] md:text-[22px] text-[#AAFF00] tracking-[2px] uppercase animate-marquee-right">
               <span className="flex items-center gap-8">{marquee2} <span className="text-white opacity-20">★</span></span>
               <span className="flex items-center gap-8">{marquee2} <span className="text-white opacity-20">★</span></span>
               <span className="flex items-center gap-8">{marquee2} <span className="text-white opacity-20">★</span></span>
@@ -116,12 +116,12 @@ function Index() {
             </div>
           </div>
 
-          {/* FAIXA 1 (TOPO - VERDE) */}
+          {/* FAIXA 1 (TOPO - VERDE/ANGULADA) */}
           <div 
-            className="absolute w-[150vw] h-[54px] bg-[#AAFF00] flex items-center overflow-hidden whitespace-nowrap z-[2] shadow-[0_0_50px_rgba(0,0,0,0.5)]"
-            style={{ transform: 'rotate(-5deg)' }}
+            className="absolute w-[180vw] h-[38px] bg-[#AAFF00] flex items-center overflow-hidden whitespace-nowrap z-[2] shadow-[0_0_40px_rgba(0,0,0,0.6)]"
+            style={{ transform: 'rotate(-10deg)' }}
           >
-            <div className="flex gap-8 px-4 font-bebas text-[24px] md:text-[32px] text-[#0A0A0A] tracking-[2px] uppercase animate-marquee-left">
+            <div className="flex gap-8 px-4 font-bebas text-[18px] md:text-[22px] text-[#0A0A0A] tracking-[1px] uppercase animate-marquee-left">
               <span className="flex items-center gap-8">{marquee1} <span>→</span></span>
               <span className="flex items-center gap-8">{marquee1} <span>→</span></span>
               <span className="flex items-center gap-8">{marquee1} <span>→</span></span>
