@@ -8,6 +8,7 @@ import { LeadForm } from '@/components/landing/LeadForm';
 import { Footer } from '@/components/landing/Footer';
 import { FloatingWhatsApp } from '@/components/landing/FloatingWhatsApp';
 import { useReveal } from '@/hooks/useReveal';
+import { useTracking } from '@/hooks/useTracking';
 import { useEffect } from 'react';
 
 export const Route = createFileRoute('/')({
