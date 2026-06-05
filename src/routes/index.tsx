@@ -18,6 +18,7 @@ export const Route = createFileRoute('/')({
 function Index() {
   const { config, loading } = useSiteConfig();
   const revealRef = useReveal();
+  const { trackWhatsappClick } = useTracking();
 
   if (loading) {
     return (
