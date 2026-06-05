@@ -34,7 +34,7 @@ function Index() {
   return (
     <main ref={revealRef as any} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808]">
       {/* SCROLLING BAR */}
-      <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-9 flex items-center">
+      <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-[36px] flex items-center">
         <div className="animate-marquee whitespace-nowrap font-inter text-[13px] font-semibold text-[#0A0A0A] flex gap-8 px-4">
           <span>⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡</span>
           <span>⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡</span>
@@ -52,7 +52,7 @@ function Index() {
             REINAUGURAÇÃO OFICIAL — SINOP-MT
           </div>
 
-          <h1 className="font-bebas text-[72px] md:text-[110px] leading-[0.9] mb-8 tracking-tight">
+          <h1 className="font-bebas text-[80px] md:text-[110px] leading-[0.9] mb-8 tracking-tight">
             VOCÊ NÃO PRECISA DE<br />
             MAIS UM COMEÇO <span className="text-[#AAFF00]">FALSO.</span>
           </h1>
@@ -61,21 +61,29 @@ function Index() {
             A Elite+ Performance nasceu pra quem já tentou antes e sabe que dessa vez precisa ser diferente. Treino no seu objetivo. Professor que te vê. App que te acompanha. Resultado que aparece.
           </p>
 
-          <button 
-            onClick={handleWhatsApp}
-            className="group bg-[#AAFF00] text-[#0A0A0A] font-extrabold uppercase tracking-[1px] px-12 py-5 rounded-full transition-all hover:scale-102 hover:shadow-[0_0_60px_rgba(170,255,0,0.55)] mb-8"
-          >
-            QUERO COMEÇAR DE VERDADE
-          </button>
-          
-          <button onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })} className="text-[#888] font-inter text-sm mb-12 hover:text-white transition-colors">
-            Ver planos ↓
-          </button>
+          <div className="flex flex-col md:flex-row gap-4 mb-12">
+            <button 
+              onClick={handleWhatsApp}
+              className="group bg-[#AAFF00] text-[#0A0A0A] font-extrabold uppercase tracking-[1px] px-12 py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_0_60px_rgba(170,255,0,0.55)] text-[17px]"
+              style={{ boxShadow: '0 0 40px rgba(170,255,0,0.35)' }}
+            >
+              QUERO COMEÇAR DE VERDADE
+            </button>
+            
+            <button 
+              onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })} 
+              className="text-[#888] font-inter font-semibold border border-[#333] px-8 py-5 rounded-full hover:text-white hover:border-white transition-all text-[17px]"
+            >
+              Ver planos ↓
+            </button>
+          </div>
 
-          <div className="flex gap-8 font-inter text-[13px] text-[#555]">
-            <span>• 05h–22h</span>
-            <span>• App incluso</span>
-            <span>• CREF certificado</span>
+          <div className="flex gap-4 md:gap-8 font-inter text-[13px] text-[#555] items-center">
+            <span>05h–22h</span>
+            <span>•</span>
+            <span>App incluso</span>
+            <span>•</span>
+            <span>CREF certificado</span>
           </div>
         </div>
       </section>
@@ -149,7 +157,9 @@ function Index() {
       </section>
 
       <Diferenciais />
-      <Planos />
+      <div id="planos">
+        <Planos />
+      </div>
       <LeadForm />
       <Footer />
       <FloatingWhatsApp />

@@ -37,11 +37,11 @@ export function Diferenciais() {
   return (
     <section className="bg-[#080808] py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-bebas text-[52px] text-white mb-16 text-center reveal">
+        <h2 className="font-bebas text-[52px] text-white mb-16 reveal">
           O QUE MUDA QUANDO VOCÊ TREINA AQUI
         </h2>
         
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-[16px]">
           {diferenciais.map((item, index) => (
             <div 
               key={index} 
@@ -52,7 +52,7 @@ export function Diferenciais() {
               <h3 className="font-bebas text-[22px] text-white mt-4 mb-2">
                 {item.title}
               </h3>
-              <p className="font-inter text-sm text-[#777777] leading-[1.7]">
+              <p className="font-inter text-sm text-[#777777] leading-[1.7] mt-[8px]">
                 {item.description}
               </p>
             </div>
