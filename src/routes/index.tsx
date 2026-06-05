@@ -181,7 +181,7 @@ function Index() {
       <section className="bg-[#080808] py-32 px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-20 reveal">
-            <span className="text-[#AAFF00] font-inter text-[12px] font-black uppercase tracking-[4px] mb-4 block">DÚVIDAS</span>
+            <span className="text-[#AAFF00] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">DÚVIDAS</span>
             <h2 className="font-poppins font-black text-[40px] md:text-[60px] leading-[1.1] text-white">
               PERGUNTAS <span className="text-[#AAFF00]">FREQUENTES</span>
             </h2>
