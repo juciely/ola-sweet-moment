@@ -17,11 +17,15 @@ export function LeadForm() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
+    const utms = getUtms();
+    const plano = formData.get('plano') as string;
     const data = {
       nome: formData.get('nome') as string,
       whatsapp: formData.get('whatsapp') as string,
-      plano_interesse: formData.get('plano') as string,
-      origem: 'landing_page'
+      plano_interesse: plano,
+      origem: 'landing_page',
+      pagina_origem: window.location.href,
+      ...utms
     };
 
     try {
