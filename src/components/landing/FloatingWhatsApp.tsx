@@ -1,5 +1,6 @@
 import { MessageCircle } from 'lucide-react';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { useTracking } from '@/hooks/useTracking';
 
 export function FloatingWhatsApp() {
   const { config } = useSiteConfig();
