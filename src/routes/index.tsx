@@ -15,19 +15,9 @@ export const Route = createFileRoute('/')({
 function Index() {
   const { config, loading } = useSiteConfig();
 
-  useEffect(() => {
-    if (!loading) {
-      document.title = "Elite+ Performance — Academia em Sinop-MT";
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', 'Treino personalizado com app incluso, professores CREF, estacionamento e espaço kids. Planos a partir de R$119,90/mês.');
-      }
-    }
-  }, [loading]);
-
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+      <div className="min-h-screen bg-[#080808] flex items-center justify-center">
         <div className="w-12 h-12 border-4 border-[#AAFF00] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -39,123 +29,78 @@ function Index() {
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');
   };
 
-  const renderTitle = (text: string) => {
-    if (!text) return null;
-    const parts = text.split(/(ELITE\+)/gi);
-    return parts.map((part, i) => 
-      part.toUpperCase() === 'ELITE+' ? 
-      <span key={i} className="text-[#AAFF00]">ELITE+</span> : 
-      part
-    );
-  };
-
   return (
-    <main className="bg-[#0A0A0A] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#0A0A0A] scroll-smooth">
-      {/* SECTION 1 — HERO */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pt-20 pb-12">
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat grayscale"
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop")',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/85"></div>
-          <div 
-            className="absolute inset-0 opacity-[0.05]" 
-            style={{ 
-              backgroundImage: 'linear-gradient(#AAFF00 1px, transparent 1px), linear-gradient(90deg, #AAFF00 1px, transparent 1px)',
-              backgroundSize: '40px 40px'
-            }}
-          ></div>
+    <main className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808]">
+      {/* SCROLLING BAR */}
+      <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-9 flex items-center">
+        <div className="animate-marquee whitespace-nowrap font-inter text-[13px] font-semibold text-[#0A0A0A] flex gap-8 px-4">
+          {Array(10).fill("⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡").map((t, i) => <span key={i}>{t}</span>)}
+        </div>
+      </div>
+
+      {/* HERO */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-6">
+        <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-40">
+           <div className="absolute inset-0 bg-linear-to-b from-[#080808]/70 to-[#080808]/95"></div>
         </div>
 
-        <div className="relative z-10 flex flex-col items-center text-center max-w-4xl w-full">
-          {config.oferta_badge && (
-            <div className="bg-[#AAFF00] text-[#0A0A0A] text-[11px] font-bold uppercase tracking-[2px] px-4 py-1.5 rounded-[2px] mb-8 animate-fade-in">
-              {config.oferta_badge}
-            </div>
-          )}
+        <div className="relative z-10 flex flex-col items-center text-center max-w-4xl w-full reveal">
+          <div className="bg-[#161616] border border-[#333] text-[11px] font-bold uppercase tracking-[2px] px-6 py-2 rounded-full mb-8 text-[#AAFF00]">
+            REINAUGURAÇÃO OFICIAL — SINOP-MT
+          </div>
 
-          <h1 className="font-bebas text-[72px] md:text-[96px] leading-[0.9] mb-6 tracking-tight">
-            {renderTitle(config.hero_titulo)}
+          <h1 className="font-bebas text-[72px] md:text-[110px] leading-[0.9] mb-8 tracking-tight">
+            VOCÊ NÃO PRECISA DE<br />
+            MAIS UM COMEÇO <span className="text-[#AAFF00]">FALSO.</span>
           </h1>
 
-          <p className="font-inter text-lg text-[#AAAAAA] max-width-[480px] mb-10 leading-relaxed">
-            {config.hero_subtitulo}
+          <p className="font-inter text-[19px] text-[#AAAAAA] max-w-[500px] mb-10 leading-relaxed">
+            A Elite+ Performance nasceu pra quem já tentou antes e sabe que dessa vez precisa ser diferente. Treino no seu objetivo. Professor que te vê. App que te acompanha. Resultado que aparece.
           </p>
 
           <button 
             onClick={handleWhatsApp}
-            className="group relative bg-[#AAFF00] text-[#0A0A0A] font-bold uppercase tracking-[1px] px-10 py-5 rounded-[4px] transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_30px_rgba(170,255,0,0.3)] mb-4"
+            className="group bg-[#AAFF00] text-[#0A0A0A] font-extrabold uppercase tracking-[1px] px-12 py-5 rounded-full transition-all hover:scale-102 hover:shadow-[0_0_60px_rgba(170,255,0,0.55)] mb-8"
           >
-            {config.hero_cta}
+            QUERO COMEÇAR DE VERDADE
+          </button>
+          
+          <button onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })} className="text-[#888] font-inter text-sm mb-12 hover:text-white transition-colors">
+            Ver planos ↓
           </button>
 
-          <span className="text-[#555555] text-[13px] font-medium">
-            #1 EM TREINO PERSONALIZADO EM SINOP-MT
-          </span>
-        </div>
-      </section>
-
-      {/* SECTION 2 — OFERTA DE REINAUGURAÇÃO */}
-      <section className="bg-[#111111] py-24 px-6 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#AAFF00]/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-        <div className="max-w-[520px] mx-auto text-center relative z-10">
-          <div className="inline-block border border-[#AAFF00] text-[#AAFF00] text-[11px] font-bold uppercase tracking-[2px] px-4 py-1.5 rounded-[2px] mb-8">
-            OFERTA ESPECIAL
-          </div>
-
-          <h2 className="font-bebas text-[52px] md:text-[64px] leading-none mb-8">
-            {config.oferta_titulo}
-          </h2>
-
-          <div className="flex flex-col items-center mb-8">
-            <span className="text-[#555] text-xl line-through mb-1">
-              R$ {config.oferta_preco_riscado}/mês
-            </span>
-            <div className="flex items-start">
-              <span className="font-bebas text-2xl mt-4 mr-2 text-[#AAFF00]">R$</span>
-              <span className="font-bebas text-[80px] md:text-[100px] leading-none text-[#AAFF00]">
-                {config.oferta_preco}
-              </span>
-              <span className="font-bebas text-2xl mt-14 ml-2 text-[#AAFF00]">/mês</span>
-            </div>
-          </div>
-
-          <p className="font-inter text-[15px] text-[#888888] mb-12 leading-relaxed">
-            {config.oferta_descricao}
-          </p>
-
-          <button 
-            onClick={handleWhatsApp}
-            className="w-full bg-[#AAFF00] text-[#0A0A0A] font-bold uppercase tracking-[1px] px-10 py-5 rounded-[4px] transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(170,255,0,0.2)] mb-12"
-          >
-            GARANTIR MINHA VAGA
-          </button>
-
-          <div className="flex flex-col items-center pt-8 border-t border-white/5">
-            <span className="text-[#888] text-sm uppercase tracking-widest mb-4">
-              Oferta válida por:
-            </span>
-            <Countdown />
+          <div className="flex gap-8 font-inter text-[13px] text-[#555]">
+            <span>• 05h–22h</span>
+            <span>• App incluso</span>
+            <span>• CREF certificado</span>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — DIFERENCIAIS */}
+      {/* STORYTELLING */}
+      <section className="bg-[#111111] py-24 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+          <div className="flex-1 reveal">
+            <span className="text-[#AAFF00] font-inter text-[12px] uppercase tracking-[3px] mb-4 block">NOSSA HISTÓRIA</span>
+            <h2 className="font-bebas text-[52px] leading-none mb-6">
+              MUDAMOS O NOME.<br />
+              ELEVAMOS O PADRÃO.
+            </h2>
+            <p className="font-inter text-[17px] text-[#AAAAAA] leading-[1.8]">
+              A Agitare foi por anos a academia de referência em Sinop. Mas a gente sabia que podia ser mais. Mais estrutura. Mais tecnologia. Mais resultado pra quem acorda cedo, treina no intervalo do almoço ou chega cansado depois do trabalho e ainda assim não desiste.<br /><br />
+              Hoje somos a Elite+ Performance. O mesmo compromisso com o seu resultado — agora com o padrão que você merece.
+            </p>
+          </div>
+          <div className="flex-1 w-full reveal">
+            <img src="https://images.unsplash.com/photo-1540497077202-7c8a39988333?q=80&w=2070&auto=format&fit=crop" alt="Gym" className="rounded-[24px] w-full" />
+          </div>
+        </div>
+      </section>
+
       <Diferenciais />
-
-      {/* SECTION 4 — PLANOS */}
       <Planos />
-
-      {/* SECTION 5 — FORMULÁRIO DE LEAD */}
       <LeadForm />
-
-      {/* SECTION 6 — FOOTER */}
       <Footer />
-
-      {/* COMPONENTE FIXO — BOTÃO WHATSAPP */}
       <FloatingWhatsApp />
     </main>
   );
