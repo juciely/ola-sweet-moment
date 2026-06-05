@@ -38,7 +38,7 @@ export function PromocaoNamorados() {
               <p className="font-inter text-[14px] text-white/60 uppercase tracking-widest font-bold">Por pessoa / 1º Mês</p>
               
               <div className="mt-8 pt-8 border-t border-white/10 w-full">
-                <p className="font-bebas text-[20px] text-white/80 mb-4 tracking-widest uppercase">Formas de Pagamento</p>
+                <p className="font-poppins text-[20px] font-bold text-white/80 mb-4 tracking-widest uppercase">Formas de Pagamento</p>
                 <div className="flex flex-wrap justify-center gap-3 grayscale opacity-70">
                    <img src="https://logodownload.org/wp-content/uploads/2016/10/visa-logo-1.png" className="h-4 object-contain" alt="Visa" />
                    <img src="https://logodownload.org/wp-content/uploads/2014/07/mastercard-logo-7.png" className="h-4 object-contain" alt="Mastercard" />
