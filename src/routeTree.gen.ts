@@ -13,6 +13,7 @@ import { Route as AgendarRouteImport } from './routes/agendar'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
+import { Route as AdminDebugRouteImport } from './routes/admin/debug'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminConversoesRouteImport } from './routes/admin/conversoes'
 import { Route as AdminConteudoRouteImport } from './routes/admin/conteudo'
@@ -37,6 +38,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminLeadsRoute = AdminLeadsRouteImport.update({
   id: '/leads',
   path: '/leads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDebugRoute = AdminDebugRouteImport.update({
+  id: '/debug',
+  path: '/debug',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/admin/conteudo': typeof AdminConteudoRoute
   '/admin/conversoes': typeof AdminConversoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/debug': typeof AdminDebugRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/admin/conteudo': typeof AdminConteudoRoute
   '/admin/conversoes': typeof AdminConversoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/debug': typeof AdminDebugRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
 export interface FileRoutesById {
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/admin/conteudo': typeof AdminConteudoRoute
   '/admin/conversoes': typeof AdminConversoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/debug': typeof AdminDebugRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/admin/conteudo'
     | '/admin/conversoes'
     | '/admin/dashboard'
+    | '/admin/debug'
     | '/admin/leads'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/admin/conteudo'
     | '/admin/conversoes'
     | '/admin/dashboard'
+    | '/admin/debug'
     | '/admin/leads'
   id:
     | '__root__'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/admin/conteudo'
     | '/admin/conversoes'
     | '/admin/dashboard'
+    | '/admin/debug'
     | '/admin/leads'
   fileRoutesById: FileRoutesById
 }
@@ -169,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/leads'
       fullPath: '/admin/leads'
       preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/debug': {
+      id: '/admin/debug'
+      path: '/debug'
+      fullPath: '/admin/debug'
+      preLoaderRoute: typeof AdminDebugRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/dashboard': {
@@ -215,6 +234,7 @@ interface AdminRouteChildren {
   AdminConteudoRoute: typeof AdminConteudoRoute
   AdminConversoesRoute: typeof AdminConversoesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDebugRoute: typeof AdminDebugRoute
   AdminLeadsRoute: typeof AdminLeadsRoute
 }
 
@@ -224,6 +244,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminConteudoRoute: AdminConteudoRoute,
   AdminConversoesRoute: AdminConversoesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminDebugRoute: AdminDebugRoute,
   AdminLeadsRoute: AdminLeadsRoute,
 }
 
