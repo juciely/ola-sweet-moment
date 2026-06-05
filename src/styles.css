@@ -72,21 +72,13 @@ body {
 .reveal {
   opacity: 1 !important;
   transform: none !important;
-}
-
-/* Manter as regras originais comentadas para depuração */
-/*
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out !important;
 }
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
-*/
 
 button, a {
   transition: all 0.3s ease;
