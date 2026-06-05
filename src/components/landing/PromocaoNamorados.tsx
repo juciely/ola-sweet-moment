@@ -34,11 +34,12 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
   if (!timeLeft) return null;
 
   const TimeUnit = ({ value, label }: { value: number, label: string }) => (
-    <div className="flex flex-col items-center px-3 md:px-5">
-      <span className="font-bebas text-3xl md:text-5xl text-[#d7f803] leading-none">{value.toString().padStart(2, '0')}</span>
-      <span className="font-poppins text-[8px] md:text-[10px] text-[#555] font-black uppercase tracking-widest mt-1">{label}</span>
+    <div className="flex flex-col items-center">
+      <span className="font-bebas text-4xl md:text-5xl text-[#d7f803] leading-none">{value.toString().padStart(2, '0')}</span>
+      <span className="font-poppins text-[7px] md:text-[9px] text-[#555] font-black uppercase tracking-widest mt-1">{label}</span>
     </div>
   );
+
 
   return (
     <div className="mt-8 pt-8 border-t border-white/5">
