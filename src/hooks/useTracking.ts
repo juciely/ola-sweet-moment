@@ -160,5 +160,5 @@ export function useTracking() {
     if (window.gtag) window.gtag('event', 'generate_lead', { method: 'Form', content: plano });
   }, [getUtms]);
 
-  return { getUtms, trackWhatsappClick, trackLeadForm };
+  return { getUtms, trackWhatsappClick, trackLeadForm, trackMatriculaConfirmada };
 }
