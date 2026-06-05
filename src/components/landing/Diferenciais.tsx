@@ -35,23 +35,24 @@ const diferenciais = [
 
 export function Diferenciais() {
   return (
-    <section className="bg-[#0A0A0A] py-24 px-6">
+    <section className="bg-[#080808] py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-bebas text-5xl md:text-6xl text-white mb-16">
-          POR QUE <span className="text-[#AAFF00]">ELITE+</span> PERFORMANCE?
+        <h2 className="font-bebas text-[52px] text-white mb-16 text-center reveal">
+          O QUE MUDA QUANDO VOCÊ TREINA AQUI
         </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {diferenciais.map((item, index) => (
             <div 
               key={index} 
-              className="bg-[#111111] border-l-[3px] border-[#AAFF00] p-6 md:p-8 flex flex-col items-start transition-transform hover:scale-[1.02]"
+              className="bg-[#111111] border border-[#1E1E1E] p-7 md:p-8 rounded-[16px] flex flex-col items-start transition-all duration-300 hover:border-[#AAFF00] hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(170,255,0,0.08)] reveal"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <item.icon className="text-[#AAFF00] w-7 h-7 mb-6" />
-              <h3 className="font-bebas text-xl md:text-2xl text-white mb-3">
+              <item.icon className="text-[#AAFF00] w-8 h-8" />
+              <h3 className="font-bebas text-[22px] text-white mt-4 mb-2">
                 {item.title}
               </h3>
-              <p className="font-inter text-sm text-[#888888] leading-relaxed">
+              <p className="font-inter text-sm text-[#777777] leading-[1.7]">
                 {item.description}
               </p>
             </div>
