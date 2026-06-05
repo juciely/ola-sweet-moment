@@ -35,6 +35,32 @@ export function Countdown() {
 
   const format = (num: number) => String(num).padStart(2, '0');
 
+  if (typeof window === 'undefined') {
+    return (
+      <div className="flex gap-4 font-bebas text-4xl text-[#AAFF00]">
+        <div className="flex flex-col items-center">
+          <span>00</span>
+          <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Dias</span>
+        </div>
+        <span>:</span>
+        <div className="flex flex-col items-center">
+          <span>00</span>
+          <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Horas</span>
+        </div>
+        <span>:</span>
+        <div className="flex flex-col items-center">
+          <span>00</span>
+          <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Min</span>
+        </div>
+        <span>:</span>
+        <div className="flex flex-col items-center">
+          <span>00</span>
+          <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Seg</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex gap-4 font-bebas text-4xl text-[#AAFF00]">
       <div className="flex flex-col items-center">
