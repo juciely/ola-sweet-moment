@@ -21,7 +21,7 @@ export function Planos() {
   if (loading) {
     return (
       <div className="h-64 flex items-center justify-center bg-[#111111]">
-        <div className="w-8 h-8 border-3 border-[#AAFF00] border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-3 border-[#d7f803] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -55,19 +55,19 @@ export function Planos() {
           <div className="bg-[#1A1A1A] p-1 rounded-full flex">
             <button 
               onClick={() => setBilling('MENSAL')}
-              className={`px-8 py-2.5 rounded-full font-inter text-sm font-semibold transition-all ${billing === 'MENSAL' ? 'bg-[#AAFF00] text-[#0A0A0A]' : 'text-[#666]'}`}
+              className={`px-8 py-2.5 rounded-full font-inter text-sm font-semibold transition-all ${billing === 'MENSAL' ? 'bg-[#d7f803] text-[#0A0A0A]' : 'text-[#666]'}`}
             >
               MENSAL
             </button>
             <button 
               onClick={() => setBilling('ANUAL')}
-              className={`px-8 py-2.5 rounded-full font-inter text-sm font-semibold transition-all ${billing === 'ANUAL' ? 'bg-[#AAFF00] text-[#0A0A0A]' : 'text-[#666]'}`}
+              className={`px-8 py-2.5 rounded-full font-inter text-sm font-semibold transition-all ${billing === 'ANUAL' ? 'bg-[#d7f803] text-[#0A0A0A]' : 'text-[#666]'}`}
             >
               ANUAL
             </button>
           </div>
           {billing === 'ANUAL' && (
-            <span className="text-[#AAFF00] font-bold text-xs uppercase tracking-wider animate-pulse">ECONOMIZE 25%</span>
+            <span className="text-[#d7f803] font-bold text-xs uppercase tracking-wider animate-pulse">ECONOMIZE 25%</span>
           )}
         </div>
 
@@ -75,11 +75,11 @@ export function Planos() {
           {currentPlans.map((plano, i) => (
             <div 
               key={i}
-              className={`relative bg-[#161616] p-8 rounded-[20px] flex flex-col border transition-all duration-300 reveal ${plano.highlight ? 'border-[#AAFF00] shadow-[0_0_48px_rgba(170,255,0,0.12)]' : 'border-[#222]'}`}
+              className={`relative bg-[#161616] p-8 rounded-[20px] flex flex-col border transition-all duration-300 reveal ${plano.highlight ? 'border-[#d7f803] shadow-[0_0_48px_rgba(170,255,0,0.12)]' : 'border-[#222]'}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {plano.badge && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#AAFF00] text-[#0A0A0A] text-[11px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#d7f803] text-[#0A0A0A] text-[11px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
                   {plano.badge}
                 </div>
               )}
@@ -89,7 +89,7 @@ export function Planos() {
 
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-white font-bebas text-2xl">R$</span>
-                <span className={`font-bebas text-[64px] leading-none ${plano.highlight ? 'text-[#AAFF00]' : 'text-white'}`}>
+                <span className={`font-bebas text-[64px] leading-none ${plano.highlight ? 'text-[#d7f803]' : 'text-white'}`}>
                   {plano.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
                 <span className="text-[#666] font-inter text-base ml-1">{(plano as any).suffix || '/mês'}</span>
@@ -100,7 +100,7 @@ export function Planos() {
               <div className="space-y-4 mb-10 flex-grow">
                 {plano.benefits.map((b, j) => (
                   <div key={j} className="flex gap-3 items-start">
-                    <Check className="w-5 h-5 text-[#AAFF00] flex-shrink-0" />
+                    <Check className="w-5 h-5 text-[#d7f803] flex-shrink-0" />
                     <span className="text-[#AAA] text-sm font-inter leading-tight">{b}</span>
                   </div>
                 ))}
@@ -108,7 +108,7 @@ export function Planos() {
 
               <button 
                 onClick={() => handleWhatsApp(plano.nome)}
-                className={`w-full py-4 md:py-5 rounded-full font-black uppercase tracking-wider transition-all text-sm md:text-base ${plano.highlight ? 'bg-[#AAFF00] text-[#0A0A0A] hover:shadow-[0_0_35px_rgba(170,255,0,0.4)]' : 'border border-[#333] text-white hover:border-[#AAFF00] hover:bg-white/5'}`}
+                className={`w-full py-4 md:py-5 rounded-full font-black uppercase tracking-wider transition-all text-sm md:text-base ${plano.highlight ? 'bg-[#d7f803] text-[#0A0A0A] hover:shadow-[0_0_35px_rgba(170,255,0,0.4)]' : 'border border-[#333] text-white hover:border-[#d7f803] hover:bg-white/5'}`}
               >
                 QUERO ESSE PLANO
               </button>
@@ -118,12 +118,12 @@ export function Planos() {
 
         <div className="flex flex-col items-center gap-6 reveal">
           <p className="text-[#555] font-inter text-sm">
-            Quer conhecer antes de decidir? <a href="/agendar" className="text-[#555] hover:text-[#AAFF00] font-bold underline underline-offset-4 transition-colors">Agende uma visita gratuita →</a>
+            Quer conhecer antes de decidir? <a href="/agendar" className="text-[#555] hover:text-[#d7f803] font-bold underline underline-offset-4 transition-colors">Agende uma visita gratuita →</a>
           </p>
 
           <button 
             onClick={() => setShowTable(!showTable)}
-            className="text-[#555] hover:text-[#AAFF00] transition-colors flex items-center gap-2 text-sm font-inter"
+            className="text-[#555] hover:text-[#d7f803] transition-colors flex items-center gap-2 text-sm font-inter"
           >
             Ver todos os planos disponíveis <ChevronDown className={`w-4 h-4 transition-transform ${showTable ? 'rotate-180' : ''}`} />
           </button>
@@ -144,7 +144,7 @@ export function Planos() {
                   <tr key={p.id} className="border-b border-white/5 hover:bg-white/5 transition-colors cursor-pointer" onClick={() => handleWhatsApp(p.nome)}>
                     <td className="py-4 font-bold">{p.nome}</td>
                     <td className="py-4 text-[#777]">{p.duracao}</td>
-                    <td className="py-4 text-right font-bold text-[#AAFF00]">R$ {Number(p.preco).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td className="py-4 text-right font-bold text-[#d7f803]">R$ {Number(p.preco).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                   </tr>
                 ))}
               </tbody>

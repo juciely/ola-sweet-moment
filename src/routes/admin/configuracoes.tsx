@@ -44,7 +44,7 @@ function AdminConfiguracoes() {
   const ConfigCard = ({ title, icon: Icon, children, keys }: any) => (
     <div className="bg-[#111] border border-white/5 rounded-[24px] p-8 space-y-8 flex flex-col">
       <div className="flex items-center gap-4">
-        <div className="bg-[#AAFF00]/10 p-3 rounded-xl text-[#AAFF00]">
+        <div className="bg-[#d7f803]/10 p-3 rounded-xl text-[#d7f803]">
           <Icon className="w-6 h-6" />
         </div>
         <h3 className="font-bebas text-2xl text-white uppercase">{title}</h3>
@@ -57,7 +57,7 @@ function AdminConfiguracoes() {
       <button
         onClick={() => handleSave(keys)}
         disabled={loading}
-        className="w-full bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[1px] py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
+        className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
       >
         {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Save className="w-4 h-4" /> SALVAR</>}
       </button>
@@ -71,7 +71,7 @@ function AdminConfiguracoes() {
         type={type}
         value={config[id] || ''}
         onChange={e => setConfig({ ...config, [id]: e.target.value })}
-        className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#AAFF00] outline-none transition-all placeholder-[#444]"
+        className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#d7f803] outline-none transition-all placeholder-[#444]"
       />
       {note && <p className="text-[10px] text-[#444] leading-relaxed">{note}</p>}
     </div>
@@ -83,7 +83,7 @@ function AdminConfiguracoes() {
       <textarea
         value={config[id] || ''}
         onChange={e => setConfig({ ...config, [id]: e.target.value })}
-        className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#AAFF00] outline-none transition-all placeholder-[#444] min-h-[100px] resize-none"
+        className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#d7f803] outline-none transition-all placeholder-[#444] min-h-[100px] resize-none"
       />
       {note && <p className="text-[10px] text-[#444] leading-relaxed">{note}</p>}
     </div>
@@ -96,7 +96,7 @@ function AdminConfiguracoes() {
         onClick={() => setConfig({ ...config, [id]: config[id] === 'true' ? 'false' : 'true' })}
         className={cn(
           "w-12 h-6 rounded-full relative transition-all duration-300",
-          config[id] === 'true' ? "bg-[#AAFF00]" : "bg-[#333]"
+          config[id] === 'true' ? "bg-[#d7f803]" : "bg-[#333]"
         )}
       >
         <div className={cn(
@@ -112,7 +112,7 @@ function AdminConfiguracoes() {
       <div className="flex items-center justify-between">
         <h2 className="font-bebas text-[36px] text-white leading-none">CONFIGURAÇÕES</h2>
         {success && (
-          <div className="flex items-center gap-2 text-[#AAFF00] font-inter text-sm bg-[#AAFF00]/10 px-6 py-3 rounded-full border border-[#AAFF00]/20 animate-fade-in">
+          <div className="flex items-center gap-2 text-[#d7f803] font-inter text-sm bg-[#d7f803]/10 px-6 py-3 rounded-full border border-[#d7f803]/20 animate-fade-in">
             <Check className="w-4 h-4" /> {success}
           </div>
         )}
@@ -146,7 +146,7 @@ function AdminConfiguracoes() {
             </p>
             <div className="p-4 bg-[#0A0A0A] border border-white/5 rounded-xl space-y-2">
               <p className="text-[9px] text-[#444] font-black uppercase tracking-widest">Exemplo de URL de Anúncio</p>
-              <code className="text-[10px] text-[#AAFF00] break-all block">
+              <code className="text-[10px] text-[#d7f803] break-all block">
                 https://lp.eliteperformance.com.br?utm_source=meta&utm_medium=cpc&utm_campaign=reinauguracao
               </code>
             </div>

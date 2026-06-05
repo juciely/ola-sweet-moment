@@ -39,7 +39,7 @@ export function Countdown() {
 
   if (!isMounted) {
     return (
-      <div className="flex gap-4 font-bebas text-4xl text-[#AAFF00] opacity-0">
+      <div className="flex gap-4 font-bebas text-4xl text-[#d7f803] opacity-0">
         <div className="flex flex-col items-center">
           <span>00</span>
           <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Dias</span>
@@ -64,7 +64,7 @@ export function Countdown() {
   }
 
   return (
-    <div className="flex gap-4 font-bebas text-4xl text-[#AAFF00]">
+    <div className="flex gap-4 font-bebas text-4xl text-[#d7f803]">
       <div className="flex flex-col items-center">
         <span>{format(timeLeft.days)}</span>
         <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Dias</span>

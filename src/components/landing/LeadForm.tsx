@@ -45,22 +45,22 @@ export function LeadForm() {
 
   return (
     <section className="bg-[#080808] py-32 px-8 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#AAFF00]/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#d7f803]/5 blur-[120px] rounded-full pointer-events-none"></div>
       
       <div className="container-custom relative z-10">
         <div className="max-w-[700px] mx-auto text-center reveal">
-          <span className="text-[#AAFF00] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">CONTATO</span>
+          <span className="text-[#d7f803] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">CONTATO</span>
           <h2 className="font-poppins font-black text-[36px] md:text-[60px] text-white mb-6 leading-[1.1]">
             QUER SABER QUAL <br />
-            <span className="text-[#AAFF00]">PLANO É PRA VOCÊ?</span>
+            <span className="text-[#d7f803]">PLANO É PRA VOCÊ?</span>
           </h2>
           <p className="font-inter text-[16px] md:text-[18px] text-[#666] mb-12 max-w-[500px] mx-auto font-light">
             Deixe seu contato. Nossa equipe entrará em contato em menos de 1 hora para tirar todas as suas dúvidas.
           </p>
 
           {success ? (
-            <div className="bg-[#111] border border-[#AAFF00]/30 p-12 rounded-[32px] animate-fade-in shadow-2xl backdrop-blur-md">
-              <div className="w-20 h-20 bg-[#AAFF00] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(170,255,0,0.3)]">
+            <div className="bg-[#111] border border-[#d7f803]/30 p-12 rounded-[32px] animate-fade-in shadow-2xl backdrop-blur-md">
+              <div className="w-20 h-20 bg-[#d7f803] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(170,255,0,0.3)]">
                 <svg className="w-10 h-10 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
@@ -76,7 +76,7 @@ export function LeadForm() {
                   type="text"
                   placeholder="Seu nome"
                   required
-                  className="w-full bg-[#111] border border-white/5 text-white px-7 py-5 rounded-[20px] outline-none focus:border-[#AAFF00]/50 focus:ring-4 focus:ring-[#AAFF00]/5 transition-all placeholder-[#444] font-inter font-medium"
+                  className="w-full bg-[#111] border border-white/5 text-white px-7 py-5 rounded-[20px] outline-none focus:border-[#d7f803]/50 focus:ring-4 focus:ring-[#d7f803]/5 transition-all placeholder-[#444] font-inter font-medium"
                 />
                 
                 <input
@@ -84,13 +84,13 @@ export function LeadForm() {
                   type="tel"
                   placeholder="WhatsApp (66) 9 9999-9999"
                   required
-                  className="w-full bg-[#111] border border-white/5 text-white px-7 py-5 rounded-[20px] outline-none focus:border-[#AAFF00]/50 focus:ring-4 focus:ring-[#AAFF00]/5 transition-all placeholder-[#444] font-inter font-medium"
+                  className="w-full bg-[#111] border border-white/5 text-white px-7 py-5 rounded-[20px] outline-none focus:border-[#d7f803]/50 focus:ring-4 focus:ring-[#d7f803]/5 transition-all placeholder-[#444] font-inter font-medium"
                 />
 
                 <div className="relative">
                   <select
                     name="plano"
-                    className="w-full bg-[#111] border border-white/5 text-white px-7 py-5 rounded-[20px] outline-none focus:border-[#AAFF00]/50 focus:ring-4 focus:ring-[#AAFF00]/5 transition-all appearance-none font-inter font-medium cursor-pointer"
+                    className="w-full bg-[#111] border border-white/5 text-white px-7 py-5 rounded-[20px] outline-none focus:border-[#d7f803]/50 focus:ring-4 focus:ring-[#d7f803]/5 transition-all appearance-none font-inter font-medium cursor-pointer"
                   >
                     <option value="">Qual o seu objetivo?</option>
                     <option value="perda_peso">Perda de peso</option>
@@ -109,7 +109,7 @@ export function LeadForm() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[2px] py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(170,255,0,0.3)] disabled:opacity-50 text-[17px] mt-4 shadow-xl active:scale-95"
+                className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[2px] py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(170,255,0,0.3)] disabled:opacity-50 text-[17px] mt-4 shadow-xl active:scale-95"
               >
                 {loading ? 'ENVIANDO...' : 'SOLICITAR CONTATO'}
               </button>

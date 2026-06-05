@@ -132,10 +132,10 @@ function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <MetricCard title="Total de Leads" value={stats.leads} icon={Users} color="#AAFF00" />
+        <MetricCard title="Total de Leads" value={stats.leads} icon={Users} color="#d7f803" />
         <MetricCard title="Agendamentos Pendentes" value={stats.agendamentos} icon={Calendar} color="#FFB800" />
         <MetricCard title="Cliques no WhatsApp" value={stats.cliques} icon={MessageCircle} color="#25D366" />
-        <MetricCard title="Matrículas Confirmadas" value={stats.matriculas} icon={CheckCircle} color="#AAFF00" />
+        <MetricCard title="Matrículas Confirmadas" value={stats.matriculas} icon={CheckCircle} color="#d7f803" />
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
@@ -143,7 +143,7 @@ function AdminDashboard() {
         <div className="bg-[#111] border border-white/5 rounded-[24px] p-8 flex flex-col">
           <div className="flex items-center justify-between mb-8">
             <h3 className="font-bebas text-2xl text-white">ÚLTIMOS 10 LEADS</h3>
-            <Link to="/admin/leads" className="text-[#AAFF00] text-xs font-bold flex items-center gap-1 hover:underline">
+            <Link to="/admin/leads" className="text-[#d7f803] text-xs font-bold flex items-center gap-1 hover:underline">
               Ver todos <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -175,7 +175,7 @@ function AdminDashboard() {
         <div className="bg-[#111] border border-white/5 rounded-[24px] p-8 flex flex-col">
           <div className="flex items-center justify-between mb-8">
             <h3 className="font-bebas text-2xl text-white">AGENDAMENTOS DE HOJE</h3>
-            <Link to="/admin/agendamentos" className="text-[#AAFF00] text-xs font-bold flex items-center gap-1 hover:underline">
+            <Link to="/admin/agendamentos" className="text-[#d7f803] text-xs font-bold flex items-center gap-1 hover:underline">
               Ver todos <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -192,7 +192,7 @@ function AdminDashboard() {
                   <span className={cn(
                     "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider",
                     app.status === 'pendente' ? "bg-[#FFB800]/10 text-[#FFB800]" : 
-                    app.status === 'confirmado' ? "bg-[#AAFF00]/10 text-[#AAFF00]" : "bg-red-500/10 text-red-500"
+                    app.status === 'confirmado' ? "bg-[#d7f803]/10 text-[#d7f803]" : "bg-red-500/10 text-red-500"
                   )}>
                     {app.status}
                   </span>
@@ -227,14 +227,14 @@ function AdminDashboard() {
               />
               <Tooltip 
                 contentStyle={{ backgroundColor: '#111', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px' }}
-                itemStyle={{ color: '#AAFF00', fontWeight: 'bold' }}
+                itemStyle={{ color: '#d7f803', fontWeight: 'bold' }}
               />
               <Line 
                 type="monotone" 
                 dataKey="leads" 
-                stroke="#AAFF00" 
+                stroke="#d7f803" 
                 strokeWidth={3} 
-                dot={{ r: 4, fill: '#AAFF00', strokeWidth: 0 }}
+                dot={{ r: 4, fill: '#d7f803', strokeWidth: 0 }}
                 activeDot={{ r: 6, strokeWidth: 0 }}
               />
             </LineChart>

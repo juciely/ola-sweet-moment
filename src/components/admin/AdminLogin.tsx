@@ -95,7 +95,7 @@ export function AdminLogin() {
   if (checkingAccess) {
     return (
       <div className="min-h-screen bg-[#080808] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-[#AAFF00] animate-spin" />
+        <Loader2 className="w-8 h-8 text-[#d7f803] animate-spin" />
       </div>
     );
   }
@@ -109,7 +109,7 @@ export function AdminLogin() {
 
         <div className="bg-[#111] border border-white/5 p-8 rounded-[32px] shadow-2xl relative overflow-hidden">
           {isFirstAccess && (
-            <div className="absolute top-0 left-0 w-full h-1 bg-[#AAFF00] animate-pulse"></div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-[#d7f803] animate-pulse"></div>
           )}
           
           <div className="mb-8">
@@ -131,7 +131,7 @@ export function AdminLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#AAFF00] outline-none transition-all placeholder-[#444]"
+                className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#d7f803] outline-none transition-all placeholder-[#444]"
                 placeholder="admin@eliteperformance.com.br"
               />
             </div>
@@ -143,7 +143,7 @@ export function AdminLogin() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#AAFF00] outline-none transition-all placeholder-[#444]"
+                className="w-full bg-[#161616] border border-[#222] rounded-xl px-5 py-4 text-white focus:border-[#d7f803] outline-none transition-all placeholder-[#444]"
                 placeholder="••••••••"
               />
             </div>
@@ -157,7 +157,7 @@ export function AdminLogin() {
 
             <button
               disabled={loading}
-              className="w-full bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[1px] py-5 rounded-full transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(170,255,0,0.2)]"
+              className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] py-5 rounded-full transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(170,255,0,0.2)]"
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
