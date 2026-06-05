@@ -3,8 +3,10 @@ import { useTracking } from '@/hooks/useTracking';
 
 export function Footer() {
   const { config } = useSiteConfig();
+  const { trackWhatsappClick } = useTracking();
 
   const handleWhatsApp = () => {
+    trackWhatsappClick('Footer Button');
     const number = config.whatsapp_numero || '5566999970103';
     const message = encodeURIComponent(config.whatsapp_mensagem || '');
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');
