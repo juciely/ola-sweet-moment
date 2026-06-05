@@ -41,11 +41,14 @@ function Index() {
       <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center pt-16 pb-16 px-8 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1540497077202-7c8a39988333?q=80&w=2070&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
             alt="Gym Atmosphere" 
-            className="w-full h-full object-cover grayscale opacity-30 scale-110 animate-pulse-slow"
+            className="w-full h-full object-cover grayscale brightness-[0.4] scale-105"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-[#080808] via-transparent to-[#080808]"></div>
+          {/* Degradê de Impacto */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-transparent to-transparent opacity-80"></div>
+          <div className="absolute inset-0 bg-radial-at-center from-[#AAFF00]/5 to-transparent opacity-30"></div>
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center max-w-5xl w-full reveal">
