@@ -1,13 +1,39 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute, redirect } from '@tanstack/react-router';
+import { supabase } from '@/lib/supabase';
+import { AdminLayout } from '@/components/admin/AdminLayout';
+import { AdminLogin } from '@/components/admin/AdminLogin';
 
 export const Route = createFileRoute('/admin')({
-  component: AdminPage,
-})
+  beforeLoad: async ({ location }) => {
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    // If not logged in and not on login page, redirect to login
+    if (!session && location.pathname !== '/admin') {
+      throw redirect({
+        to: '/admin',
+      });
+    }
 
-function AdminPage() {
+    // If logged in and on login page, redirect to dashboard
+    if (session && location.pathname === '/admin') {
+      throw redirect({
+        to: '/admin/dashboard',
+      });
+    }
+  },
+  component: AdminRoot,
+});
+
+function AdminRoot() {
+  const { pathname } = Route.useLocation();
+  
+  if (pathname === '/admin') {
+    return <AdminLogin />;
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <h1 className="text-4xl font-bold">/admin</h1>
-    </div>
-  )
+    <AdminLayout>
+      <Outlet />
+    </AdminLayout>
+  );
 }
