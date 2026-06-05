@@ -71,12 +71,10 @@ export function PromocaoNamorados() {
                   </div>
                 </div>
                 
-                <h2 className="font-poppins font-black text-[32px] md:text-[54px] text-white leading-[1.05] tracking-tight uppercase mb-6">
-                  {titulo.split(' ').map((word, i) => (
-                    <span key={i} className={word === 'NAMORADOS' ? 'text-[#AAFF00]' : ''}>
-                      {word === 'JUNHO' ? <span className="text-[24px] md:text-[36px] block lg:inline">{word}</span> : word}{' '}
-                    </span>
-                  ))}
+                <h2 className="font-poppins font-black text-[38px] md:text-[68px] text-white leading-[0.95] tracking-tighter uppercase mb-6">
+                  PROMOÇÃO <br />
+                  <span className="text-[28px] md:text-[42px] block text-[#666] mb-1">JUNHO DOS</span>
+                  <span className="text-[#AAFF00]">NAMORADOS</span>
                 </h2>
                 <p className="font-inter text-[15px] md:text-[17px] text-[#666] leading-relaxed max-w-[500px] mx-auto lg:mx-0">
                   {condicoes}
