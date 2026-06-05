@@ -1,0 +1,10 @@
+node_modules
+dist
+.git
+.lovable
+.tanstack
+.workspace
+bun.lock
+README.md
+Dockerfile
+.dockerignore
