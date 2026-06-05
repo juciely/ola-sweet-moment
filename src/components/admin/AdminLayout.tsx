@@ -31,6 +31,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
     { label: 'Conversões', icon: TrendingUp, href: '/admin/conversoes' },
     { label: 'Configurações', icon: Settings, href: '/admin/configuracoes' },
     { label: 'Conteúdo', icon: Type, href: '/admin/conteudo' },
+    { label: 'Debug', icon: Bug, href: '/admin/debug' },
   ];
 
   const handleLogout = async () => {
