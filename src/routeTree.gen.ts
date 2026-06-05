@@ -14,6 +14,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminConfiguracoesRouteImport } from './routes/admin/configuracoes'
 import { Route as AdminAgendamentosRouteImport } from './routes/admin/agendamentos'
 
 const AgendarRoute = AgendarRouteImport.update({
@@ -41,6 +42,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminConfiguracoesRoute = AdminConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminAgendamentosRoute = AdminAgendamentosRouteImport.update({
   id: '/agendamentos',
   path: '/agendamentos',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/admin/agendamentos': typeof AdminAgendamentosRoute
+  '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/admin/agendamentos': typeof AdminAgendamentosRoute
+  '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/admin/agendamentos': typeof AdminAgendamentosRoute
+  '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/agendar'
     | '/admin/agendamentos'
+    | '/admin/configuracoes'
     | '/admin/dashboard'
     | '/admin/leads'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/agendar'
     | '/admin/agendamentos'
+    | '/admin/configuracoes'
     | '/admin/dashboard'
     | '/admin/leads'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/agendar'
     | '/admin/agendamentos'
+    | '/admin/configuracoes'
     | '/admin/dashboard'
     | '/admin/leads'
   fileRoutesById: FileRoutesById
@@ -142,6 +154,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/configuracoes': {
+      id: '/admin/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/admin/configuracoes'
+      preLoaderRoute: typeof AdminConfiguracoesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/agendamentos': {
       id: '/admin/agendamentos'
       path: '/agendamentos'
@@ -154,12 +173,14 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminAgendamentosRoute: typeof AdminAgendamentosRoute
+  AdminConfiguracoesRoute: typeof AdminConfiguracoesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLeadsRoute: typeof AdminLeadsRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminAgendamentosRoute: AdminAgendamentosRoute,
+  AdminConfiguracoesRoute: AdminConfiguracoesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLeadsRoute: AdminLeadsRoute,
 }
