@@ -92,11 +92,8 @@ export function AdminLogin() {
   return (
     <div className="min-h-screen bg-[#080808] flex items-center justify-center px-6">
       <div className="w-full max-w-[400px]">
-        <div className="text-center mb-10">
-          <h1 className="font-bebas text-[48px] text-[#AAFF00] leading-none mb-2">ELITE+</h1>
-          <p className="font-inter text-[11px] text-[#444] font-bold tracking-[4px] uppercase">
-            {isFirstAccess ? 'CONFIGURAÇÃO INICIAL' : 'PAINEL ADMINISTRATIVO'}
-          </p>
+        <div className="text-center mb-10 flex flex-col items-center">
+          <img src="/logo.png" alt="Elite+" className="w-48 mb-4" />
         </div>
 
         <div className="bg-[#111] border border-white/5 p-8 rounded-[32px] shadow-2xl relative overflow-hidden">

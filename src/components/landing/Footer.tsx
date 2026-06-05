@@ -18,8 +18,7 @@ export function Footer() {
         {/* Col 1 */}
         <div className="space-y-6">
           <div className="flex flex-col gap-1">
-            <span className="font-bebas text-[36px] text-[#AAFF00] leading-none">ELITE+</span>
-            <span className="font-inter text-[14px] text-[#555] font-bold tracking-[2px]">PERFORMANCE</span>
+            <img src="/logo.png" alt="Elite+ Performance" className="w-40 mb-4" />
           </div>
           <p className="font-inter text-sm text-[#555] max-w-[200px] leading-relaxed">
             Academia completa em Sinop-MT.<br />

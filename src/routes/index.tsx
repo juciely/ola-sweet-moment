@@ -63,6 +63,8 @@ function Index() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center max-w-5xl w-full reveal">
+          <img src="/logo.png" alt="Elite+ Performance" className="w-48 md:w-64 mb-12 animate-fade-up" />
+          
           <div className="bg-[#AAFF00]/10 border border-[#AAFF00]/20 text-[#AAFF00] text-[9px] md:text-[11px] font-bold uppercase tracking-[2px] md:tracking-[3px] px-4 md:px-5 py-1.5 md:py-2 rounded-full mb-8 md:mb-10 backdrop-blur-sm whitespace-nowrap">
             SINOP-MT — O NOVO PADRÃO DE PERFORMANCE
           </div>
