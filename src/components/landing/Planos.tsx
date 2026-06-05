@@ -105,7 +105,7 @@ export function Planos() {
 
               <button 
                 onClick={() => handleWhatsApp(plano.nome)}
-                className={`w-full py-4 rounded-full font-bold transition-all ${plano.highlight ? 'bg-[#AAFF00] text-[#0A0A0A] hover:shadow-[0_0_32px_rgba(170,255,0,0.4)]' : 'border border-[#333] text-white hover:border-[#AAFF00]'}`}
+                className={`w-full py-4 md:py-5 rounded-full font-black uppercase tracking-wider transition-all text-sm md:text-base ${plano.highlight ? 'bg-[#AAFF00] text-[#0A0A0A] hover:shadow-[0_0_35px_rgba(170,255,0,0.4)]' : 'border border-[#333] text-white hover:border-[#AAFF00] hover:bg-white/5'}`}
               >
                 QUERO ESSE PLANO
               </button>

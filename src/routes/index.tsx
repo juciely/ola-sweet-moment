@@ -16,10 +16,6 @@ export const Route = createFileRoute('/')({
 function Index() {
   const { config, loading } = useSiteConfig();
   const revealRef = useReveal();
-  
-  useEffect(() => {
-    console.log('Index mounted, revealRef:', revealRef.current);
-  }, []);
 
   if (loading) {
     return (
@@ -36,42 +32,46 @@ function Index() {
   };
 
   return (
-    <main ref={revealRef as any} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808] relative">
+    <main ref={revealRef as any} className="bg-[#080808] text-white min-h-screen selection:bg-[#AAFF00] selection:text-[#080808] relative overflow-x-hidden">
       {/* SCROLLING BAR */}
-      <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-[36px] flex items-center">
-        <div className="animate-marquee whitespace-nowrap font-inter text-[13px] font-semibold text-[#0A0A0A] flex gap-8 px-4">
-          <span>⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡</span>
-          <span aria-hidden="true">⚡ A melhor academia de Sinop agora evoluiu — Venha treinar com a gente • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso em todos os planos • Professores com CREF • Estacionamento grátis • Espaço Kids ⚡</span>
+      <div className="fixed top-0 left-0 w-full bg-[#AAFF00] z-[1000] overflow-hidden h-[36px] flex items-center shadow-lg">
+        <div className="animate-marquee whitespace-nowrap font-inter text-[11px] md:text-[13px] font-bold text-[#0A0A0A] flex gap-8 px-4 uppercase tracking-wider">
+          <span>⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
+          <span aria-hidden="true">⚡ A melhor academia de Sinop agora evoluiu • Elite+ Performance • Reinauguração com oferta especial • App de treino incluso • Estacionamento grátis • Espaço Kids ⚡</span>
         </div>
       </div>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 px-6">
-        <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-40">
-           <div className="absolute inset-0 bg-linear-to-b from-[#080808]/70 to-[#080808]/95"></div>
+      <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center pt-32 pb-16 px-8 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1540497077202-7c8a39988333?q=80&w=2070&auto=format&fit=crop" 
+            alt="Gym Atmosphere" 
+            className="w-full h-full object-cover grayscale opacity-30 scale-110 animate-pulse-slow"
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-[#080808] via-transparent to-[#080808]"></div>
         </div>
 
-        <div className="relative z-10 flex flex-col items-center text-center max-w-4xl w-full reveal">
-          <div className="bg-[#161616] border border-[#333] text-[11px] font-bold uppercase tracking-[2px] px-6 py-2 rounded-full mb-8 text-[#AAFF00]">
-            REINAUGURAÇÃO OFICIAL — SINOP-MT
+        <div className="relative z-10 flex flex-col items-center text-center max-w-5xl w-full reveal">
+          <div className="bg-[#AAFF00]/10 border border-[#AAFF00]/20 text-[#AAFF00] text-[10px] md:text-[12px] font-bold uppercase tracking-[3px] px-5 py-2 rounded-full mb-10 backdrop-blur-sm">
+            SINOP-MT — O NOVO PADRÃO DE PERFORMANCE
           </div>
 
-          <h1 className="font-bebas text-[80px] md:text-[110px] leading-[0.9] mb-8 tracking-tight">
-            VOCÊ NÃO PRECISA DE<br />
-            MAIS UM COMEÇO <span className="text-[#AAFF00]">FALSO.</span>
+          <h1 className="font-bebas text-[60px] sm:text-[80px] md:text-[120px] leading-[0.85] mb-8 tracking-tighter uppercase">
+            PARE DE <span className="text-[#AAFF00]">TENTAR.</span><br />
+            COMECE A <span className="text-white italic">TREINAR.</span>
           </h1>
 
-          <p className="font-inter text-[19px] text-[#AAAAAA] max-w-[500px] mb-10 leading-relaxed">
-            A Elite+ Performance nasceu pra quem já tentou antes e sabe que dessa vez precisa ser diferente. Treino no seu objetivo. Professor que te vê. App que te acompanha. Resultado que aparece.
+          <p className="font-inter text-[16px] md:text-[20px] text-[#AAAAAA] max-w-[600px] mb-12 leading-relaxed font-light">
+            A Elite+ Performance é para quem busca resultados reais em Sinop. Estrutura premium, acompanhamento profissional e tecnologia a serviço da sua evolução.
           </p>
 
-          <div className="flex flex-col md:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-5 mb-16 w-full sm:w-auto">
             <button 
               onClick={handleWhatsApp}
-              className="group bg-[#AAFF00] text-[#0A0A0A] font-extrabold uppercase tracking-[1px] px-12 py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_0_60px_rgba(170,255,0,0.55)] text-[17px]"
-              style={{ boxShadow: '0 0 40px rgba(170,255,0,0.35)' }}
+              className="group bg-[#AAFF00] text-[#0A0A0A] font-black uppercase tracking-[1px] px-10 py-4 rounded-full transition-all hover:scale-[1.05] hover:shadow-[0_0_50px_rgba(170,255,0,0.4)] text-[16px] active:scale-95 shadow-xl"
             >
-              QUERO COMEÇAR DE VERDADE
+              GARANTIR MINHA VAGA
             </button>
             
             <button 
@@ -80,82 +80,102 @@ function Index() {
                   document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' });
                 }
               }} 
-              className="text-[#888] font-inter font-semibold border border-[#333] px-8 py-5 rounded-full hover:text-white hover:border-white transition-all text-[17px]"
+              className="text-white font-inter font-bold border border-white/10 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full hover:bg-white/10 hover:border-white/40 transition-all text-[16px] active:scale-95"
             >
-              Ver planos ↓
+              CONHECER PLANOS
             </button>
           </div>
 
-          <div className="flex gap-4 md:gap-8 font-inter text-[13px] text-[#555] items-center">
-            <span>05h–22h</span>
-            <span>•</span>
-            <span>App incluso</span>
-            <span>•</span>
-            <span>CREF certificado</span>
+          <div className="grid grid-cols-3 gap-8 md:gap-16 font-bebas text-[18px] md:text-[24px] text-[#555] tracking-widest uppercase">
+            <div className="flex flex-col items-center">
+              <span className="text-[#AAFF00]">05H–22H</span>
+              <span className="text-[10px] font-inter font-bold tracking-[2px] opacity-40">Horário</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-white">APP</span>
+              <span className="text-[10px] font-inter font-bold tracking-[2px] opacity-40">Incluso</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-white">CREF</span>
+              <span className="text-[10px] font-inter font-bold tracking-[2px] opacity-40">Certificado</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* STORYTELLING */}
-      <section className="bg-[#111111] py-24 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-          <div className="flex-1 reveal">
-            <span className="text-[#AAFF00] font-inter text-[12px] uppercase tracking-[3px] mb-4 block">NOSSA HISTÓRIA</span>
-            <h2 className="font-bebas text-[52px] leading-none mb-6">
-              MUDAMOS O NOME.<br />
-              ELEVAMOS O PADRÃO.
-            </h2>
-            <p className="font-inter text-[17px] text-[#AAAAAA] leading-[1.8]">
-              A Agitare foi por anos a academia de referência em Sinop. Mas a gente sabia que podia ser mais. Mais estrutura. Mais tecnologia. Mais resultado pra quem acorda cedo, treina no intervalo do almoço ou chega cansado depois do trabalho e ainda assim não desiste.<br /><br />
-              Hoje somos a Elite+ Performance. O mesmo compromisso com o seu resultado — agora com o padrão que você merece.
-            </p>
+      <section className="bg-[#0A0A0A] py-32 px-8 relative overflow-hidden">
+        <div className="container-custom relative z-10 flex flex-col lg:flex-row gap-16 items-center">
+          <div className="flex-1 reveal order-2 lg:order-1">
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-linear-to-r from-[#AAFF00] to-[#000] rounded-[32px] blur-2xl opacity-10 group-hover:opacity-20 transition-all"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
+                alt="Premium Gym Equipment" 
+                className="rounded-[32px] w-full relative shadow-2xl border border-white/5 transition-transform duration-500 group-hover:scale-[1.02]" 
+              />
+            </div>
           </div>
-          <div className="flex-1 w-full reveal">
-            <img src="https://images.unsplash.com/photo-1540497077202-7c8a39988333?q=80&w=2070&auto=format&fit=crop" alt="Gym" className="rounded-[24px] w-full" />
+          <div className="flex-1 reveal order-1 lg:order-2">
+            <span className="text-[#AAFF00] font-inter text-[12px] font-black uppercase tracking-[4px] mb-6 block">Evolução Constante</span>
+            <h2 className="font-bebas text-[50px] md:text-[70px] leading-tight mb-8">
+              MUDAMOS O NOME.<br />
+              <span className="text-[#AAFF00]">ELEVAMOS O PADRÃO.</span>
+            </h2>
+            <div className="space-y-6">
+              <p className="font-inter text-[16px] md:text-[18px] text-[#AAAAAA] leading-relaxed font-light">
+                A Agitare foi por anos a academia de referência em Sinop. Mas a gente sabia que podia ser mais. Mais estrutura. Mais tecnologia. Mais resultado para quem não aceita o básico.
+              </p>
+              <p className="font-inter text-[16px] md:text-[18px] text-[#AAAAAA] leading-relaxed font-light">
+                Hoje somos a <strong>Elite+ Performance</strong>. O mesmo compromisso com o seu resultado — agora com o padrão que você merece.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* REINVENTED DIFFERENTIATORS */}
+      <Diferenciais />
+
+      <div id="planos" className="relative">
+        <Planos />
+      </div>
+
       {/* FAQ SECTION */}
-      <section className="bg-[#111111] py-24 px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-bebas text-[52px] text-white text-center mb-16 reveal">
-            PERGUNTAS FREQUENTES
-          </h2>
+      <section className="bg-[#080808] py-32 px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-20 reveal">
+            <span className="text-[#AAFF00] font-inter text-[12px] font-black uppercase tracking-[4px] mb-4 block">DÚVIDAS</span>
+            <h2 className="font-bebas text-[50px] md:text-[60px] text-white">
+              PERGUNTAS <span className="text-[#AAFF00]">FREQUENTES</span>
+            </h2>
+          </div>
           
-          <div className="space-y-3">
+          <div className="grid gap-4">
             {[
               { 
                 q: "Preciso ter experiência pra treinar aqui?", 
-                r: "Não. A Elite+ Performance atende desde quem nunca pisou numa academia até atletas experientes. Na sua primeira visita, o professor avalia seu histórico e monta um treino no seu ritmo e objetivo. Você nunca vai ficar perdido no salão." 
+                r: "Não. Atendemos desde iniciantes a atletas experientes. Na sua primeira visita, um professor avalia seu perfil e monta um treino específico. Você nunca treinará sozinho ou perdido." 
               },
               { 
                 q: "O app de treino tem custo extra?", 
-                r: "Não. O aplicativo está incluso em todos os planos. Assim que você fecha a matrícula, já sai daqui com o treino montado no celular — com vídeos dos exercícios, nome dos aparelhos e tudo explicado." 
+                r: "Absolutamente não. O aplicativo é parte fundamental da nossa metodologia e está incluso em 100% dos nossos planos." 
               },
               { 
                 q: "Tenho filho pequeno. Posso levar?", 
-                r: "Pode. Temos espaço kids estruturado pra você treinar com tranquilidade enquanto seu filho fica bem cuidado. Sem precisar arranjar babá pra malhar." 
+                r: "Sim! Temos um Espaço Kids estruturado e seguro para que você possa focar no seu treino enquanto seu filho se diverte por perto." 
               },
               { 
-                q: "Qual a diferença do Plano Recorrente pro Mensal normal?", 
-                r: "O Recorrente é um contrato de 12 meses com cobrança mensal de R$119,90 — o menor valor por mês que temos. O Mensal é sem contrato, paga mês a mês por R$160,00. Se você sabe que vai continuar treinando, o Recorrente economiza R$481,20 por ano." 
-              },
-              { 
-                q: "Tem aula em grupo ou só musculação?", 
-                r: "Trabalhamos com treino personalizado individual — cada aluno tem seu treino montado pelo professor. Não é aula coletiva. É atenção no seu objetivo específico." 
-              },
-              { 
-                q: "Como funciona a promoção de reinauguração?", 
-                r: "Durante o período de reinauguração, a primeira mensalidade do Plano Recorrente sai com desconto especial. É por tempo limitado. Depois o valor volta ao normal de R$119,90. Chama a gente no WhatsApp pra garantir antes de acabar." 
+                q: "Como funciona o Plano Recorrente?", 
+                r: "É o nosso plano de melhor custo-benefício. O valor é debitado mensalmente no seu cartão sem comprometer o limite total, com um contrato de 12 meses." 
               }
             ].map((faq, i) => (
-              <details key={i} className="group bg-[#161616] border border-[#1E1E1E] rounded-[12px] overflow-hidden reveal" style={{ transitionDelay: `${i * 50}ms` }}>
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                  <span className="font-inter font-semibold text-white">{faq.q}</span>
-                  <span className="text-[#AAFF00] text-2xl transition-transform group-open:rotate-45">+</span>
+              <details key={i} className="group bg-[#111] border border-white/5 rounded-[20px] overflow-hidden reveal hover:border-[#AAFF00]/20 transition-all">
+                <summary className="flex items-center justify-between p-7 cursor-pointer list-none">
+                  <span className="font-inter font-bold text-white text-[16px] md:text-[18px]">{faq.q}</span>
+                  <span className="text-[#AAFF00] text-2xl transition-transform duration-300 group-open:rotate-45">+</span>
                 </summary>
-                <div className="px-6 pb-6 text-[#777] font-inter text-[15px] leading-[1.7]">
+                <div className="px-7 pb-7 text-[#777] font-inter text-[15px] md:text-[16px] leading-relaxed font-light">
                   {faq.r}
                 </div>
               </details>
@@ -164,10 +184,6 @@ function Index() {
         </div>
       </section>
 
-      <Diferenciais />
-      <div id="planos">
-        <Planos />
-      </div>
       <LeadForm />
       <Footer />
       <FloatingWhatsApp />
