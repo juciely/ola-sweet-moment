@@ -1,58 +1,61 @@
-import { useEffect, useState } from 'react';
-import { differenceInSeconds } from 'date-fns';
+import { useState, useEffect } from 'react';
 
 export function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0,
+    seconds: 0
   });
 
   useEffect(() => {
-    // Data final: 30 dias a partir de hoje
+    // 30 days from now
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 30);
 
     const timer = setInterval(() => {
-      const now = new Date();
-      const totalSeconds = differenceInSeconds(targetDate, now);
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
 
-      if (totalSeconds <= 0) {
+      if (distance < 0) {
         clearInterval(timer);
         return;
       }
 
       setTimeLeft({
-        days: Math.floor(totalSeconds / (60 * 60 * 24)),
-        hours: Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60)),
-        minutes: Math.floor((totalSeconds % (60 * 60)) / 60),
-        seconds: totalSeconds % 60,
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000)
       });
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
-  const format = (num: number) => num.toString().padStart(2, '0');
+  const format = (num: number) => String(num).padStart(2, '0');
 
   return (
-    <div className="flex gap-2 md:gap-4 mt-8">
-      {[
-        { label: 'DIAS', value: format(timeLeft.days) },
-        { label: 'HORAS', value: format(timeLeft.hours) },
-        { label: 'MIN', value: format(timeLeft.minutes) },
-        { label: 'SEG', value: format(timeLeft.seconds) },
-      ].map((item) => (
-        <div key={item.label} className="flex flex-col items-center bg-[#1A1A1A] px-4 py-3 min-w-[70px] md:min-w-[90px] rounded-[4px]">
-          <span className="text-3xl md:text-[36px] font-bebas text-[#AAFF00] tabular-nums leading-none">
-            {item.value}
-          </span>
-          <span className="text-[10px] text-[#555] tracking-[1px] mt-1 font-inter font-bold uppercase">
-            {item.label}
-          </span>
-        </div>
-      ))}
+    <div className="flex gap-4 font-bebas text-4xl text-[#AAFF00]">
+      <div className="flex flex-col items-center">
+        <span>{format(timeLeft.days)}</span>
+        <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Dias</span>
+      </div>
+      <span>:</span>
+      <div className="flex flex-col items-center">
+        <span>{format(timeLeft.hours)}</span>
+        <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Horas</span>
+      </div>
+      <span>:</span>
+      <div className="flex flex-col items-center">
+        <span>{format(timeLeft.minutes)}</span>
+        <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Min</span>
+      </div>
+      <span>:</span>
+      <div className="flex flex-col items-center">
+        <span>{format(timeLeft.seconds)}</span>
+        <span className="text-[10px] text-[#555] uppercase tracking-widest font-inter">Seg</span>
+      </div>
     </div>
   );
 }

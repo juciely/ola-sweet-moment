@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { usePlanos } from '@/hooks/usePlanos';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
+import { ChevronDown, Check } from 'lucide-react';
 
 export function Planos() {
   const { planos, loading } = usePlanos();
   const { config } = useSiteConfig();
+  const [billing, setBilling] = useState<'MENSAL' | 'ANUAL'>('MENSAL');
+  const [showTable, setShowTable] = useState(false);
 
   const handleWhatsApp = (planoNome: string) => {
     const number = config.whatsapp_numero || '5566999970103';
@@ -19,59 +23,125 @@ export function Planos() {
     );
   }
 
+  const mensalPlans = [
+    { nome: 'Plano Mensal', preco: 160, duracao: 'MENSAL', benefits: ['App de treino personalizado', 'Professor CREF no piso', 'Acesso ilimitado + estacionamento'] },
+    { nome: 'Plano Dupla', preco: 140, duracao: 'MENSAL', suffix: '/pessoa', benefits: ['Treine com um amigo', 'Professor CREF no piso', 'Acesso ilimitado + estacionamento'] },
+    { nome: 'Plano Recorrente', preco: 119.90, duracao: '12 MESES', highlight: true, badge: 'MAIS POPULAR', benefits: ['App de treino personalizado', 'Professor CREF no piso', 'Acesso ilimitado + estacionamento'] }
+  ];
+
+  const anualPlans = [
+    { nome: 'Plano Trimestral', preco: 360, duracao: '3 MESES', benefits: ['Economia garantida', 'Professor CREF no piso', 'Acesso ilimitado + estacionamento'] },
+    { nome: 'Plano Semestral', preco: 660, duracao: '6 MESES', benefits: ['Foco no resultado', 'Professor CREF no piso', 'Acesso ilimitado + estacionamento'] },
+    { nome: 'Plano Anual', preco: 1140, duracao: '12 MESES', highlight: true, badge: 'MELHOR CUSTO', benefits: ['Melhor custo-benefício', 'Professor CREF no piso', 'Acesso ilimitado + estacionamento'] }
+  ];
+
+  const currentPlans = billing === 'MENSAL' ? mensalPlans : anualPlans;
+
   return (
     <section className="bg-[#111111] py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="font-bebas text-5xl md:text-6xl text-white mb-16 text-center">
-          ESCOLHA SEU PLANO
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
+        <h2 className="font-bebas text-[52px] text-white text-center mb-2 reveal">
+          PLANOS QUE CABEM NA SUA VIDA
         </h2>
+        <p className="font-inter text-base text-[#666666] text-center mb-12 reveal">
+          Sem taxa de matrícula. Sem letra miúda. Só resultado.
+        </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 items-start">
-          {planos.map((plano) => (
-            <div 
-              key={plano.id}
-              className={`relative bg-[#1A1A1A] p-6 md:p-8 border transition-all duration-300 ${
-                plano.destaque 
-                  ? 'border-[#AAFF00] scale-[1.03] z-10 shadow-[0_0_40px_rgba(170,255,0,0.1)]' 
-                  : 'border-[#222222] hover:border-[#444]'
-              }`}
+        {/* TOGGLE */}
+        <div className="flex items-center gap-4 mb-16 reveal">
+          <div className="bg-[#1A1A1A] p-1 rounded-full flex">
+            <button 
+              onClick={() => setBilling('MENSAL')}
+              className={`px-8 py-2.5 rounded-full font-inter text-sm font-semibold transition-all ${billing === 'MENSAL' ? 'bg-[#AAFF00] text-[#0A0A0A]' : 'text-[#666]'}`}
             >
-              {plano.destaque && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#AAFF00] text-[#0A0A0A] text-[10px] font-bold uppercase tracking-[2px] px-3 py-1 rounded-[2px] whitespace-nowrap">
-                  MAIS POPULAR
+              MENSAL
+            </button>
+            <button 
+              onClick={() => setBilling('ANUAL')}
+              className={`px-8 py-2.5 rounded-full font-inter text-sm font-semibold transition-all ${billing === 'ANUAL' ? 'bg-[#AAFF00] text-[#0A0A0A]' : 'text-[#666]'}`}
+            >
+              ANUAL
+            </button>
+          </div>
+          {billing === 'ANUAL' && (
+            <span className="text-[#AAFF00] font-bold text-xs uppercase tracking-wider animate-pulse">ECONOMIZE 25%</span>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-16">
+          {currentPlans.map((plano, i) => (
+            <div 
+              key={i}
+              className={`relative bg-[#161616] p-8 rounded-[20px] flex flex-col border transition-all duration-300 reveal ${plano.highlight ? 'border-[#AAFF00] shadow-[0_0_48px_rgba(170,255,0,0.12)]' : 'border-[#222]'}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
+              {plano.badge && (
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#AAFF00] text-[#0A0A0A] text-[11px] font-bold px-4 py-1 rounded-full">
+                  {plano.badge}
                 </div>
               )}
 
-              <h3 className="font-bebas text-2xl md:text-3xl text-white mb-1">
-                {plano.nome}
-              </h3>
-              
-              <span className="font-inter text-[11px] md:text-xs text-[#555555] uppercase tracking-[2px] block mb-8">
-                {plano.duracao}
-              </span>
+              <h3 className="font-bebas text-[28px] text-white mb-1 uppercase">{plano.nome}</h3>
+              <p className="text-[#555] font-inter text-[13px] tracking-wider mb-8">{plano.duracao}</p>
 
-              <div className="flex items-baseline mb-8">
-                <span className={`font-bebas text-3xl md:text-4xl ${plano.destaque ? 'text-[#AAFF00]' : 'text-white'}`}>
-                  R$ {Number(plano.preco).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-white font-bebas text-2xl">R$</span>
+                <span className={`font-bebas text-[64px] leading-none ${plano.highlight ? 'text-[#AAFF00]' : 'text-white'}`}>
+                  {plano.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
-                {(plano.duracao.toLowerCase().includes('mês') || plano.duracao.toLowerCase().includes('meses')) && (
-                  <span className="text-[#555] font-bebas text-xl ml-1">/MÊS</span>
-                )}
+                <span className="text-[#666] font-inter text-base ml-1">{(plano as any).suffix || '/mês'}</span>
+              </div>
+
+              <div className="h-px bg-[#1E1E1E] w-full mb-8"></div>
+
+              <div className="space-y-4 mb-10 flex-grow">
+                {plano.benefits.map((b, j) => (
+                  <div key={j} className="flex gap-3 items-start">
+                    <Check className="w-5 h-5 text-[#AAFF00] flex-shrink-0" />
+                    <span className="text-[#AAA] text-sm font-inter leading-tight">{b}</span>
+                  </div>
+                ))}
               </div>
 
               <button 
                 onClick={() => handleWhatsApp(plano.nome)}
-                className={`w-full py-4 text-[12px] font-bold uppercase tracking-[1px] transition-all rounded-[2px] ${
-                  plano.destaque
-                    ? 'bg-[#AAFF00] text-[#0A0A0A] hover:scale-[1.05] hover:shadow-[0_0_20px_rgba(170,255,0,0.3)]'
-                    : 'bg-transparent border border-[#333] text-white hover:border-[#AAFF00] hover:text-[#AAFF00]'
-                }`}
+                className={`w-full py-4 rounded-full font-bold transition-all ${plano.highlight ? 'bg-[#AAFF00] text-[#0A0A0A] hover:shadow-[0_0_32px_rgba(170,255,0,0.4)]' : 'border border-[#333] text-white hover:border-[#AAFF00]'}`}
               >
                 QUERO ESSE PLANO
               </button>
             </div>
           ))}
         </div>
+
+        <button 
+          onClick={() => setShowTable(!showTable)}
+          className="text-[#555] hover:text-[#AAFF00] transition-colors flex items-center gap-2 text-sm font-inter reveal"
+        >
+          Ver todos os planos disponíveis <ChevronDown className={`w-4 h-4 transition-transform ${showTable ? 'rotate-180' : ''}`} />
+        </button>
+
+        {showTable && (
+          <div className="mt-12 w-full bg-[#161616] rounded-[20px] p-6 border border-[#222] overflow-hidden reveal">
+            <table className="w-full text-left font-inter text-sm">
+              <thead>
+                <tr className="border-b border-[#222]">
+                  <th className="py-4 font-bold text-[#AAA]">PLANO</th>
+                  <th className="py-4 font-bold text-[#AAA]">DURAÇÃO</th>
+                  <th className="py-4 font-bold text-[#AAA] text-right">VALOR</th>
+                </tr>
+              </thead>
+              <tbody>
+                {planos.map((p) => (
+                  <tr key={p.id} className="border-b border-white/5 hover:bg-white/5 transition-colors cursor-pointer" onClick={() => handleWhatsApp(p.nome)}>
+                    <td className="py-4 font-bold">{p.nome}</td>
+                    <td className="py-4 text-[#777]">{p.duracao}</td>
+                    <td className="py-4 text-right font-bold text-[#AAFF00]">R$ {Number(p.preco).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </section>
   );

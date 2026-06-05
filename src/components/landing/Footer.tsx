@@ -10,62 +10,50 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#111111] py-20 px-6 border-t border-white/5">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-        {/* Bloco 1 — Horários */}
+    <footer className="bg-[#0D0D0D] border-t border-[#1A1A1A] py-20 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 reveal">
+        {/* Col 1 */}
         <div className="space-y-6">
-          <h3 className="font-bebas text-2xl text-white">HORÁRIOS</h3>
-          <div className="space-y-3 font-inter text-sm text-[#888888]">
-            <p className="flex justify-between">
-              {config.horario_semana}
-            </p>
-            <p className="flex justify-between">
-              {config.horario_sabado}
-            </p>
-            <p className="flex justify-between">
-              {config.horario_feriado}
-            </p>
+          <div className="flex items-baseline gap-2">
+            <span className="font-bebas text-4xl text-[#AAFF00]">ELITE+</span>
+            <span className="font-inter text-xs text-[#555] font-bold tracking-[2px]">PERFORMANCE</span>
+          </div>
+          <p className="font-inter text-sm text-[#555] max-w-[240px] leading-relaxed">
+            Academia completa em Sinop-MT.<br />
+            Seu próximo nível começa aqui.
+          </p>
+        </div>
+
+        {/* Col 2 */}
+        <div className="space-y-6">
+          <h3 className="font-inter text-[12px] text-[#AAFF00] uppercase tracking-[2px] font-bold">HORÁRIOS</h3>
+          <div className="space-y-3 font-inter text-sm text-[#666]">
+            <p className="flex justify-between">{config.horario_semana || 'Segunda a Sexta — 05h às 22h'}</p>
+            <p className="flex justify-between">{config.horario_sabado || 'Sábado — 08h às 14h'}</p>
+            <p className="flex justify-between">{config.horario_feriado || 'Feriados — 08h às 12h'}</p>
           </div>
         </div>
 
-        {/* Bloco 2 — Localização */}
+        {/* Col 3 */}
         <div className="space-y-6">
-          <h3 className="font-bebas text-2xl text-white">ONDE ESTAMOS</h3>
-          <div className="space-y-4">
-            <p className="font-inter text-sm text-[#888888] leading-relaxed">
-              {config.endereco}
-            </p>
-            <a 
-              href="https://maps.google.com/?q=Rua+Colonizador+Enio+Pipino+565+Sinop+MT" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block text-[#AAFF00] text-sm font-bold tracking-[1px] uppercase border-b border-[#AAFF00]/30 pb-1 hover:border-[#AAFF00] transition-colors"
-            >
-              Ver no Google Maps
-            </a>
-          </div>
-        </div>
-
-        {/* Bloco 3 — Contato */}
-        <div className="space-y-6">
-          <h3 className="font-bebas text-2xl text-white">FALE CONOSCO</h3>
+          <h3 className="font-inter text-[12px] text-[#AAFF00] uppercase tracking-[2px] font-bold">CONTATO</h3>
           <div className="space-y-4">
             <button 
               onClick={handleWhatsApp}
-              className="text-white text-lg font-bebas tracking-wider block hover:text-[#AAFF00] transition-colors"
+              className="text-white text-lg font-bebas tracking-wider hover:text-[#AAFF00] transition-colors"
             >
-              (66) 9 9997-0103
+              {config.whatsapp_exibicao || '(66) 9 9997-0103'}
             </button>
-            <p className="font-inter text-sm text-[#555] uppercase tracking-wider">
-              Atendimento de segunda a sábado
+            <p className="font-inter text-[13px] text-[#666] leading-relaxed">
+              {config.endereco || 'Rua Colonizador Enio Pipino, 565 - Sinop-MT'}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-[#222] text-center">
-        <p className="font-inter text-[12px] text-[#444444] uppercase tracking-widest">
-          © 2025 Elite+ Performance. Todos os direitos reservados.
+      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-[#1A1A1A] text-center">
+        <p className="font-inter text-[12px] text-[#333] tracking-widest">
+          © 2025 ELITE+ PERFORMANCE — SINOP-MT
         </p>
       </div>
     </footer>

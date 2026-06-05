@@ -25,6 +25,9 @@ export function usePlanos() {
           .order('ordem', { ascending: true });
 
         if (error) throw error;
+        
+        // Normalizing data to ensure consistent field names if necessary
+        // or adding any extra processing needed for the new UI
         setPlanos(data || []);
       } catch (err) {
         console.error('Error fetching planos:', err);
