@@ -13,27 +13,37 @@ export function AdminLogin() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Listen for auth state changes to auto-redirect if session is active
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log("Auth event:", event, !!session);
+      if (session) {
+        navigate({ to: '/admin/dashboard' });
+      }
+    });
+
     async function checkFirstAccess() {
       try {
-        // We check site_config for a flag or simply check if any user exists in a metadata sense
-        // For this implementation, we'll check if a specific 'setup_completed' key exists
         const { data } = await supabase
           .from('site_config')
           .select('valor')
-          .eq('chave', 'admin_setup_completed')
-          .single();
-
-        if (!data || data.valor !== 'true') {
+          .eq('chave', 'admin_setup_completed');
+        
+        // Use data?.[0] instead of .single() to avoid error if no row found
+        if (!data || data.length === 0 || data[0].valor !== 'true') {
           setIsFirstAccess(true);
         }
       } catch (err) {
-        // If table doesn't exist or key doesn't exist, assume first access or let the user try login
         console.error('Setup check failed:', err);
       } finally {
         setCheckingAccess(false);
       }
     }
+    
     checkFirstAccess();
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const handleAuth = async (e: React.FormEvent) => {
@@ -57,10 +67,11 @@ export function AdminLogin() {
           valor: 'true'
         });
 
-        if (data.session) {
+        if (data.session || data.user) {
+          // If auto-confirm is on, we might have a session or just a user
           navigate({ to: '/admin/dashboard' });
         } else {
-          setError('Cadastro realizado! Verifique seu email para confirmar o acesso (se habilitado no Supabase) ou tente logar.');
+          setError('Conta criada! Tente fazer o login agora com suas credenciais.');
           setIsFirstAccess(false);
         }
       } else {
