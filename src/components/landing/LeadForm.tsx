@@ -38,7 +38,7 @@ export function LeadForm() {
       
       <div className="container-custom relative z-10">
         <div className="max-w-[700px] mx-auto text-center reveal">
-          <span className="text-[#AAFF00] font-inter text-[12px] font-black uppercase tracking-[4px] mb-4 block">CONTATO</span>
+          <span className="text-[#AAFF00] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-4 block">CONTATO</span>
           <h2 className="font-poppins font-black text-[36px] md:text-[60px] text-white mb-6 leading-[1.1]">
             QUER SABER QUAL <br />
             <span className="text-[#AAFF00]">PLANO É PRA VOCÊ?</span>
