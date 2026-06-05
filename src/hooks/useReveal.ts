@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 export function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined' || !ref.current) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -15,11 +17,12 @@ export function useReveal() {
       { threshold: 0.1 }
     );
 
-    const elements = ref.current?.querySelectorAll('.reveal');
-    elements?.forEach((el) => observer.observe(el));
+    const elements = ref.current.querySelectorAll('.reveal');
+    elements.forEach((el) => observer.observe(el));
 
     return () => {
-      elements?.forEach((el) => observer.unobserve(el));
+      elements.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
     };
   }, []);
 
