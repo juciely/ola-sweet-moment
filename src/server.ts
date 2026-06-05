@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV === "production" && !process.env.NITRO_PORT) {
+  console.log(`\n🚀 Server starting on port: ${process.env.PORT || 3000}`);
+}
 import "./validate-env";
 import "./lib/error-capture";
 
