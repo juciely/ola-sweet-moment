@@ -41,21 +41,29 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
   );
 
   return (
-    <div className="flex items-center justify-center lg:justify-start gap-1 md:gap-2 mt-8 py-6 border-t border-white/5 bg-white/[0.02] rounded-b-[24px]">
-      <div className="flex items-center gap-3 mr-4 hidden md:flex">
-        <Timer className="w-5 h-5 text-[#d7f803] animate-pulse" />
-        <span className="font-poppins text-[10px] text-white font-black uppercase tracking-[2px]">OFERTA EXPIRA EM:</span>
+    <div className="mt-8 pt-8 border-t border-white/5">
+      <div className="flex flex-col items-center lg:items-start gap-4">
+        <div className="flex items-center gap-2">
+          <Timer className="w-4 h-4 text-[#d7f803] animate-pulse" />
+          <span className="font-poppins text-[10px] md:text-[12px] text-white font-black uppercase tracking-[2px]">
+            CONDIÇÃO TERMINA EM:
+          </span>
+        </div>
+        
+        <div className="flex items-center gap-2 md:gap-4">
+          <TimeUnit value={timeLeft.days} label="Dias" />
+          <span className="text-[#333] font-bebas text-2xl mt-[-16px]">:</span>
+          <TimeUnit value={timeLeft.hours} label="Horas" />
+          <span className="text-[#333] font-bebas text-2xl mt-[-16px]">:</span>
+          <TimeUnit value={timeLeft.minutes} label="Min" />
+          <span className="text-[#333] font-bebas text-2xl mt-[-16px]">:</span>
+          <TimeUnit value={timeLeft.seconds} label="Seg" />
+        </div>
       </div>
-      <TimeUnit value={timeLeft.days} label="Dias" />
-      <div className="h-8 w-px bg-white/10 self-center"></div>
-      <TimeUnit value={timeLeft.hours} label="Horas" />
-      <div className="h-8 w-px bg-white/10 self-center"></div>
-      <TimeUnit value={timeLeft.minutes} label="Min" />
-      <div className="h-8 w-px bg-white/10 self-center"></div>
-      <TimeUnit value={timeLeft.seconds} label="Seg" />
     </div>
   );
 }
+
 
 
 export function PromocaoNamorados() {
