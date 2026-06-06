@@ -16,7 +16,8 @@ export function AdminLogin() {
     // Listen for auth state changes to auto-redirect if session is active
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       console.log("Auth event:", event, !!session);
-      if (session) {
+      const isForcingSetup = typeof window !== 'undefined' && window.location.search.includes('setup=true');
+      if (session && !isForcingSetup) {
         navigate({ to: '/admin/dashboard' });
       }
     });
@@ -38,9 +39,10 @@ export function AdminLogin() {
         } else {
           // Additional check: If URL has ?setup=true, allow creating a new admin anyway
           // This is useful for new deployments sharing the same DB
-          const params = new URLSearchParams(window.location.search);
+          const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
           if (params.get('setup') === 'true') {
             setIsFirstAccess(true);
+            console.log("Forcing first access mode via URL param");
           }
         }
       } catch (err) {
