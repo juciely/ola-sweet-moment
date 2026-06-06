@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 function validateEnv() {
   // Ignora validação em ambiente de desenvolvimento local (Vite) ou sandbox
-  if (process.env.NODE_ENV === 'development' || process.env.VITE === 'true' || process.env.LOVABLE === 'true') {
+  if (process.env.NODE_ENV === 'development' || process.env.VITE === 'true' || process.env.LOVABLE === 'true' || process.env.LOVABLE_PREVIEW === 'true') {
     return;
   }
 
