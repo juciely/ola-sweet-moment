@@ -1,4 +1,5 @@
 import { Dumbbell, UserCheck, Car, Baby, Clock, ShowerHead as Shower } from 'lucide-react';
+import { useTracking } from '@/hooks/useTracking';
 
 const diferenciais = [
   {
