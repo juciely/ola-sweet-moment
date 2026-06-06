@@ -18,7 +18,10 @@ export function AdminLogin() {
       console.log("Auth event:", event, !!session);
       const isForcingSetup = typeof window !== 'undefined' && window.location.search.includes('setup=true');
       if (session && !isForcingSetup) {
-        navigate({ to: '/admin/dashboard' });
+        // Find where we should go
+        const params = new URLSearchParams(window.location.search);
+        const redirectPath = params.get('redirect') || '/admin/dashboard';
+        navigate({ to: redirectPath });
       }
     });
 
