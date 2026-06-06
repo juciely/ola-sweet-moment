@@ -79,7 +79,7 @@ export function PromocaoNamorados() {
   const condicoes = config.promocao_condicoes || 'Válido para o primeiro mês por pessoa. Promoção exclusiva para casais que fecharem o plano juntos.';
   const cupom = config.promocao_cupom || 'ELITENAMORADOS99';
   const dataExpiracao = config.promocao_data_expiracao || '2026-06-12T23:59:59';
-  const promocaoAtiva = config.promocao_ativa !== 'false';
+  const promocaoAtiva = config.promocao_ativa === 'true';
 
   const whatsappLink = `https://wa.me/${config.whatsapp_numero || '5566999970103'}?text=${encodeURIComponent(`Olá! Gostaria de aproveitar a promoção de namorados. Cupom: ${cupom}`)}`;
 

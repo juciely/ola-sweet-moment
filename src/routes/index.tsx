@@ -197,7 +197,7 @@ function Index() {
       </section>
 
       {/* BLOCO DE PROMOÇÃO DE NAMORADOS */}
-      <PromocaoNamorados />
+      {config.promocao_ativa === 'true' && <PromocaoNamorados />}
 
       {/* REINVENTED DIFFERENTIATORS */}
       <Diferenciais />
