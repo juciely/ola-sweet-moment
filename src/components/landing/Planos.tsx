@@ -9,7 +9,7 @@ export function Planos() {
   const { config } = useSiteConfig();
   const [billing, setBilling] = useState<'MENSAL' | 'ANUAL'>('MENSAL');
   const [showTable, setShowTable] = useState(false);
-  const { trackWhatsappClick } = useTracking();
+  const { trackWhatsappClick, trackButtonClick } = useTracking();
 
   const handleWhatsApp = (planoNome: string) => {
     trackWhatsappClick(planoNome);
