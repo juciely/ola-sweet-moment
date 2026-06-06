@@ -85,7 +85,9 @@ export function AdminLogin() {
 
         if (data.session || data.user) {
           // If auto-confirm is on, we might have a session or just a user
-          navigate({ to: '/admin/dashboard' });
+          const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+          const redirectPath = params.get('redirect') || '/admin/dashboard';
+          navigate({ to: redirectPath });
         } else {
           setError('Conta criada! Tente fazer o login agora com suas credenciais.');
           setIsFirstAccess(false);
