@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
-import { Check, Save, Smartphone, Globe, Megaphone, Loader2, Timer } from 'lucide-react';
+import { Check, Save, Smartphone, Globe, Megaphone, Loader2, Timer, Search, MapPin, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const Route = createFileRoute('/admin/configuracoes')({
@@ -42,7 +42,7 @@ function AdminConfiguracoes() {
   };
 
   const ConfigCard = ({ title, icon: Icon, children, keys }: any) => (
-    <div className="bg-[#111] border border-white/5 rounded-[24px] p-8 space-y-8 flex flex-col">
+    <div className="bg-[#111] border border-white/5 rounded-[24px] p-8 space-y-8 flex flex-col h-full">
       <div className="flex items-center gap-4">
         <div className="bg-[#d7f803]/10 p-3 rounded-xl text-[#d7f803]">
           <Icon className="w-6 h-6" />
@@ -57,7 +57,7 @@ function AdminConfiguracoes() {
       <button
         onClick={() => handleSave(keys)}
         disabled={loading}
-        className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
+        className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 mt-auto"
       >
         {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Save className="w-4 h-4" /> SALVAR</>}
       </button>
@@ -163,6 +163,58 @@ function AdminConfiguracoes() {
           />
           <Input label="Preço Promocional" id="promocao_preco" note="Ex: 99,90" />
           <Input label="Cupom de Desconto" id="promocao_cupom" />
+        </ConfigCard>
+
+        {/* CARD 1 — CONTEÚDO SEO */}
+        <ConfigCard 
+          title="Conteúdo SEO Local" 
+          icon={Search} 
+          keys={['seo_title_home', 'seo_description_home', 'seo_title_agendar', 'seo_description_agendar', 'seo_keywords']}
+        >
+          <Input label="Título SEO — Home" id="seo_title_home" />
+          <Textarea label="Descrição SEO — Home" id="seo_description_home" />
+          <Input label="Título SEO — Agendamento" id="seo_title_agendar" />
+          <Textarea label="Descrição SEO — Agendamento" id="seo_description_agendar" />
+          <Textarea label="Palavras-Chave (Keywords)" id="seo_keywords" note="Separadas por vírgula" />
+        </ConfigCard>
+
+        {/* CARD 2 — DADOS ESTRUTURADOS LOCALBUSINESS */}
+        <ConfigCard 
+          title="Dados do Negócio (Schema)" 
+          icon={MapPin} 
+          keys={['seo_local_name', 'seo_local_address', 'seo_local_city', 'seo_local_state', 'seo_local_zip', 'seo_local_phone', 'seo_local_latitude', 'seo_local_longitude', 'seo_google_business_url']}
+        >
+          <Input label="Nome Oficial" id="seo_local_name" />
+          <Input label="Endereço (Rua, nº)" id="seo_local_address" />
+          <div className="grid grid-cols-2 gap-4">
+            <Input label="Cidade" id="seo_local_city" />
+            <Input label="Estado (UF)" id="seo_local_state" />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <Input label="CEP" id="seo_local_zip" />
+            <Input label="Telefone" id="seo_local_phone" />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <Input label="Latitude" id="seo_local_latitude" note="Sinop: -11.8647" />
+            <Input label="Longitude" id="seo_local_longitude" note="Sinop: -55.5056" />
+          </div>
+          <Input label="Link Google Meu Negócio" id="seo_google_business_url" />
+        </ConfigCard>
+
+        {/* CARD 3 — AVANÇADO */}
+        <ConfigCard 
+          title="Configurações Avançadas" 
+          icon={Zap} 
+          keys={['seo_canonical_home', 'seo_canonical_agendar', 'seo_og_image']}
+        >
+          <Input label="URL canônica home" id="seo_canonical_home" />
+          <Input label="URL canônica agendamento" id="seo_canonical_agendar" />
+          <Input label="Imagem Open Graph (URL)" id="seo_og_image" />
+          {config.seo_og_image && (
+            <div className="mt-2 p-2 bg-[#0A0A0A] border border-white/5 rounded-lg inline-block">
+              <img src={config.seo_og_image} alt="OG Preview" className="w-[120px] h-[60px] object-cover rounded" />
+            </div>
+          )}
         </ConfigCard>
       </div>
 
