@@ -16,7 +16,16 @@ export function useSiteConfig() {
           .from('site_config')
           .select('chave, valor');
 
-        if (error) throw error;
+        if (error) {
+          console.error('Supabase error fetching site config:', error);
+          setLoading(false);
+          return;
+        }
+
+        if (!data) {
+          setLoading(false);
+          return;
+        }
 
         const configMap = data.reduce((acc: SiteConfig, item) => {
           acc[item.chave] = item.valor;
@@ -25,18 +34,8 @@ export function useSiteConfig() {
 
         setConfig(configMap);
       } catch (err: any) {
-        console.error('Error fetching site config:', err);
-        // Fallback or rethrow to see it in logs
-        if (typeof window === 'undefined') {
-          console.error('SSR Database Error Details:', {
-            message: err.message,
-            code: err.code,
-            details: err.details,
-            hint: err.hint
-          });
-        }
+        console.error('Unexpected error fetching site config:', err);
       } finally {
-        setLoading(err => false);
         setLoading(false);
       }
     }
