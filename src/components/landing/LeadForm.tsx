@@ -9,7 +9,7 @@ export function LeadForm() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const { trackLeadForm, getUtms } = useTracking();
+  const { trackLeadForm, getUtms, trackButtonClick } = useTracking();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
