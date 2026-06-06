@@ -91,6 +91,7 @@ function Index() {
               onClick={() => {
                 if (typeof document !== 'undefined') {
                   document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' });
+                  trackButtonClick('Conhecer Planos', 'Hero');
                 }
               }} 
               className="text-white font-inter font-bold border border-white/10 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full hover:bg-white/10 hover:border-white/40 transition-all text-[16px] active:scale-95"
@@ -101,6 +102,7 @@ function Index() {
 
           <a 
             href="/agendar"
+            onClick={() => trackButtonClick('Agendar Visita', 'Hero')}
             className="text-[#888] font-inter font-medium border border-white/10 px-8 py-4 rounded-full hover:text-white hover:border-white/40 transition-all text-[14px] mb-16 flex items-center gap-2"
           >
             AGENDAR VISITA GRATUITA →
