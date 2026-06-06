@@ -21,8 +21,11 @@ export const Route = createFileRoute('/admin')({
     // EXCEPT if we are forcing setup via URL search string
     const isForcingSetup = (location.search as any).setup === 'true' || (location.searchStr || '').toLowerCase().includes('setup=true');
     if (session && isLoginPage && !isForcingSetup) {
+      // Find where we should go
+      const search = location.search as any;
+      const redirectPath = search.redirect || '/admin/dashboard';
       throw redirect({
-        to: '/admin/dashboard',
+        to: redirectPath,
       });
     }
   },
