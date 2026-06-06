@@ -27,6 +27,11 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   const contentType = response.headers.get("content-type") ?? "";
   if (!contentType.includes("application/json")) return response;
 
+  const body = await response.clone().text();
+  if (!body.includes('"unhandled":true')) {
+    return response;
+  }
+
   const error = consumeLastCapturedError() ?? new Error(`SSR error: ${body}`);
   console.error('Normalized SSR Error:', error);
   const errorDetails = error instanceof Error ? error.stack : String(error);
@@ -34,10 +39,10 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 
   return new Response(
     `<!doctype html><html><body style="font-family: sans-serif; padding: 2rem;">
-      <h1 style="color: #e11d48;">Internal Server Error</h1>
+      <h1 style="color: #e11d48;">Internal Server Error (SSR)</h1>
       <p><strong>Request ID:</strong> ${requestId}</p>
       <hr />
-      <pre style="background: #f1f5f9; padding: 1rem; border-radius: 0.5rem; overflow: auto;">${errorDetails}</pre>
+      <pre style="background: #f1f5f9; padding: 1rem; border-radius: 0.5rem; overflow: auto;">${errorDetails}\n\nBody: ${body}</pre>
     </body></html>`,
     {
       status: 500,
@@ -45,6 +50,7 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
     }
   );
 }
+
 
 
 export default {
