@@ -160,5 +160,25 @@ export function useTracking() {
     if (window.gtag) window.gtag('event', 'generate_lead', { method: 'Form', content: plano });
   }, [getUtms]);
 
-  return { getUtms, trackWhatsappClick, trackLeadForm, trackMatriculaConfirmada };
+  const trackButtonClick = useCallback(async (buttonLabel: string, section: string) => {
+    const utms = getUtms();
+    
+    // Save generic button click to DB for analysis
+    try {
+      await supabase.from('conversoes').insert([{
+        tipo: 'clique_botao',
+        lead_id: null,
+        valor_plano: `${section} - ${buttonLabel}`,
+        ...utms
+      }]);
+    } catch (e) {
+      console.error('Error tracking button click:', e);
+    }
+
+    // External pixels - Track as generic event
+    if (window.fbq) window.fbq('trackCustom', 'ButtonClick', { button_label: buttonLabel, section });
+    if (window.gtag) window.gtag('event', 'click_button', { button_label: buttonLabel, section });
+  }, [getUtms]);
+
+  return { getUtms, trackWhatsappClick, trackLeadForm, trackMatriculaConfirmada, trackButtonClick };
 }

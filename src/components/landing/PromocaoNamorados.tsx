@@ -71,7 +71,7 @@ export function PromocaoNamorados() {
   const { config } = useSiteConfig();
   const [copied, setCopied] = useState(false);
   const [revealed, setRevealed] = useState(false);
-  const { trackWhatsappClick } = useTracking();
+  const { trackWhatsappClick, trackButtonClick } = useTracking();
 
   const titulo = config.promocao_titulo || 'PROMOÇÃO JUNHO DOS NAMORADOS';
   const subtitulo = config.promocao_subtitulo || 'O AMOR TREINA JUNTO';
@@ -155,7 +155,10 @@ export function PromocaoNamorados() {
               <div className="mt-auto">
                 {!revealed ? (
                   <button
-                    onClick={() => setRevealed(true)}
+                    onClick={() => {
+                      setRevealed(true);
+                      trackButtonClick('Revelar Cupom', 'PromoNamorados');
+                    }}
                     className="w-full bg-white text-black font-poppins font-black uppercase tracking-[1px] px-8 py-5 rounded-full transition-all hover:bg-[#d7f803] hover:scale-105 active:scale-95 text-center shadow-[0_10px_40px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
                   >
                     <Ticket className="w-5 h-5" />
@@ -169,7 +172,10 @@ export function PromocaoNamorados() {
                         <span className="font-poppins font-black text-[#d7f803] text-lg md:text-xl tracking-tight truncate block">{cupom}</span>
                       </div>
                       <button 
-                        onClick={copyToClipboard}
+                        onClick={() => {
+                          copyToClipboard();
+                          trackButtonClick('Copiar Cupom', 'PromoNamorados');
+                        }}
                         className="p-3 bg-white/5 hover:bg-[#d7f803] hover:text-black rounded-xl transition-all text-[#d7f803]"
                         title="Copiar cupom"
                       >

@@ -1,4 +1,5 @@
 import { Dumbbell, UserCheck, Car, Baby, Clock, ShowerHead as Shower } from 'lucide-react';
+import { useTracking } from '@/hooks/useTracking';
 
 const diferenciais = [
   {
@@ -34,6 +35,7 @@ const diferenciais = [
 ];
 
 export function Diferenciais() {
+  const { trackButtonClick } = useTracking();
   return (
     <section className="bg-[#080808] py-32 px-8">
       <div className="container-custom">
@@ -51,7 +53,8 @@ export function Diferenciais() {
           {diferenciais.map((item, index) => (
             <div 
               key={index} 
-              className="group bg-[#111] border border-white/5 p-8 md:p-10 rounded-[24px] flex flex-col items-start transition-all duration-500 hover:border-[#d7f803]/30 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] reveal"
+              onClick={() => trackButtonClick(`Card: ${item.title}`, 'Diferenciais')}
+              className="group bg-[#111] border border-white/5 p-8 md:p-10 rounded-[24px] flex flex-col items-start transition-all duration-500 hover:border-[#d7f803]/30 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] reveal cursor-pointer"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="bg-[#d7f803]/10 p-4 rounded-2xl group-hover:bg-[#d7f803] group-hover:text-[#0A0A0A] transition-colors duration-500 text-[#d7f803]">
