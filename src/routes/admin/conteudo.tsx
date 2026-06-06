@@ -39,14 +39,19 @@ function AdminConteudo() {
         valor: config[key] || ''
       }));
 
-      const { error } = await supabase.from('site_config').upsert(updates);
-      if (error) throw error;
+      console.log('Tentando salvar conteúdo no Supabase:', updates);
+
+      const { error } = await supabase.from('site_config').upsert(updates, { onConflict: 'chave' });
+      if (error) {
+        console.error('Erro retornado pelo Supabase:', error);
+        throw error;
+      }
       
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
-    } catch (err) {
-      console.error('Error saving content:', err);
-      alert('Erro ao salvar conteúdo.');
+    } catch (err: any) {
+      console.error('Erro crítico ao salvar conteúdo:', err);
+      alert(`Erro ao salvar conteúdo: ${err.message || 'Erro desconhecido'}`);
     } finally {
       setLoading(false);
     }
