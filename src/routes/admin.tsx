@@ -9,12 +9,9 @@ export const Route = createFileRoute('/admin')({
     
     // Normalize path
     const isLoginPage = location.pathname.replace(/\/$/, '') === '/admin';
-    const isRoot = location.pathname === '/';
 
     // If not logged in and not on login page, redirect to login
-    // BUT only if we are inside /admin (isLoginPage is true for /admin or /admin/)
-    // and we are NOT on the root page
-    if (!session && !isLoginPage && !isRoot) {
+    if (!session && !isLoginPage) {
       throw redirect({
         to: '/admin',
       });
