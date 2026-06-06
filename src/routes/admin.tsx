@@ -44,18 +44,3 @@ function AdminRoot() {
     </AdminLayout>
   );
 }
-
-function AdminRoot() {
-  const { pathname } = useLocation();
-  const isLoginPage = pathname.replace(/\/$/, '') === '/admin';
-  
-  if (isLoginPage) {
-    return <AdminLogin />;
-  }
-
-  return (
-    <AdminLayout>
-      <Outlet />
-    </AdminLayout>
-  );
-}
