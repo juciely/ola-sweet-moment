@@ -7,6 +7,6 @@ export default {
       createRouter: getRouter,
       request,
     });
-    return handler;
+    return handler({ request, env, ctx });
   },
 };
