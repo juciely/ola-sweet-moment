@@ -34,25 +34,36 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
     return response;
   }
 
-  console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
-  return new Response(renderErrorPage(), {
-    status: 500,
-    headers: { "content-type": "text/html; charset=utf-8" },
-  });
+  const error = consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`);
+  console.error('Normalized SSR Error:', error);
+  const errorDetails = error instanceof Error ? error.stack : String(error);
+
+  return new Response(
+    `<!doctype html><html><body><h1>Internal Server Error (Normalized)</h1><pre>${errorDetails}\n\nBody: ${body}</pre></body></html>`,
+    {
+      status: 500,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    }
+  );
 }
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    console.log(`[Request] ${request.method} ${request.url}`);
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
-    } catch (error) {
+    } catch (error: any) {
       console.error('SSR Critical Failure:', error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      const errorDetails = error?.stack || error?.message || String(error);
+      return new Response(
+        `<!doctype html><html><body><h1>Internal Server Error</h1><pre>${errorDetails}</pre></body></html>`,
+        {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }
+      );
     }
   },
 };
