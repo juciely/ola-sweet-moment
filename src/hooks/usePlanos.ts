@@ -29,8 +29,11 @@ export function usePlanos() {
         // Normalizing data to ensure consistent field names if necessary
         // or adding any extra processing needed for the new UI
         setPlanos(data || []);
-      } catch (err) {
+      } catch (err: any) {
         console.error('Error fetching planos:', err);
+        if (typeof window === 'undefined') {
+          console.error('SSR Planos Database Error:', err);
+        }
       } finally {
         setLoading(false);
       }

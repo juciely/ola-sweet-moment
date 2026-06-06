@@ -24,8 +24,17 @@ export function useSiteConfig() {
         }, {});
 
         setConfig(configMap);
-      } catch (err) {
+      } catch (err: any) {
         console.error('Error fetching site config:', err);
+        // Fallback or rethrow to see it in logs
+        if (typeof window === 'undefined') {
+          console.error('SSR Database Error Details:', {
+            message: err.message,
+            code: err.code,
+            details: err.details,
+            hint: err.hint
+          });
+        }
       } finally {
         setLoading(err => false);
         setLoading(false);
