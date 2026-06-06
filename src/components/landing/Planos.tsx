@@ -122,7 +122,10 @@ export function Planos() {
           </p>
 
           <button 
-            onClick={() => setShowTable(!showTable)}
+            onClick={() => {
+              setShowTable(!showTable);
+              trackButtonClick('Ver Todos Planos', 'Planos');
+            }}
             className="text-[#555] hover:text-[#d7f803] transition-colors flex items-center gap-2 text-sm font-inter"
           >
             Ver todos os planos disponíveis <ChevronDown className={`w-4 h-4 transition-transform ${showTable ? 'rotate-180' : ''}`} />
