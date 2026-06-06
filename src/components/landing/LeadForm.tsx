@@ -109,6 +109,7 @@ export function LeadForm() {
               <button
                 type="submit"
                 disabled={loading}
+                onClick={() => trackButtonClick('Solicitar Contato Form', 'LeadForm')}
                 className="w-full bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[2px] py-5 rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(215,248,3,0.3)] disabled:opacity-50 text-[17px] mt-4 shadow-xl active:scale-95"
               >
                 {loading ? 'ENVIANDO...' : 'SOLICITAR CONTATO'}
