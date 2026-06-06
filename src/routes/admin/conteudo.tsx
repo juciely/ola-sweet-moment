@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
-import { Save, Loader2, Check, Layout, Tag, Type, Calendar, Clock, MapPin } from 'lucide-react';
+import { Save, Loader2, Check, Layout, Tag, Type, Calendar, Clock, MapPin, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const Route = createFileRoute('/admin/conteudo')({
@@ -26,7 +26,9 @@ function AdminConteudo() {
     { id: 'marquee', label: 'Marquee', icon: Type },
     { id: 'agendamento', label: 'Agendamento', icon: Calendar },
     { id: 'horarios', label: 'Horários', icon: Clock },
+    { id: 'seo', label: 'SEO', icon: Search },
   ];
+
 
   const handleSave = async (keys: string[]) => {
     setLoading(true);
@@ -171,7 +173,90 @@ function AdminConteudo() {
             </button>
           </div>
         )}
+
+        {activeTab === 'seo' && (
+          <div className="space-y-12 animate-fade-in">
+            {/* CARD 1 — PÁGINAS */}
+            <div className="space-y-6">
+              <h3 className="font-bebas text-2xl text-[#d7f803]">Meta Tags por Página</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <Input label="Title página inicial" id="seo_title_home" />
+                <Input label="Description página inicial" id="seo_description_home" />
+                <Input label="Title agendamento" id="seo_title_agendar" />
+                <Input label="Description agendamento" id="seo_description_agendar" />
+                <div className="md:col-span-2">
+                  <Input label="Keywords (separadas por vírgula)" id="seo_keywords" />
+                </div>
+              </div>
+              <button 
+                onClick={() => handleSave(['seo_title_home', 'seo_description_home', 'seo_title_agendar', 'seo_description_agendar', 'seo_keywords'])} 
+                disabled={loading} 
+                className="bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] px-8 py-3 rounded-full flex items-center gap-2 hover:scale-[1.05] active:scale-95 transition-all"
+              >
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Save className="w-4 h-4" /> SALVAR META TAGS</>}
+              </button>
+            </div>
+
+            <hr className="border-white/5" />
+
+            {/* CARD 2 — NEGÓCIO LOCAL */}
+            <div className="space-y-6">
+              <h3 className="font-bebas text-2xl text-[#d7f803]">Dados do Negócio Local (Google)</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <Input label="Nome do negócio" id="seo_local_name" />
+                <Input label="Endereço" id="seo_local_address" />
+                <Input label="Bairro" id="seo_local_neighborhood" />
+                <Input label="Cidade" id="seo_local_city" />
+                <Input label="Estado" id="seo_local_state" />
+                <Input label="CEP" id="seo_local_zip" />
+                <Input label="Telefone" id="seo_local_phone" />
+                <Input label="URL Google Business" id="seo_google_business_url" />
+                <Input label="Latitude" id="seo_local_latitude" />
+                <Input label="Longitude" id="seo_local_longitude" />
+              </div>
+              <p className="text-[12px] text-[#555] font-inter">
+                Latitude e longitude afetam o posicionamento local no Google.<br />
+                Para Sinop-MT use: -11.8647 / -55.5056
+              </p>
+              <button 
+                onClick={() => handleSave(['seo_local_name', 'seo_local_address', 'seo_local_neighborhood', 'seo_local_city', 'seo_local_state', 'seo_local_zip', 'seo_local_phone', 'seo_google_business_url', 'seo_local_latitude', 'seo_local_longitude'])} 
+                disabled={loading} 
+                className="bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] px-8 py-3 rounded-full flex items-center gap-2 hover:scale-[1.05] active:scale-95 transition-all"
+              >
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Save className="w-4 h-4" /> SALVAR DADOS LOCAIS</>}
+              </button>
+            </div>
+
+            <hr className="border-white/5" />
+
+            {/* CARD 3 — AVANÇADO */}
+            <div className="space-y-6">
+              <h3 className="font-bebas text-2xl text-[#d7f803]">Configurações Avançadas</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <Input label="URL canônica home" id="seo_canonical_home" />
+                <Input label="URL canônica agendamento" id="seo_canonical_agendar" />
+                <div className="md:col-span-2 space-y-4">
+                  <Input label="Imagem Open Graph (URL)" id="seo_og_image" />
+                  {config.seo_og_image && (
+                    <div className="mt-2">
+                      <p className="text-[10px] text-[#444] uppercase font-bold mb-2">Preview:</p>
+                      <img src={config.seo_og_image} alt="OG Preview" className="w-[120px] h-[60px] object-cover rounded border border-white/10" />
+                    </div>
+                  )}
+                </div>
+              </div>
+              <button 
+                onClick={() => handleSave(['seo_canonical_home', 'seo_canonical_agendar', 'seo_og_image'])} 
+                disabled={loading} 
+                className="bg-[#d7f803] text-[#0A0A0A] font-black uppercase tracking-[1px] px-8 py-3 rounded-full flex items-center gap-2 hover:scale-[1.05] active:scale-95 transition-all"
+              >
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Save className="w-4 h-4" /> SALVAR CONFIGS AVANÇADAS</>}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
+
   );
 }

@@ -5,6 +5,8 @@ import { useTracking } from '@/hooks/useTracking';
 import { supabase } from '@/lib/supabase';
 import { Footer } from '@/components/landing/Footer';
 import { DoorOpen, ClipboardList, Dumbbell, CheckCircle2, MessageCircle, MapPin, Calendar, Clock } from 'lucide-react';
+import { useSEO } from '@/hooks/useSEO';
+
 
 export const Route = createFileRoute('/agendar')({
   component: AgendarVisita,
@@ -12,6 +14,8 @@ export const Route = createFileRoute('/agendar')({
 
 function AgendarVisita() {
   const { config, loading: configLoading } = useSiteConfig();
+  useSEO('agendar');
+
   const { getUtms, trackWhatsappClick } = useTracking();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
