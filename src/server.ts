@@ -1,4 +1,4 @@
-import { createRequestHandler } from "@tanstack/react-start/server";
+import { createRequestHandler } from "@tanstack/react-router";
 import { getRouter } from "./router";
 
 const handler = createRequestHandler({
