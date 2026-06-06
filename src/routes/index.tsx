@@ -160,8 +160,9 @@ function Index() {
               <div className="absolute -inset-2 bg-linear-to-r from-[#d7f803] to-[#000] rounded-[32px] blur-2xl opacity-10 group-hover:opacity-20 transition-all"></div>
               <img 
                 src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
-                alt="Premium Gym Equipment" 
+                alt="Equipamentos de musculação premium na academia Elite+ Performance em Sinop" 
                 className="rounded-[32px] w-full relative shadow-2xl border border-white/5 transition-transform duration-500 group-hover:scale-[1.02]" 
+                loading="lazy"
               />
             </div>
           </div>
