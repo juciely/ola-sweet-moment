@@ -100,7 +100,9 @@ export function AdminLogin() {
         });
 
         if (error) throw error;
-        navigate({ to: '/admin/dashboard' });
+        const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+        const redirectPath = params.get('redirect') || '/admin/dashboard';
+        navigate({ to: redirectPath });
       }
     } catch (err: any) {
       console.error('Auth error:', err);
