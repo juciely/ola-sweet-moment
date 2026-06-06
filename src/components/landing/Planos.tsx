@@ -118,7 +118,7 @@ export function Planos() {
 
         <div className="flex flex-col items-center gap-6 reveal">
           <p className="text-[#555] font-inter text-sm">
-            Quer conhecer antes de decidir? <a href="/agendar" className="text-[#555] hover:text-[#d7f803] font-bold underline underline-offset-4 transition-colors">Agende uma visita gratuita →</a>
+            Quer conhecer antes de decidir? <a href="/agendar" onClick={() => trackButtonClick('Agendar Visita Link', 'Planos')} className="text-[#555] hover:text-[#d7f803] font-bold underline underline-offset-4 transition-colors">Agende uma visita gratuita →</a>
           </p>
 
           <button 
