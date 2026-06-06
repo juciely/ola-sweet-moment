@@ -155,7 +155,10 @@ export function PromocaoNamorados() {
               <div className="mt-auto">
                 {!revealed ? (
                   <button
-                    onClick={() => setRevealed(true)}
+                    onClick={() => {
+                      setRevealed(true);
+                      trackButtonClick('Revelar Cupom', 'PromoNamorados');
+                    }}
                     className="w-full bg-white text-black font-poppins font-black uppercase tracking-[1px] px-8 py-5 rounded-full transition-all hover:bg-[#d7f803] hover:scale-105 active:scale-95 text-center shadow-[0_10px_40px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
                   >
                     <Ticket className="w-5 h-5" />
