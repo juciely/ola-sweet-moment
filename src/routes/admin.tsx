@@ -7,17 +7,18 @@ export const Route = createFileRoute('/admin')({
   beforeLoad: async ({ location }) => {
     const { data: { session } } = await supabase.auth.getSession();
     
-    const isRootAdmin = location.pathname === '/admin' || location.pathname === '/admin/';
+    // Normalize path
+    const isLoginPage = location.pathname.replace(/\/$/, '') === '/admin';
 
     // If not logged in and not on login page, redirect to login
-    if (!session && !isRootAdmin) {
+    if (!session && !isLoginPage) {
       throw redirect({
         to: '/admin',
       });
     }
 
     // If logged in and on login page, redirect to dashboard
-    if (session && isRootAdmin) {
+    if (session && isLoginPage) {
       throw redirect({
         to: '/admin/dashboard',
       });
@@ -29,7 +30,9 @@ export const Route = createFileRoute('/admin')({
 function AdminRoot() {
   const { pathname } = useLocation();
   
-  if (pathname === '/admin' || pathname === '/admin/') {
+  const isLoginPage = pathname.replace(/\/$/, '') === '/admin';
+  
+  if (isLoginPage) {
     return <AdminLogin />;
   }
 
