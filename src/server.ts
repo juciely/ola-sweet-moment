@@ -1,4 +1,4 @@
-import { createRequestHandler } from "@tanstack/react-router";
+import { createRequestHandler } from "@tanstack/react-start/server";
 import { getRouter } from "./router";
 
 const handler = createRequestHandler({
@@ -6,7 +6,7 @@ const handler = createRequestHandler({
 });
 
 export default {
-  async fetch(request: Request) {
-    return handler({ request });
+  async fetch(request: Request, env: any, ctx: any) {
+    return handler(request, env, ctx);
   },
 };
