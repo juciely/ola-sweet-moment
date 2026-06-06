@@ -22,8 +22,6 @@ async function getServerEntry(): Promise<ServerEntry> {
   return serverEntryPromise;
 }
 
-// h3 swallows in-handler throws into a normal 500 Response with body
-// {"unhandled":true,"message":"HTTPError"} — try/catch alone never fires for those.
 async function normalizeCatastrophicSsrResponse(response: Response): Promise<Response> {
   if (response.status < 500) return response;
   const contentType = response.headers.get("content-type") ?? "";
@@ -34,12 +32,12 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
     return response;
   }
 
-  const error = consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`);
+  const error = consumeLastCapturedError() ?? new Error(`SSR error: ${body}`);
   console.error('Normalized SSR Error:', error);
   const errorDetails = error instanceof Error ? error.stack : String(error);
 
   return new Response(
-    `<!doctype html><html><body><h1>Internal Server Error (Normalized)</h1><pre>${errorDetails}\n\nBody: ${body}</pre></body></html>`,
+    `<!doctype html><html><body><h1>Internal Server Error</h1><pre>${errorDetails}</pre></body></html>`,
     {
       status: 500,
       headers: { "content-type": "text/html; charset=utf-8" },
@@ -49,16 +47,17 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
-    console.log(`[Request] ${request.method} ${request.url}`);
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error: any) {
+      if (error && typeof error === 'object' && ('to' in error || 'href' in error || 'status' in error)) {
+         throw error;
+      }
       console.error('SSR Critical Failure:', error);
-      const errorDetails = error?.stack || error?.message || String(error);
       return new Response(
-        `<!doctype html><html><body><h1>Internal Server Error</h1><pre>${errorDetails}</pre></body></html>`,
+        `<!doctype html><html><body><h1>Internal Server Error</h1><pre>${error?.stack || String(error)}</pre></body></html>`,
         {
           status: 500,
           headers: { "content-type": "text/html; charset=utf-8" },
