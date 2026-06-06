@@ -10,6 +10,8 @@ import { FloatingWhatsApp } from '@/components/landing/FloatingWhatsApp';
 import { useReveal } from '@/hooks/useReveal';
 import { useTracking } from '@/hooks/useTracking';
 import { useEffect } from 'react';
+import { useSEO } from '@/hooks/useSEO';
+
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -17,6 +19,8 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const { config, loading } = useSiteConfig();
+  useSEO('home');
+
   const { agendamento_ativo } = config;
   
   useEffect(() => {
