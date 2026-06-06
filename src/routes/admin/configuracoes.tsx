@@ -66,7 +66,36 @@ function AdminConfiguracoes() {
 
   const Input = ({ label, id, type = "text", note }: any) => (
     <div className="space-y-2">
-      <label className="block text-[11px] text-[#666] font-bold uppercase tracking-[1px]">{label}</label>
+      <div className="flex justify-between items-center">
+        <label className="block text-[11px] text-[#666] font-bold uppercase tracking-[1px]">{label}</label>
+        {id.startsWith('seo_') && (
+          <button 
+            onClick={() => {
+              const suggestions: Record<string, string> = {
+                'seo_title_home': 'Elite+ Performance | Melhor Academia de Alta Performance em Sinop-MT',
+                'seo_description_home': 'A Elite+ Performance (Ex-Agitare São Cristóvão) é a melhor academia de Sinop-MT. Estrutura premium, professores certificados e foco em resultados reais. Agende sua visita!',
+                'seo_keywords': 'academia sinop, elite performance sinop, musculação sinop mt, agitare são cristóvão, treino funcional sinop, melhor academia sinop',
+                'seo_local_name': 'Elite+ Performance Performance',
+                'seo_local_address': 'Av. dos Jacarandás, 3445',
+                'seo_local_neighborhood': 'São Cristóvão',
+                'seo_local_city': 'Sinop',
+                'seo_local_state': 'MT',
+                'seo_local_zip': '78550-000',
+                'seo_local_phone': '(66) 99997-0103',
+                'seo_local_latitude': '-11.8647',
+                'seo_local_longitude': '-55.5056',
+                'seo_google_business_url': 'https://maps.app.goo.gl/ElitePlusSinop',
+                'seo_title_agendar': 'Agendar Visita Gratuita | Elite+ Performance Sinop-MT',
+                'seo_description_agendar': 'Quer conhecer a melhor estrutura de Sinop? Agende uma visita gratuita na Elite+ Performance e descubra como elevar seu padrão de treino.'
+              };
+              if (suggestions[id]) setConfig({ ...config, [id]: suggestions[id] });
+            }}
+            className="text-[9px] text-[#d7f803] hover:underline uppercase font-bold"
+          >
+            Sugerir
+          </button>
+        )}
+      </div>
       <input
         type={type}
         value={config[id] || ''}
