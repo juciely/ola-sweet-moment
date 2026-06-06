@@ -37,7 +37,9 @@ export function AdminLogin() {
           .select('valor')
           .eq('chave', 'admin_setup_completed');
         
-        if (!data || data.length === 0 || data[0].valor !== 'true') {
+        if (!data || data.length === 0 || data[0].valor === 'false') {
+          setIsFirstAccess(true);
+        } else if (data[0].valor === 'reset_pending') {
           setIsFirstAccess(true);
         } else {
           // Additional check: If URL has ?setup=true, allow creating a new admin anyway
