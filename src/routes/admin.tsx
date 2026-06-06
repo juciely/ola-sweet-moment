@@ -18,7 +18,7 @@ export const Route = createFileRoute('/admin')({
     }
 
     // If logged in and on login page, redirect to dashboard
-    // EXCEPT if we are forcing setup
+    // EXCEPT if we are forcing setup via URL search string
     const isForcingSetup = location.searchStr.toLowerCase().includes('setup=true');
     if (session && isLoginPage && !isForcingSetup) {
       throw redirect({
