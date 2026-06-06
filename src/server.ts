@@ -35,15 +35,23 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   const error = consumeLastCapturedError() ?? new Error(`SSR error: ${body}`);
   console.error('Normalized SSR Error:', error);
   const errorDetails = error instanceof Error ? error.stack : String(error);
+  const requestId = response.headers.get("x-request-id") || "N/A";
 
   return new Response(
-    `<!doctype html><html><body><h1>Internal Server Error</h1><pre>${errorDetails}</pre></body></html>`,
+    `<!doctype html><html><body style="font-family: sans-serif; padding: 2rem;">
+      <h1 style="color: #e11d48;">Internal Server Error (SSR)</h1>
+      <p><strong>Request ID:</strong> ${requestId}</p>
+      <hr />
+      <pre style="background: #f1f5f9; padding: 1rem; border-radius: 0.5rem; overflow: auto;">${errorDetails}\n\nBody: ${body}</pre>
+    </body></html>`,
     {
       status: 500,
       headers: { "content-type": "text/html; charset=utf-8" },
     }
   );
 }
+
+
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
@@ -56,13 +64,20 @@ export default {
          throw error;
       }
       console.error('SSR Critical Failure:', error);
+      const requestId = request.headers.get("x-request-id") || "N/A";
       return new Response(
-        `<!doctype html><html><body><h1>Internal Server Error</h1><pre>${error?.stack || String(error)}</pre></body></html>`,
+        `<!doctype html><html><body style="font-family: sans-serif; padding: 2rem;">
+          <h1 style="color: #e11d48;">Internal Server Error</h1>
+          <p><strong>Request ID:</strong> ${requestId}</p>
+          <hr />
+          <pre style="background: #f1f5f9; padding: 1rem; border-radius: 0.5rem; overflow: auto;">${error?.stack || String(error)}</pre>
+        </body></html>`,
         {
           status: 500,
           headers: { "content-type": "text/html; charset=utf-8" },
         }
       );
+
     }
   },
 };
