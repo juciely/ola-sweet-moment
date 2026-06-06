@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV === "production" && !process.env.NITRO_PORT) {
+if (process.env.NODE_ENV === "production" && !process.env.NITRO_PORT && !process.env.LOVABLE_PREVIEW) {
   console.log(`\n🚀 Server starting on port: ${process.env.PORT || 3000}`);
 }
 import "./validate-env";
