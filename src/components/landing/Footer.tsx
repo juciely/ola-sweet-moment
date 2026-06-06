@@ -3,7 +3,7 @@ import { useTracking } from '@/hooks/useTracking';
 
 export function Footer() {
   const { config } = useSiteConfig();
-  const { trackWhatsappClick } = useTracking();
+  const { trackWhatsappClick, trackButtonClick } = useTracking();
 
   const handleWhatsApp = () => {
     trackWhatsappClick('Footer Button');
