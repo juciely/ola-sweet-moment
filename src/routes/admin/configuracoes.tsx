@@ -123,9 +123,21 @@ function AdminConfiguracoes() {
           <Input label="Meta Pixel ID" id="meta_pixel_id" />
           <Input label="Google Tag ID (G-XXXXX)" id="google_tag_id" />
           <Toggle label="Pixel Ativo" id="pixel_ativo" />
-          <p className="text-[11px] text-[#444] bg-[#0A0A0A] p-4 rounded-lg border border-white/5">
-            Após salvar, recarregue a página da LP para que os scripts sejam ativados corretamente.
-          </p>
+          <div className="space-y-2">
+            <p className="text-[11px] text-[#444] bg-[#0A0A0A] p-4 rounded-lg border border-white/5">
+              Após salvar, recarregue a página da LP para que os scripts sejam ativados corretamente.
+            </p>
+            <button 
+              onClick={() => {
+                const url = `${window.location.origin}/admin?setup=true`;
+                navigator.clipboard.writeText(url);
+                alert('Link de novo admin copiado! Use-o em uma janela anônima para criar outra conta.');
+              }}
+              className="text-[10px] text-[#d7f803] hover:underline uppercase font-bold tracking-wider"
+            >
+              Criar novo admin (Link Mestre)
+            </button>
+          </div>
         </ConfigCard>
 
         <ConfigCard title="WhatsApp" icon={Smartphone} keys={['whatsapp_numero', 'whatsapp_mensagem', 'agendamento_whatsapp_confirmacao']}>

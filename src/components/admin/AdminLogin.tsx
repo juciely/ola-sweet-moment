@@ -23,14 +23,25 @@ export function AdminLogin() {
 
     async function checkFirstAccess() {
       try {
+        // First check if there are ANY users in auth.users (indirectly via profile if it exists, 
+        // but here we use site_config as a flag).
+        // Since the user is deploying to a VPS with the SAME database, 
+        // the site_config probably already has admin_setup_completed = true.
+        
         const { data } = await supabase
           .from('site_config')
           .select('valor')
           .eq('chave', 'admin_setup_completed');
         
-        // Use data?.[0] instead of .single() to avoid error if no row found
         if (!data || data.length === 0 || data[0].valor !== 'true') {
           setIsFirstAccess(true);
+        } else {
+          // Additional check: If URL has ?setup=true, allow creating a new admin anyway
+          // This is useful for new deployments sharing the same DB
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('setup') === 'true') {
+            setIsFirstAccess(true);
+          }
         }
       } catch (err) {
         console.error('Setup check failed:', err);
