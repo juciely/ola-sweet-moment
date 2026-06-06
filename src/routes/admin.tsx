@@ -4,16 +4,8 @@ import { AdminLayout } from '@/components/admin/AdminLayout';
 import { AdminLogin } from '@/components/admin/AdminLogin';
 
 export const Route = createFileRoute('/admin')({
-  beforeLoad: async ({ location }) => {
-    // Basic normalization
-    const path = location.pathname.replace(/\/$/, '') || '/';
-    const isLoginPage = path === '/admin';
-
-    // If logged in and on login page, redirect to dashboard
-    // EXCEPT if we are forcing setup via URL search string
-    // const isForcingSetup = (location.search as any).setup === 'true' || (location.searchStr || '').toLowerCase().includes('setup=true');
-    // REMOVED COMPLEX LOGIC TEMPORARILY TO DEBUG 500
-    
+  beforeLoad: async () => {
+    // Debugging 500 error - minimizing logic
     return;
   },
   component: AdminRoot,
