@@ -34,11 +34,17 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
     return response;
   }
 
-  console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
-  return new Response(renderErrorPage(), {
-    status: 500,
-    headers: { "content-type": "text/html; charset=utf-8" },
-  });
+  const error = consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`);
+  console.error('Normalized SSR Error:', error);
+  const errorDetails = error instanceof Error ? error.stack : String(error);
+
+  return new Response(
+    `<!doctype html><html><body><h1>Internal Server Error (Normalized)</h1><pre>${errorDetails}\n\nBody: ${body}</pre></body></html>`,
+    {
+      status: 500,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    }
+  );
 }
 
 export default {
