@@ -5,7 +5,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Check, X, Footprints, MessageCircle, Calendar as CalendarIcon, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export const Route = createFileRoute('/admin/agendamentos' as any)({
+export const Route = createFileRoute('/admin/agendamentos')({
   component: AdminAgendamentos,
 });
 

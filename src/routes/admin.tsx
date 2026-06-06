@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { AdminLogin } from '@/components/admin/AdminLogin';
 
-export const Route = createFileRoute('/admin' as any)({
+export const Route = createFileRoute('/admin')({
   beforeLoad: async ({ location }) => {
     try {
       const { data: sessionData } = await supabase.auth.getSession();

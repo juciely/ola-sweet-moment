@@ -5,7 +5,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Save, Loader2, Check, Layout, Tag, Type, Calendar, Clock, MapPin, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export const Route = createFileRoute('/admin/conteudo' as any)({
+export const Route = createFileRoute('/admin/conteudo')({
   component: AdminConteudo,
 });
 

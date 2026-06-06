@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { TrendingUp, Users, Calendar, MessageCircle, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
-export const Route = createFileRoute('/admin/conversoes' as any)({
+export const Route = createFileRoute('/admin/conversoes')({
   component: AdminConversoes,
 });
 

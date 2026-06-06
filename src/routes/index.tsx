@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 import { useSEO } from '@/hooks/useSEO';
 
 
-export const Route = createFileRoute('/' as any)({
+export const Route = createFileRoute('/')({
   component: Index,
 });
 
