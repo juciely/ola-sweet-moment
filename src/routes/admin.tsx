@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { AdminLogin } from '@/components/admin/AdminLogin';
 
-export const Route = createFileRoute('/admin')({
+export const Route = createFileRoute('/admin' as any)({
   beforeLoad: async ({ location }) => {
     try {
       const { data: sessionData } = await supabase.auth.getSession();
@@ -16,7 +16,7 @@ export const Route = createFileRoute('/admin')({
       if (!session && !isLoginPage) {
         throw redirect({
           to: '/admin',
-        });
+        } as any);
       }
 
       // If logged in and on login page, redirect to dashboard
@@ -25,7 +25,7 @@ export const Route = createFileRoute('/admin')({
       if (session && isLoginPage && !isForcingSetup) {
         throw redirect({
           to: '/admin/dashboard',
-        });
+        } as any);
       }
     } catch (err) {
       // If it's a redirect, rethrow it
