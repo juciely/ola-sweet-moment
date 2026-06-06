@@ -13,7 +13,7 @@ export const Route = createFileRoute('/admin')({
     // If not logged in and not on login page, redirect to login
     if (!session && !isLoginPage) {
       throw redirect({
-        to: '/admin',
+        to: `/admin?redirect=${encodeURIComponent(location.pathname)}`,
       });
     }
 

@@ -18,7 +18,10 @@ export function AdminLogin() {
       console.log("Auth event:", event, !!session);
       const isForcingSetup = typeof window !== 'undefined' && window.location.search.includes('setup=true');
       if (session && !isForcingSetup) {
-        navigate({ to: '/admin/dashboard' });
+        // Find where we should go
+        const params = new URLSearchParams(window.location.search);
+        const redirectPath = params.get('redirect') || '/admin/dashboard';
+        navigate({ to: redirectPath });
       }
     });
 
@@ -82,7 +85,9 @@ export function AdminLogin() {
 
         if (data.session || data.user) {
           // If auto-confirm is on, we might have a session or just a user
-          navigate({ to: '/admin/dashboard' });
+          const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+          const redirectPath = params.get('redirect') || '/admin/dashboard';
+          navigate({ to: redirectPath });
         } else {
           setError('Conta criada! Tente fazer o login agora com suas credenciais.');
           setIsFirstAccess(false);
@@ -95,7 +100,9 @@ export function AdminLogin() {
         });
 
         if (error) throw error;
-        navigate({ to: '/admin/dashboard' });
+        const params = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+        const redirectPath = params.get('redirect') || '/admin/dashboard';
+        navigate({ to: redirectPath });
       }
     } catch (err: any) {
       console.error('Auth error:', err);
