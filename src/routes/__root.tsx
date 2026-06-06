@@ -81,10 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "A melhor academia premium de Sinop-MT. Musculação, App de treino incluso, Professores qualificados e Espaço Kids. Venha para a Elite+ Performance." },
       { name: "author", content: "Elite+ Performance" },
       { property: "og:title", content: "Elite+ Performance | Academia Premium em Sinop-MT" },
-      { property: "og:description", content: "Transforme seu treino na melhor academia de Sinop. Estrutura premium, App exclusivo e resultados reais." },
+      { property: "og:description", content: "A melhor academia premium de Sinop-MT. Musculação, App de treino incluso, Professores qualificados e Espaço Kids. Venha para a Elite+ Performance." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Elite+ Performance | Academia Premium em Sinop-MT" },
+      { name: "twitter:description", content: "A melhor academia premium de Sinop-MT. Musculação, App de treino incluso, Professores qualificados e Espaço Kids. Venha para a Elite+ Performance." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/123c5937-21b2-4a47-8904-d4a13ca68acc/id-preview-ec6a6d03--ed9123ab-2c21-49fb-b415-b28e367f4ccf.lovable.app-1780710372755.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/123c5937-21b2-4a47-8904-d4a13ca68acc/id-preview-ec6a6d03--ed9123ab-2c21-49fb-b415-b28e367f4ccf.lovable.app-1780710372755.png" },
     ],
     links: [
       {
