@@ -172,7 +172,10 @@ export function PromocaoNamorados() {
                         <span className="font-poppins font-black text-[#d7f803] text-lg md:text-xl tracking-tight truncate block">{cupom}</span>
                       </div>
                       <button 
-                        onClick={copyToClipboard}
+                        onClick={() => {
+                          copyToClipboard();
+                          trackButtonClick('Copiar Cupom', 'PromoNamorados');
+                        }}
                         className="p-3 bg-white/5 hover:bg-[#d7f803] hover:text-black rounded-xl transition-all text-[#d7f803]"
                         title="Copiar cupom"
                       >
