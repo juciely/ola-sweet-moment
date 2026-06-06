@@ -5,7 +5,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Bug, Database, Globe, User, Activity, RefreshCcw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export const Route = createFileRoute('/admin/debug')({
+export const Route = createFileRoute('/admin/debug' as any)({
   component: AdminDebug,
 });
 

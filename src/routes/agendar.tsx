@@ -8,7 +8,7 @@ import { DoorOpen, ClipboardList, Dumbbell, CheckCircle2, MessageCircle, MapPin,
 import { useSEO } from '@/hooks/useSEO';
 
 
-export const Route = createFileRoute('/agendar')({
+export const Route = createFileRoute('/agendar' as any)({
   component: AgendarVisita,
 });
 

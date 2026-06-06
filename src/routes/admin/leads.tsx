@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Search, Download, Check, X, Filter } from 'lucide-react';
 
-export const Route = createFileRoute('/admin/leads')({
+export const Route = createFileRoute('/admin/leads' as any)({
   component: AdminLeads,
 });
 
