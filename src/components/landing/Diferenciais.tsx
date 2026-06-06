@@ -35,6 +35,7 @@ const diferenciais = [
 ];
 
 export function Diferenciais() {
+  const { trackButtonClick } = useTracking();
   return (
     <section className="bg-[#080808] py-32 px-8">
       <div className="container-custom">
