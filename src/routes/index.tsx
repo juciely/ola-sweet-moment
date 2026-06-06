@@ -173,15 +173,21 @@ function Index() {
           <div className="flex-1 reveal order-1 lg:order-2">
             <span className="text-[#d7f803] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-6 block">Evolução Constante</span>
             <h2 className="font-poppins font-black text-[40px] md:text-[70px] leading-[1.1] md:leading-tight mb-8">
-              MUDAMOS O NOME.<br />
-              <span className="text-[#d7f803]">ELEVAMOS O PADRÃO.</span>
+              UMA NOVA DIREÇÃO.<br />
+              <span className="text-[#d7f803]">O MESMO COMPROMISSO COM VOCÊ.</span>
             </h2>
             <div className="space-y-6">
               <p className="font-inter text-[16px] md:text-[18px] text-[#AAAAAA] leading-relaxed font-light">
-                A Agitare foi por anos a academia de referência em Sinop. Mas a gente sabia que podia ser mais. Mais estrutura. Mais tecnologia. Mais resultado para quem não aceita o básico.
+                A unidade Agítare São Cristóvão inicia uma nova fase.
               </p>
               <p className="font-inter text-[16px] md:text-[18px] text-[#AAAAAA] leading-relaxed font-light">
-                Hoje somos a <strong>Elite+ Performance</strong>. O mesmo compromisso com o seu resultado — agora com o padrão que você merece.
+                Com uma nova gestão, novos investimentos e o compromisso de oferecer uma experiência cada vez melhor aos nossos alunos.
+              </p>
+              <p className="font-inter text-[16px] md:text-[18px] text-[#AAAAAA] leading-relaxed font-light">
+                A partir de agora, a Agitare São Cristóvão passa a ser <strong>Elite+ Performance</strong>.
+              </p>
+              <p className="font-inter text-[16px] md:text-[18px] text-[#AAAAAA] leading-relaxed font-light italic">
+                Chegamos com uma nova identidade e uma visão renovada, mantendo o foco no que realmente importa: o seu resultado.
               </p>
             </div>
           </div>
