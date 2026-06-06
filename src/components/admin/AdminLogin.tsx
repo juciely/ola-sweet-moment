@@ -39,6 +39,8 @@ export function AdminLogin() {
         
         if (!data || data.length === 0 || data[0].valor === 'false') {
           setIsFirstAccess(true);
+        } else if (data[0].valor === 'reset_pending') {
+          setIsFirstAccess(true);
         } else {
           // Additional check: If URL has ?setup=true, allow creating a new admin anyway
           // This is useful for new deployments sharing the same DB
