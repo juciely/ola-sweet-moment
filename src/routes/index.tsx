@@ -29,7 +29,7 @@ function Index() {
     }
   }, [agendamento_ativo]);
   const revealRef = useReveal();
-  const { trackWhatsappClick } = useTracking();
+  const { trackWhatsappClick, trackButtonClick } = useTracking();
 
   if (loading) {
     return (
