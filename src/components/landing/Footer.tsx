@@ -18,7 +18,9 @@ export function Footer() {
         {/* Col 1 */}
         <div className="space-y-6">
           <div className="flex flex-col gap-1">
-            <img src="/logo.png" alt="Elite+ Performance" className="w-40 mb-4" />
+            <a href="/" onClick={() => trackButtonClick('Logo Click', 'Footer')}>
+              <img src="/logo.png" alt="Elite+ Performance" className="w-40 mb-4" />
+            </a>
           </div>
           <p className="font-inter text-sm text-[#555] max-w-[200px] leading-relaxed">
             Academia completa em Sinop-MT.<br />
