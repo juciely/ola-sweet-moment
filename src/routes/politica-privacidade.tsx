@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/politica-de-privacidade")({
+export const Route = createFileRoute("/politica-privacidade")({
   head: () => ({
     meta: [
       { title: "Política de Privacidade | Elite+ Performance Sinop-MT" },
