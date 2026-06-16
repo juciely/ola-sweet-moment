@@ -17,7 +17,7 @@ export const Route = createFileRoute("/politica-privacidade")({
           "Saiba como tratamos seus dados pessoais em conformidade com a LGPD e as políticas de Google e Meta.",
       },
     ],
-    links: [{ rel: "canonical", href: "/politica-de-privacidade" }],
+    links: [{ rel: "canonical", href: "/politica-privacidade" }],
   }),
   component: PoliticaPrivacidade,
 });
