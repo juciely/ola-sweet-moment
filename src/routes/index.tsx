@@ -3,6 +3,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Countdown } from '@/components/landing/Countdown';
 import { PromocaoNamorados } from '@/components/landing/PromocaoNamorados';
 import { Diferenciais } from '@/components/landing/Diferenciais';
+import { AcademiaSlider } from '@/components/landing/AcademiaSlider';
 import { Planos } from '@/components/landing/Planos';
 import { LeadForm } from '@/components/landing/LeadForm';
 import { Footer } from '@/components/landing/Footer';
