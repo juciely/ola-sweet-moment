@@ -85,24 +85,31 @@ function AgendarVisita() {
       <section className="pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block bg-[#d7f803]/10 border border-[#d7f803]/20 text-[#d7f803] text-[10px] md:text-[12px] font-bold uppercase tracking-[3px] px-6 py-2 rounded-full mb-8">
-            VISITA GRATUITA E SEM COMPROMISSO
+            TREINO EXPERIMENTAL GRATUITO
           </div>
           <h1 className="font-bebas text-[52px] md:text-[84px] leading-[1] mb-8 tracking-tighter uppercase">
-            VENHA CONHECER A <span className="text-[#d7f803]">ELITE+ PERFORMANCE</span>
+            VENHA TREINAR NA <span className="text-[#d7f803]">ELITE+ PERFORMANCE</span>
           </h1>
-          <p className="text-[#AAAAAA] text-[16px] md:text-[20px] max-w-[700px] mx-auto leading-relaxed mb-12">
-            {config.agendamento_subtitulo || 'Venha conhecer a Elite+ Performance sem compromisso. A visita é gratuita e você já sai com seu treino montado.'}
+          <p className="text-[#AAAAAA] text-[16px] md:text-[20px] max-w-[720px] mx-auto leading-relaxed mb-12">
+            {config.agendamento_subtitulo || 'Antes de decidir, venha viver a experiência. Faça seu treino experimental e conheça uma estrutura premium preparada para transformar sua rotina de treino.'}
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            <div className="flex items-center gap-2 text-[#d7f803] font-bold text-[12px] md:text-[14px] uppercase tracking-wider">
-              <CheckCircle2 className="w-5 h-5" /> AVALIAÇÃO GRATUITA
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[760px] mx-auto text-left">
+            <div className="bg-[#111] border border-[#1E1E1E] rounded-2xl p-6">
+              <div className="flex items-center gap-2 text-[#d7f803] font-black text-[13px] uppercase tracking-[2px] mb-2">
+                <CheckCircle2 className="w-5 h-5" /> TREINO EXPERIMENTAL
+              </div>
+              <p className="text-[#AAA] text-[14px] leading-relaxed">
+                Teste a estrutura, sinta o ambiente e veja se a Elite+ combina com você.
+              </p>
             </div>
-            <div className="flex items-center gap-2 text-[#d7f803] font-bold text-[12px] md:text-[14px] uppercase tracking-wider">
-              <CheckCircle2 className="w-5 h-5" /> Treino montado na visita
-            </div>
-            <div className="flex items-center gap-2 text-[#d7f803] font-bold text-[12px] md:text-[14px] uppercase tracking-wider">
-              <CheckCircle2 className="w-5 h-5" /> Sai sabendo o plano ideal
+            <div className="bg-[#111] border border-[#1E1E1E] rounded-2xl p-6">
+              <div className="flex items-center gap-2 text-[#d7f803] font-black text-[13px] uppercase tracking-[2px] mb-2">
+                <CheckCircle2 className="w-5 h-5" /> AMBIENTE DE ALTA PERFORMANCE
+              </div>
+              <p className="text-[#AAA] text-[14px] leading-relaxed">
+                Espaço moderno, equipamentos de qualidade e energia de academia de verdade.
+              </p>
             </div>
           </div>
         </div>
