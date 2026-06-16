@@ -163,15 +163,7 @@ function Index() {
       <section className="bg-[#0A0A0A] py-32 px-8 relative overflow-hidden">
         <div className="container-custom relative z-10 flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1 reveal order-2 lg:order-1">
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-linear-to-r from-[#d7f803] to-[#000] rounded-[32px] blur-2xl opacity-10 group-hover:opacity-20 transition-all"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
-                alt="Equipamentos de musculação premium na academia Elite+ Performance em Sinop" 
-                className="rounded-[32px] w-full relative shadow-2xl border border-white/5 transition-transform duration-500 group-hover:scale-[1.02]" 
-                loading="lazy"
-              />
-            </div>
+            <AcademiaSlider />
           </div>
           <div className="flex-1 reveal order-1 lg:order-2">
             <span className="text-[#d7f803] font-poppins text-[12px] font-black uppercase tracking-[4px] mb-6 block">Evolução Constante</span>
