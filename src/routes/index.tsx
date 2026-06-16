@@ -14,9 +14,65 @@ import { useEffect } from 'react';
 import { useSEO } from '@/hooks/useSEO';
 
 
+const SITE_URL = 'https://eliteperformance.com.br';
+const OG_IMAGE = `${SITE_URL}/logo.png`;
+
 export const Route = createFileRoute('/')({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: 'Elite+ Performance | Academia Premium em Sinop-MT (Ex-Agítare São Cristóvão)' },
+      { name: 'description', content: 'Academia premium em Sinop-MT no bairro São Cristóvão. Musculação, app de treino incluso, professores CREF, espaço kids, estacionamento grátis. Agende sua visita.' },
+      { name: 'keywords', content: 'academia sinop, academia sinop mt, melhor academia sinop, academia são cristóvão sinop, elite performance sinop, agitare são cristóvão, musculação sinop, personal sinop' },
+      { property: 'og:title', content: 'Elite+ Performance | Academia Premium em Sinop-MT' },
+      { property: 'og:description', content: 'A academia premium de Sinop-MT. Estrutura completa, app de treino, professores CREF e espaço kids. Agende sua visita gratuita.' },
+      { property: 'og:url', content: `${SITE_URL}/` },
+      { property: 'og:image', content: OG_IMAGE },
+      { name: 'twitter:title', content: 'Elite+ Performance | Academia Premium em Sinop-MT' },
+      { name: 'twitter:description', content: 'A academia premium de Sinop-MT. Agende sua visita gratuita.' },
+      { name: 'twitter:image', content: OG_IMAGE },
+    ],
+    links: [
+      { rel: 'canonical', href: `${SITE_URL}/` },
+    ],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'HealthClub',
+          '@id': `${SITE_URL}/#academia`,
+          name: 'Elite+ Performance',
+          alternateName: 'Agítare São Cristóvão',
+          description: 'Academia premium em Sinop-MT com musculação, app de treino incluso, professores CREF, espaço kids e estacionamento gratuito.',
+          url: SITE_URL,
+          telephone: '+5566999970103',
+          image: OG_IMAGE,
+          priceRange: 'R$119-R$160',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Av. dos Jacarandás, 3445',
+            addressLocality: 'Sinop',
+            addressRegion: 'MT',
+            postalCode: '78550-000',
+            addressCountry: 'BR',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: -11.8647,
+            longitude: -55.5056,
+          },
+          areaServed: { '@type': 'City', name: 'Sinop' },
+          openingHoursSpecification: [
+            { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '05:00', closes: '22:00' },
+            { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday'], opens: '05:30', closes: '08:30' },
+          ],
+        }),
+      },
+    ],
+  }),
 });
+
 
 function Index() {
   const { config, loading } = useSiteConfig();
