@@ -49,7 +49,7 @@ export function Footer() {
               {config.whatsapp_exibicao || '(66) 9 9997-0103'}
             </button>
             <p className="font-inter text-[13px] text-[#666] leading-relaxed">
-              {config.endereco || 'Rua Colonizador Enio Pipino, 565 - Sinop-MT'}
+              Rua Colonizador Ênio Pipino II, 365 — Bairro São Cristóvão, Sinop-MT, Brasil.
             </p>
           </div>
         </div>
@@ -57,7 +57,7 @@ export function Footer() {
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-[#1A1A1A] text-center">
         <p className="font-inter text-[12px] text-[#333] tracking-widest">
-          © 2025 ELITE+ PERFORMANCE — SINOP-MT
+          © 2026 ELITE+ PERFORMANCE — CNPJ 55.308.899/0001-04 — MATRIZ. Todos os direitos reservados.
         </p>
       </div>
     </footer>
