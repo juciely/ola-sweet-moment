@@ -192,10 +192,31 @@ export function AdminLogin() {
             </button>
             
             {!isFirstAccess && (
-              <p className="text-center text-[10px] text-[#333] font-inter mt-4">
-                Protegido por criptografia de ponta a ponta.
-              </p>
+              <>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    if (!email) {
+                      setError('Digite seu email acima para receber o link de recuperação.');
+                      return;
+                    }
+                    setError(null);
+                    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                      redirectTo: `${window.location.origin}/reset-password`,
+                    });
+                    if (error) setError(error.message);
+                    else setError('Email de recuperação enviado! Verifique sua caixa de entrada (e spam).');
+                  }}
+                  className="w-full text-center text-[12px] text-[#888] hover:text-[#d7f803] font-inter mt-2 transition-colors"
+                >
+                  Esqueci minha senha
+                </button>
+                <p className="text-center text-[10px] text-[#333] font-inter mt-4">
+                  Protegido por criptografia de ponta a ponta.
+                </p>
+              </>
             )}
+
           </form>
         </div>
       </div>

@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as PoliticaPrivacidadeRouteImport } from './routes/politica-privacidade'
 import { Route as AgendarRouteImport } from './routes/agendar'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -21,6 +22,11 @@ import { Route as AdminConteudoRouteImport } from './routes/admin/conteudo'
 import { Route as AdminConfiguracoesRouteImport } from './routes/admin/configuracoes'
 import { Route as AdminAgendamentosRouteImport } from './routes/admin/agendamentos'
 
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PoliticaPrivacidadeRoute = PoliticaPrivacidadeRouteImport.update({
   id: '/politica-privacidade',
   path: '/politica-privacidade',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/politica-privacidade': typeof PoliticaPrivacidadeRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/admin/agendamentos': typeof AdminAgendamentosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/conteudo': typeof AdminConteudoRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/politica-privacidade': typeof PoliticaPrivacidadeRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/admin/agendamentos': typeof AdminAgendamentosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/conteudo': typeof AdminConteudoRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/agendar': typeof AgendarRoute
   '/politica-privacidade': typeof PoliticaPrivacidadeRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/admin/agendamentos': typeof AdminAgendamentosRoute
   '/admin/configuracoes': typeof AdminConfiguracoesRoute
   '/admin/conteudo': typeof AdminConteudoRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/agendar'
     | '/politica-privacidade'
+    | '/reset-password'
     | '/admin/agendamentos'
     | '/admin/configuracoes'
     | '/admin/conteudo'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/agendar'
     | '/politica-privacidade'
+    | '/reset-password'
     | '/admin/agendamentos'
     | '/admin/configuracoes'
     | '/admin/conteudo'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/agendar'
     | '/politica-privacidade'
+    | '/reset-password'
     | '/admin/agendamentos'
     | '/admin/configuracoes'
     | '/admin/conteudo'
@@ -164,10 +176,18 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   AgendarRoute: typeof AgendarRoute
   PoliticaPrivacidadeRoute: typeof PoliticaPrivacidadeRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/politica-privacidade': {
       id: '/politica-privacidade'
       path: '/politica-privacidade'
@@ -275,6 +295,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   AgendarRoute: AgendarRoute,
   PoliticaPrivacidadeRoute: PoliticaPrivacidadeRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
