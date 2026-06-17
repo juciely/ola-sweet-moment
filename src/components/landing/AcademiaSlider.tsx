@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react';
-import foto1 from '@/assets/academia/5012752233946352871.jpg.asset.json';
-import foto2 from '@/assets/academia/5012752233946352865.jpg.asset.json';
-import foto3 from '@/assets/academia/5012752233946352864.jpg.asset.json';
-import foto4 from '@/assets/academia/5012752233946352867.jpg.asset.json';
-import foto5 from '@/assets/academia/5012752233946352866.jpg.asset.json';
-import foto6 from '@/assets/academia/5012752233946352870.jpg.asset.json';
+
+const BASE = 'https://naepymixqonguigtgywy.supabase.co/storage/v1/object/public/elite-images';
 
 const fotos = [
-  { src: foto1.url, alt: 'Área de musculação Elite+ Performance Sinop' },
-  { src: foto2.url, alt: 'Esteiras Movement na Elite+ Performance' },
-  { src: foto3.url, alt: 'Rack de halteres da Elite+ Performance' },
-  { src: foto4.url, alt: 'Barras e anilhas profissionais Elite+ Performance' },
-  { src: foto5.url, alt: 'Equipamentos de musculação black premium' },
-  { src: foto6.url, alt: 'Sala de bikes e cardio da Elite+ Performance' },
+  { src: `${BASE}/5012752233946352871.jpg`, alt: 'Área de musculação Elite+ Performance Sinop' },
+  { src: `${BASE}/5012752233946352865.jpg`, alt: 'Esteiras Movement na Elite+ Performance' },
+  { src: `${BASE}/5012752233946352864.jpg`, alt: 'Rack de halteres da Elite+ Performance' },
+  { src: `${BASE}/5012752233946352867.jpg`, alt: 'Barras e anilhas profissionais Elite+ Performance' },
+  { src: `${BASE}/5012752233946352866.jpg`, alt: 'Equipamentos de musculação black premium' },
+  { src: `${BASE}/5012752233946352870.jpg`, alt: 'Sala de bikes e cardio da Elite+ Performance' },
 ];
 
 export function AcademiaSlider() {
